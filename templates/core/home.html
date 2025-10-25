@@ -5,23 +5,23 @@
 
 {% block content %}
 <!-- Hero Section -->
-<section class="hero-pattern md-hero-gradient" style="padding: 80px 0;">
-    <div style="max-width: 1200px; margin: 0 auto; padding: 0 16px;">
-        <div style="text-align: center;">
-            <div style="margin-bottom: 32px;" class="md-animate-fade-in-up">
-                <img src="{% static 'images/profile-photo.jpg' %}" alt="Your Name" style="width: 128px; height: 128px; border-radius: 50%; margin: 0 auto; box-shadow: 0px 4px 8px 3px rgba(0, 0, 0, 0.15), 0px 1px 3px 0px rgba(0, 0, 0, 0.30); object-fit: cover;">
+<section class="bg-gradient-to-br from-primary-50 to-purple-50 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <div class="mb-8 animate-fade-in-up">
+                <img src="{% static 'images/profile-photo.jpg' %}" alt="Your Name" class="w-32 h-32 rounded-full mx-auto shadow-xl object-cover border-4 border-white">
             </div>
-            <h1 class="md-display-large" style="margin-bottom: 24px; color: var(--md-sys-color-on-surface);" class="md-animate-fade-in-up">
-                Hi, I'm <span class="md-gradient-text">Your Name</span>
+            <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6 animate-fade-in-up">
+                Hi, I'm <span class="bg-gradient-to-r from-primary-600 to-purple-600 bg-clip-text text-transparent">Your Name</span>
             </h1>
-            <p class="md-headline-medium" style="margin-bottom: 32px; max-width: 768px; margin-left: auto; margin-right: auto; color: var(--md-sys-color-on-surface-variant);" class="md-animate-fade-in-up">
+            <p class="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto animate-fade-in-up">
                 Engineer, Speaker, and Technology Enthusiast building the future through innovative solutions and thought leadership.
             </p>
-            <div style="display: flex; flex-direction: column; gap: 16px; justify-content: center; align-items: center;" class="md-animate-fade-in-up">
-                <a href="{% url 'portfolio:portfolio_list' %}" class="md-button md-button-filled" style="padding: 12px 32px; font-size: 16px; width: 100%; max-width: 200px;">
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up">
+                <a href="{% url 'portfolio:portfolio_list' %}" class="bg-primary-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-primary-700 transition-colors shadow-lg hover:shadow-xl w-full sm:w-auto">
                     View My Work
                 </a>
-                <a href="{% url 'core:contact' %}" class="md-button md-button-outlined" style="padding: 12px 32px; font-size: 16px; width: 100%; max-width: 200px;">
+                <a href="{% url 'core:contact' %}" class="bg-white text-primary-600 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-50 transition-colors border-2 border-primary-600 w-full sm:w-auto">
                     Get In Touch
                 </a>
             </div>
@@ -30,65 +30,71 @@
 </section>
 
 <!-- Featured Projects Section -->
-<section class="md-section-gradient" style="padding: 80px 0;">
-    <div style="max-width: 1200px; margin: 0 auto; padding: 0 16px;">
-        <div style="text-align: center; margin-bottom: 64px;" class="md-animate-fade-in-up">
-            <h2 class="md-headline-large" style="margin-bottom: 16px; color: var(--md-sys-color-on-surface);">Featured Projects</h2>
-            <p class="md-title-large" style="max-width: 512px; margin: 0 auto; color: var(--md-sys-color-on-surface-variant);">
+<section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-gray-900 mb-4">Featured Projects</h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
                 A showcase of my latest engineering work and innovative solutions.
             </p>
         </div>
         
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-bottom: 48px;">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             <!-- Project cards will be populated from the database -->
-            <div class="md-card md-animate-fade-in-up" style="overflow: hidden;">
-                <div style="height: 192px; background: linear-gradient(135deg, var(--md-sys-color-primary), var(--md-sys-color-tertiary)); margin: -16px -16px 16px -16px;"></div>
-                <h3 class="md-title-large" style="margin-bottom: 8px; color: var(--md-sys-color-on-surface);">Project Title</h3>
-                <p class="md-body-large" style="margin-bottom: 16px; color: var(--md-sys-color-on-surface-variant);">Brief description of the project and its impact.</p>
-                <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
-                    <span class="md-chip md-chip-primary">Python</span>
-                    <span class="md-chip md-chip-primary">Django</span>
-                    <span class="md-chip md-chip-primary">React</span>
-                </div>
-                <div style="display: flex; gap: 16px;">
-                    <a href="#" style="color: var(--md-sys-color-primary); text-decoration: none; font-weight: 500;">View Project</a>
-                    <a href="#" style="color: var(--md-sys-color-on-surface-variant); text-decoration: none; font-weight: 500;">GitHub</a>
-                </div>
-            </div>
-            
-            <div class="md-card md-animate-fade-in-up" style="overflow: hidden;">
-                <div style="height: 192px; background: linear-gradient(135deg, var(--md-sys-color-secondary), var(--md-sys-color-tertiary)); margin: -16px -16px 16px -16px;"></div>
-                <h3 class="md-title-large" style="margin-bottom: 8px; color: var(--md-sys-color-on-surface);">Another Project</h3>
-                <p class="md-body-large" style="margin-bottom: 16px; color: var(--md-sys-color-on-surface-variant);">Another innovative solution that demonstrates technical expertise.</p>
-                <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
-                    <span class="md-chip md-chip-secondary">JavaScript</span>
-                    <span class="md-chip md-chip-secondary">Node.js</span>
-                    <span class="md-chip md-chip-secondary">MongoDB</span>
-                </div>
-                <div style="display: flex; gap: 16px;">
-                    <a href="#" style="color: var(--md-sys-color-primary); text-decoration: none; font-weight: 500;">View Project</a>
-                    <a href="#" style="color: var(--md-sys-color-on-surface-variant); text-decoration: none; font-weight: 500;">GitHub</a>
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow">
+                <div class="h-48 bg-gradient-to-br from-primary-500 to-purple-600"></div>
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Project Title</h3>
+                    <p class="text-gray-600 mb-4">Brief description of the project and its impact.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full font-medium">Python</span>
+                        <span class="px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full font-medium">Django</span>
+                        <span class="px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full font-medium">React</span>
+                    </div>
+                    <div class="flex gap-4">
+                        <a href="#" class="text-primary-600 font-semibold hover:text-primary-700">View Project →</a>
+                        <a href="#" class="text-gray-600 font-semibold hover:text-gray-700">GitHub →</a>
+                    </div>
                 </div>
             </div>
             
-            <div class="md-card md-animate-fade-in-up" style="overflow: hidden;">
-                <div style="height: 192px; background: linear-gradient(135deg, var(--md-sys-color-tertiary), var(--md-sys-color-primary)); margin: -16px -16px 16px -16px;"></div>
-                <h3 class="md-title-large" style="margin-bottom: 8px; color: var(--md-sys-color-on-surface);">Third Project</h3>
-                <p class="md-body-large" style="margin-bottom: 16px; color: var(--md-sys-color-on-surface-variant);">A third project showcasing diverse technical skills.</p>
-                <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
-                    <span class="md-chip md-chip-tertiary">Go</span>
-                    <span class="md-chip md-chip-tertiary">Docker</span>
-                    <span class="md-chip md-chip-tertiary">Kubernetes</span>
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow">
+                <div class="h-48 bg-gradient-to-br from-purple-500 to-pink-600"></div>
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Another Project</h3>
+                    <p class="text-gray-600 mb-4">Another innovative solution that demonstrates technical expertise.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-purple-100 text-purple-800 text-sm rounded-full font-medium">JavaScript</span>
+                        <span class="px-3 py-1 bg-purple-100 text-purple-800 text-sm rounded-full font-medium">Node.js</span>
+                        <span class="px-3 py-1 bg-purple-100 text-purple-800 text-sm rounded-full font-medium">MongoDB</span>
+                    </div>
+                    <div class="flex gap-4">
+                        <a href="#" class="text-primary-600 font-semibold hover:text-primary-700">View Project →</a>
+                        <a href="#" class="text-gray-600 font-semibold hover:text-gray-700">GitHub →</a>
+                    </div>
                 </div>
-                <div style="display: flex; gap: 16px;">
-                    <a href="#" style="color: var(--md-sys-color-primary); text-decoration: none; font-weight: 500;">View Project</a>
-                    <a href="#" style="color: var(--md-sys-color-on-surface-variant); text-decoration: none; font-weight: 500;">GitHub</a>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow">
+                <div class="h-48 bg-gradient-to-br from-blue-500 to-cyan-600"></div>
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Third Project</h3>
+                    <p class="text-gray-600 mb-4">A third project showcasing diverse technical skills.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-full font-medium">Go</span>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-full font-medium">Docker</span>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-full font-medium">Kubernetes</span>
+                    </div>
+                    <div class="flex gap-4">
+                        <a href="#" class="text-primary-600 font-semibold hover:text-primary-700">View Project →</a>
+                        <a href="#" class="text-gray-600 font-semibold hover:text-gray-700">GitHub →</a>
+                    </div>
                 </div>
             </div>
         </div>
         
-        <div style="text-align: center;" class="md-animate-fade-in-up">
-            <a href="{% url 'portfolio:portfolio_list' %}" class="md-button md-button-filled" style="padding: 12px 32px; font-size: 16px;">
+        <div class="text-center">
+            <a href="{% url 'portfolio:portfolio_list' %}" class="bg-primary-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-primary-700 transition-colors inline-block">
                 View All Projects
             </a>
         </div>
@@ -96,43 +102,45 @@
 </section>
 
 <!-- Latest Blog Posts Section -->
-<section style="padding: 80px 0; background-color: var(--md-sys-color-surface-variant);">
-    <div style="max-width: 1200px; margin: 0 auto; padding: 0 16px;">
-        <div style="text-align: center; margin-bottom: 64px;" class="md-animate-fade-in-up">
-            <h2 class="md-headline-large" style="margin-bottom: 16px; color: var(--md-sys-color-on-surface);">Latest Thoughts</h2>
-            <p class="md-title-large" style="max-width: 512px; margin: 0 auto; color: var(--md-sys-color-on-surface-variant);">
+<section class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-gray-900 mb-4">Latest Thoughts</h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
                 Insights on technology, engineering, and the future of software development.
             </p>
         </div>
         
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 24px; margin-bottom: 48px;">
-            <article class="md-card md-animate-fade-in-up" style="overflow: hidden;">
-                <div style="height: 192px; background: linear-gradient(135deg, var(--md-sys-color-primary), var(--md-sys-color-secondary)); margin: -16px -16px 16px -16px;"></div>
-                <div style="display: flex; align-items: center; margin-bottom: 8px;">
-                    <span class="md-chip md-chip-primary" style="margin-right: 8px;">Technical</span>
-                    <span style="color: var(--md-sys-color-on-surface-variant); margin: 0 8px;">•</span>
-                    <time class="md-body-medium" style="color: var(--md-sys-color-on-surface-variant);">Dec 15, 2024</time>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow">
+                <div class="h-48 bg-gradient-to-br from-primary-500 to-purple-600"></div>
+                <div class="p-6">
+                    <div class="flex items-center mb-3">
+                        <span class="px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full font-medium mr-3">Technical</span>
+                        <time class="text-gray-500 text-sm">Dec 15, 2024</time>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Building Scalable Web Applications</h3>
+                    <p class="text-gray-600 mb-4">Exploring modern approaches to building web applications that can handle millions of users...</p>
+                    <a href="#" class="text-primary-600 font-semibold hover:text-primary-700">Read More →</a>
                 </div>
-                <h3 class="md-title-large" style="margin-bottom: 8px; color: var(--md-sys-color-on-surface);">Building Scalable Web Applications</h3>
-                <p class="md-body-large" style="margin-bottom: 16px; color: var(--md-sys-color-on-surface-variant);">Exploring modern approaches to building web applications that can handle millions of users...</p>
-                <a href="#" style="color: var(--md-sys-color-primary); text-decoration: none; font-weight: 500;">Read More</a>
             </article>
             
-            <article class="md-card md-animate-fade-in-up" style="overflow: hidden;">
-                <div style="height: 192px; background: linear-gradient(135deg, var(--md-sys-color-tertiary), var(--md-sys-color-primary)); margin: -16px -16px 16px -16px;"></div>
-                <div style="display: flex; align-items: center; margin-bottom: 8px;">
-                    <span class="md-chip md-chip-secondary" style="margin-right: 8px;">Industry</span>
-                    <span style="color: var(--md-sys-color-on-surface-variant); margin: 0 8px;">•</span>
-                    <time class="md-body-medium" style="color: var(--md-sys-color-on-surface-variant);">Dec 10, 2024</time>
+            <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow">
+                <div class="h-48 bg-gradient-to-br from-purple-500 to-pink-600"></div>
+                <div class="p-6">
+                    <div class="flex items-center mb-3">
+                        <span class="px-3 py-1 bg-purple-100 text-purple-800 text-sm rounded-full font-medium mr-3">Industry</span>
+                        <time class="text-gray-500 text-sm">Dec 10, 2024</time>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">The Future of AI in Software Development</h3>
+                    <p class="text-gray-600 mb-4">How artificial intelligence is transforming the way we write, test, and deploy code...</p>
+                    <a href="#" class="text-primary-600 font-semibold hover:text-primary-700">Read More →</a>
                 </div>
-                <h3 class="md-title-large" style="margin-bottom: 8px; color: var(--md-sys-color-on-surface);">The Future of AI in Software Development</h3>
-                <p class="md-body-large" style="margin-bottom: 16px; color: var(--md-sys-color-on-surface-variant);">How artificial intelligence is transforming the way we write, test, and deploy code...</p>
-                <a href="#" style="color: var(--md-sys-color-primary); text-decoration: none; font-weight: 500;">Read More</a>
             </article>
         </div>
         
-        <div style="text-align: center;" class="md-animate-fade-in-up">
-            <a href="{% url 'blog:blog_list' %}" class="md-button md-button-filled" style="padding: 12px 32px; font-size: 16px;">
+        <div class="text-center">
+            <a href="{% url 'blog:blog_list' %}" class="bg-primary-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-primary-700 transition-colors inline-block">
                 Read All Posts
             </a>
         </div>
@@ -140,16 +148,15 @@
 </section>
 
 <!-- Call to Action Section -->
-<section class="md-primary" style="padding: 80px 0;">
-    <div style="max-width: 1200px; margin: 0 auto; padding: 0 16px; text-align: center;">
-        <h2 class="md-headline-large" style="margin-bottom: 16px; color: var(--md-sys-color-on-primary);" class="md-animate-fade-in-up">Let's Work Together</h2>
-        <p class="md-title-large" style="margin-bottom: 32px; max-width: 512px; margin-left: auto; margin-right: auto; color: var(--md-sys-color-on-primary);" class="md-animate-fade-in-up">
+<section class="py-20 bg-primary-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-4xl font-bold text-white mb-4">Let's Work Together</h2>
+        <p class="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
             I'm always interested in new opportunities and collaborations. Let's discuss how we can create something amazing together.
         </p>
-        <a href="{% url 'core:contact' %}" class="md-button" style="background-color: var(--md-sys-color-on-primary); color: var(--md-sys-color-primary); padding: 12px 32px; font-size: 16px;" class="md-animate-fade-in-up">
+        <a href="{% url 'core:contact' %}" class="bg-white text-primary-600 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors inline-block">
             Get In Touch
         </a>
     </div>
 </section>
 {% endblock %}
-

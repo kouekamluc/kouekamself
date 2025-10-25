@@ -5,27 +5,27 @@
 
 {% block content %}
 <!-- Hero Section -->
-<section class="md-hero-gradient" style="padding: 80px 0;">
-    <div style="max-width: 1200px; margin: 0 auto; padding: 0 16px;">
-        <div style="display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center;">
-            <div class="md-animate-fade-in-up">
-                <h1 class="md-display-large" style="margin-bottom: 24px; color: var(--md-sys-color-on-surface);">
-                    About <span class="md-gradient-text">Me</span>
+<section class="bg-gradient-to-br from-primary-50 to-purple-50 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+                    About <span class="bg-gradient-to-r from-primary-600 to-purple-600 bg-clip-text text-transparent">Me</span>
                 </h1>
-                <p class="md-title-large" style="margin-bottom: 32px; color: var(--md-sys-color-on-surface-variant);">
+                <p class="text-xl text-gray-600 mb-8">
                     I'm a passionate engineer with over 8 years of experience building scalable web applications and leading technical teams. My journey spans from startups to Fortune 500 companies, always focused on creating solutions that make a real impact.
                 </p>
-                <div style="display: flex; flex-direction: column; gap: 16px;">
-                    <a href="{% url 'core:contact' %}" class="md-button md-button-filled" style="padding: 12px 32px; font-size: 16px; width: 100%; max-width: 200px;">
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="{% url 'core:contact' %}" class="bg-primary-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-primary-700 transition-colors text-center">
                         Let's Connect
                     </a>
-                    <a href="{% url 'portfolio:portfolio_list' %}" class="md-button md-button-outlined" style="padding: 12px 32px; font-size: 16px; width: 100%; max-width: 200px;">
+                    <a href="{% url 'portfolio:portfolio_list' %}" class="bg-white text-primary-600 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-50 transition-colors border-2 border-primary-600 text-center">
                         View My Work
                     </a>
                 </div>
             </div>
-            <div style="text-align: center;" class="md-animate-fade-in-up">
-                <img src="{% static 'images/about-photo.jpg' %}" alt="Your Name" style="width: 320px; height: 320px; border-radius: 12px; box-shadow: 0px 4px 8px 3px rgba(0, 0, 0, 0.15), 0px 1px 3px 0px rgba(0, 0, 0, 0.30); object-fit: cover; margin: 0 auto;">
+            <div class="flex justify-center">
+                <img src="{% static 'images/about-photo.jpg' %}" alt="Your Name" class="w-80 h-80 rounded-2xl shadow-2xl object-cover">
             </div>
         </div>
     </div>
@@ -35,75 +35,75 @@
 <section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Technical Skills</h2>
+            <h2 class="text-4xl font-bold text-gray-900 mb-4">Technical Skills</h2>
             <p class="text-xl text-gray-600 max-w-2xl mx-auto">
                 A comprehensive overview of my technical expertise and areas of specialization.
             </p>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="bg-gray-50 rounded-lg p-6">
-                <h3 class="text-xl font-semibold text-gray-900 mb-4">Backend Development</h3>
-                <div class="space-y-3">
+            <div class="bg-gray-50 rounded-xl p-8 hover:shadow-lg transition-shadow">
+                <h3 class="text-2xl font-bold text-gray-900 mb-6">Backend Development</h3>
+                <div class="space-y-4">
                     <div class="flex items-center">
-                        <div class="w-3 h-3 bg-primary-500 rounded-full mr-3"></div>
-                        <span class="text-gray-700">Python & Django</span>
+                        <div class="w-3 h-3 bg-primary-600 rounded-full mr-3"></div>
+                        <span class="text-gray-700 text-lg">Python & Django</span>
                     </div>
                     <div class="flex items-center">
-                        <div class="w-3 h-3 bg-primary-500 rounded-full mr-3"></div>
-                        <span class="text-gray-700">Node.js & Express</span>
+                        <div class="w-3 h-3 bg-primary-600 rounded-full mr-3"></div>
+                        <span class="text-gray-700 text-lg">Node.js & Express</span>
                     </div>
                     <div class="flex items-center">
-                        <div class="w-3 h-3 bg-primary-500 rounded-full mr-3"></div>
-                        <span class="text-gray-700">Go & Gin</span>
+                        <div class="w-3 h-3 bg-primary-600 rounded-full mr-3"></div>
+                        <span class="text-gray-700 text-lg">Go & Gin</span>
                     </div>
                     <div class="flex items-center">
-                        <div class="w-3 h-3 bg-primary-500 rounded-full mr-3"></div>
-                        <span class="text-gray-700">PostgreSQL & MongoDB</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="bg-gray-50 rounded-lg p-6">
-                <h3 class="text-xl font-semibold text-gray-900 mb-4">Frontend Development</h3>
-                <div class="space-y-3">
-                    <div class="flex items-center">
-                        <div class="w-3 h-3 bg-primary-500 rounded-full mr-3"></div>
-                        <span class="text-gray-700">React & Next.js</span>
-                    </div>
-                    <div class="flex items-center">
-                        <div class="w-3 h-3 bg-primary-500 rounded-full mr-3"></div>
-                        <span class="text-gray-700">Vue.js & Nuxt</span>
-                    </div>
-                    <div class="flex items-center">
-                        <div class="w-3 h-3 bg-primary-500 rounded-full mr-3"></div>
-                        <span class="text-gray-700">TypeScript</span>
-                    </div>
-                    <div class="flex items-center">
-                        <div class="w-3 h-3 bg-primary-500 rounded-full mr-3"></div>
-                        <span class="text-gray-700">Tailwind CSS</span>
+                        <div class="w-3 h-3 bg-primary-600 rounded-full mr-3"></div>
+                        <span class="text-gray-700 text-lg">PostgreSQL & MongoDB</span>
                     </div>
                 </div>
             </div>
             
-            <div class="bg-gray-50 rounded-lg p-6">
-                <h3 class="text-xl font-semibold text-gray-900 mb-4">DevOps & Cloud</h3>
-                <div class="space-y-3">
+            <div class="bg-gray-50 rounded-xl p-8 hover:shadow-lg transition-shadow">
+                <h3 class="text-2xl font-bold text-gray-900 mb-6">Frontend Development</h3>
+                <div class="space-y-4">
                     <div class="flex items-center">
-                        <div class="w-3 h-3 bg-primary-500 rounded-full mr-3"></div>
-                        <span class="text-gray-700">AWS & Azure</span>
+                        <div class="w-3 h-3 bg-primary-600 rounded-full mr-3"></div>
+                        <span class="text-gray-700 text-lg">React & Next.js</span>
                     </div>
                     <div class="flex items-center">
-                        <div class="w-3 h-3 bg-primary-500 rounded-full mr-3"></div>
-                        <span class="text-gray-700">Docker & Kubernetes</span>
+                        <div class="w-3 h-3 bg-primary-600 rounded-full mr-3"></div>
+                        <span class="text-gray-700 text-lg">Vue.js & Nuxt</span>
                     </div>
                     <div class="flex items-center">
-                        <div class="w-3 h-3 bg-primary-500 rounded-full mr-3"></div>
-                        <span class="text-gray-700">CI/CD Pipelines</span>
+                        <div class="w-3 h-3 bg-primary-600 rounded-full mr-3"></div>
+                        <span class="text-gray-700 text-lg">TypeScript</span>
                     </div>
                     <div class="flex items-center">
-                        <div class="w-3 h-3 bg-primary-500 rounded-full mr-3"></div>
-                        <span class="text-gray-700">Terraform</span>
+                        <div class="w-3 h-3 bg-primary-600 rounded-full mr-3"></div>
+                        <span class="text-gray-700 text-lg">Tailwind CSS</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-gray-50 rounded-xl p-8 hover:shadow-lg transition-shadow">
+                <h3 class="text-2xl font-bold text-gray-900 mb-6">DevOps & Cloud</h3>
+                <div class="space-y-4">
+                    <div class="flex items-center">
+                        <div class="w-3 h-3 bg-primary-600 rounded-full mr-3"></div>
+                        <span class="text-gray-700 text-lg">AWS & Azure</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-3 h-3 bg-primary-600 rounded-full mr-3"></div>
+                        <span class="text-gray-700 text-lg">Docker & Kubernetes</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-3 h-3 bg-primary-600 rounded-full mr-3"></div>
+                        <span class="text-gray-700 text-lg">CI/CD Pipelines</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-3 h-3 bg-primary-600 rounded-full mr-3"></div>
+                        <span class="text-gray-700 text-lg">Terraform</span>
                     </div>
                 </div>
             </div>
@@ -115,7 +115,7 @@
 <section class="py-20 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Professional Journey</h2>
+            <h2 class="text-4xl font-bold text-gray-900 mb-4">Professional Journey</h2>
             <p class="text-xl text-gray-600 max-w-2xl mx-auto">
                 My career path and key milestones in technology and engineering.
             </p>
@@ -123,66 +123,66 @@
         
         <div class="relative">
             <!-- Timeline line -->
-            <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-primary-200"></div>
+            <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-primary-200"></div>
             
             <div class="space-y-12">
                 <!-- Timeline item 1 -->
-                <div class="relative flex items-center">
-                    <div class="flex-1 text-right pr-8">
-                        <div class="bg-white rounded-lg shadow-lg p-6">
-                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Senior Software Engineer</h3>
-                            <p class="text-primary-600 font-medium mb-2">TechCorp Inc.</p>
+                <div class="relative md:flex md:items-center">
+                    <div class="md:flex-1 md:text-right md:pr-8">
+                        <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-shadow">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-2">Senior Software Engineer</h3>
+                            <p class="text-primary-600 font-semibold mb-2">TechCorp Inc.</p>
                             <p class="text-gray-600 mb-4">Led development of microservices architecture serving 1M+ users. Implemented CI/CD pipelines reducing deployment time by 70%.</p>
                             <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full">Python</span>
-                                <span class="px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full">Django</span>
-                                <span class="px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full">AWS</span>
+                                <span class="px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full font-medium">Python</span>
+                                <span class="px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full font-medium">Django</span>
+                                <span class="px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full font-medium">AWS</span>
                             </div>
                         </div>
                     </div>
-                    <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary-600 rounded-full border-4 border-white shadow-lg"></div>
-                    <div class="flex-1 pl-8">
-                        <div class="text-gray-500 font-medium">2022 - Present</div>
+                    <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-primary-600 rounded-full border-4 border-white shadow-lg"></div>
+                    <div class="md:flex-1 md:pl-8 mt-4 md:mt-0">
+                        <div class="text-gray-500 font-semibold text-lg">2022 - Present</div>
                     </div>
                 </div>
                 
                 <!-- Timeline item 2 -->
-                <div class="relative flex items-center">
-                    <div class="flex-1 text-right pr-8">
-                        <div class="text-gray-500 font-medium">2020 - 2022</div>
+                <div class="relative md:flex md:items-center">
+                    <div class="md:flex-1 md:text-right md:pr-8 order-1 md:order-none">
+                        <div class="text-gray-500 font-semibold text-lg mb-4 md:mb-0">2020 - 2022</div>
                     </div>
-                    <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary-600 rounded-full border-4 border-white shadow-lg"></div>
-                    <div class="flex-1 pl-8">
-                        <div class="bg-white rounded-lg shadow-lg p-6">
-                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Full Stack Developer</h3>
-                            <p class="text-primary-600 font-medium mb-2">StartupXYZ</p>
+                    <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-primary-600 rounded-full border-4 border-white shadow-lg"></div>
+                    <div class="md:flex-1 md:pl-8">
+                        <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-shadow">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-2">Full Stack Developer</h3>
+                            <p class="text-primary-600 font-semibold mb-2">StartupXYZ</p>
                             <p class="text-gray-600 mb-4">Built and maintained web applications using React and Node.js. Collaborated with design team to create responsive user interfaces.</p>
                             <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full">React</span>
-                                <span class="px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full">Node.js</span>
-                                <span class="px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full">MongoDB</span>
+                                <span class="px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full font-medium">React</span>
+                                <span class="px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full font-medium">Node.js</span>
+                                <span class="px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full font-medium">MongoDB</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Timeline item 3 -->
-                <div class="relative flex items-center">
-                    <div class="flex-1 text-right pr-8">
-                        <div class="bg-white rounded-lg shadow-lg p-6">
-                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Software Developer</h3>
-                            <p class="text-primary-600 font-medium mb-2">WebSolutions Ltd.</p>
+                <div class="relative md:flex md:items-center">
+                    <div class="md:flex-1 md:text-right md:pr-8">
+                        <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-shadow">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-2">Software Developer</h3>
+                            <p class="text-primary-600 font-semibold mb-2">WebSolutions Ltd.</p>
                             <p class="text-gray-600 mb-4">Developed and maintained web applications using Python and Django. Participated in code reviews and mentored junior developers.</p>
                             <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full">Python</span>
-                                <span class="px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full">Django</span>
-                                <span class="px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full">PostgreSQL</span>
+                                <span class="px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full font-medium">Python</span>
+                                <span class="px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full font-medium">Django</span>
+                                <span class="px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full font-medium">PostgreSQL</span>
                             </div>
                         </div>
                     </div>
-                    <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary-600 rounded-full border-4 border-white shadow-lg"></div>
-                    <div class="flex-1 pl-8">
-                        <div class="text-gray-500 font-medium">2018 - 2020</div>
+                    <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-primary-600 rounded-full border-4 border-white shadow-lg"></div>
+                    <div class="md:flex-1 md:pl-8 mt-4 md:mt-0">
+                        <div class="text-gray-500 font-semibold text-lg">2018 - 2020</div>
                     </div>
                 </div>
             </div>
@@ -194,25 +194,25 @@
 <section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Education</h2>
+            <h2 class="text-4xl font-bold text-gray-900 mb-4">Education</h2>
             <p class="text-xl text-gray-600 max-w-2xl mx-auto">
                 My academic background and continuous learning journey.
             </p>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="bg-gray-50 rounded-lg p-8">
-                <h3 class="text-2xl font-semibold text-gray-900 mb-2">Master of Science</h3>
-                <p class="text-primary-600 font-medium mb-4">Computer Science</p>
+            <div class="bg-gray-50 rounded-xl p-8 hover:shadow-lg transition-shadow">
+                <h3 class="text-2xl font-bold text-gray-900 mb-2">Master of Science</h3>
+                <p class="text-primary-600 font-semibold mb-4">Computer Science</p>
                 <p class="text-gray-600 mb-4">University of Technology</p>
-                <p class="text-gray-500">2016 - 2018</p>
+                <p class="text-gray-500 font-medium">2016 - 2018</p>
             </div>
             
-            <div class="bg-gray-50 rounded-lg p-8">
-                <h3 class="text-2xl font-semibold text-gray-900 mb-2">Bachelor of Science</h3>
-                <p class="text-primary-600 font-medium mb-4">Software Engineering</p>
+            <div class="bg-gray-50 rounded-xl p-8 hover:shadow-lg transition-shadow">
+                <h3 class="text-2xl font-bold text-gray-900 mb-2">Bachelor of Science</h3>
+                <p class="text-primary-600 font-semibold mb-4">Software Engineering</p>
                 <p class="text-gray-600 mb-4">State University</p>
-                <p class="text-gray-500">2012 - 2016</p>
+                <p class="text-gray-500 font-medium">2012 - 2016</p>
             </div>
         </div>
     </div>
@@ -222,40 +222,40 @@
 <section class="py-20 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Speaking & Media</h2>
+            <h2 class="text-4xl font-bold text-gray-900 mb-4">Speaking & Media</h2>
             <p class="text-xl text-gray-600 max-w-2xl mx-auto">
                 Sharing knowledge through conferences, podcasts, and media appearances.
             </p>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <h3 class="text-xl font-semibold text-gray-900 mb-2">TechConf 2024</h3>
+            <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-shadow">
+                <h3 class="text-xl font-bold text-gray-900 mb-2">TechConf 2024</h3>
                 <p class="text-gray-600 mb-4">"Building Scalable Web Applications"</p>
                 <div class="flex items-center text-sm text-gray-500">
-                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
                     </svg>
                     San Francisco, CA
                 </div>
             </div>
             
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <h3 class="text-xl font-semibold text-gray-900 mb-2">DevPodcast</h3>
+            <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-shadow">
+                <h3 class="text-xl font-bold text-gray-900 mb-2">DevPodcast</h3>
                 <p class="text-gray-600 mb-4">"The Future of Web Development"</p>
                 <div class="flex items-center text-sm text-gray-500">
-                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"></path>
                     </svg>
                     Podcast Episode
                 </div>
             </div>
             
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <h3 class="text-xl font-semibold text-gray-900 mb-2">TechWeekly</h3>
+            <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-shadow">
+                <h3 class="text-xl font-bold text-gray-900 mb-2">TechWeekly</h3>
                 <p class="text-gray-600 mb-4">"Engineering Leadership Insights"</p>
                 <div class="flex items-center text-sm text-gray-500">
-                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"></path>
                     </svg>
                     Magazine Article
@@ -264,18 +264,10 @@
         </div>
         
         <div class="text-center mt-12">
-            <a href="{% url 'public_profile:speaking_engagements' %}" class="bg-primary-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-primary-700 transition-colors">
+            <a href="{% url 'public_profile:speaking_engagements' %}" class="bg-primary-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-primary-700 transition-colors inline-block">
                 View All Speaking Engagements
             </a>
         </div>
     </div>
 </section>
 {% endblock %}
-
-
-
-
-
-
-
-
