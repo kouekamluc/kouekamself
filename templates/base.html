@@ -52,6 +52,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Material Symbols (Rounded) -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <!-- Tailwind Elements (Material Design for Tailwind) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
     
     <!-- Custom CSS -->
     <style>
@@ -99,7 +103,7 @@
                         <a href="{% url 'public_profile:media_kit' %}" class="text-gray-700 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
                             Media Kit
                         </a>
-                        <a href="{% url 'core:contact' %}" class="bg-primary-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-primary-700 transition-colors">
+                        <a href="{% url 'core:contact' %}" data-twe-ripple-init data-twe-ripple-color="light" class="bg-primary-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-primary-700 transition-colors">
                             Contact
                         </a>
                     </div>
@@ -125,7 +129,7 @@
                 <a href="{% url 'portfolio:portfolio_list' %}" class="text-gray-700 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">Portfolio</a>
                 <a href="{% url 'blog:blog_list' %}" class="text-gray-700 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">Blog</a>
                 <a href="{% url 'public_profile:media_kit' %}" class="text-gray-700 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">Media Kit</a>
-                <a href="{% url 'core:contact' %}" class="bg-primary-600 text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-primary-700">Contact</a>
+                <a href="{% url 'core:contact' %}" data-twe-ripple-init data-twe-ripple-color="light" class="bg-primary-600 text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-primary-700">Contact</a>
             </div>
         </div>
     </nav>
@@ -190,7 +194,7 @@
                     <form class="newsletter-form">
                         <div class="flex">
                             <input type="email" placeholder="Enter your email" class="flex-1 px-3 py-2 bg-gray-800 text-white border border-gray-700 rounded-l-md focus:outline-none focus:ring-2 focus:ring-primary-500">
-                            <button type="submit" class="px-4 py-2 bg-primary-600 text-white rounded-r-md hover:bg-primary-700 transition-colors">
+                            <button type="submit" data-twe-ripple-init data-twe-ripple-color="light" class="px-4 py-2 bg-primary-600 text-white rounded-r-md hover:bg-primary-700 transition-colors">
                                 Subscribe
                             </button>
                         </div>
@@ -251,6 +255,8 @@
             }
         });
     </script>
+    <!-- Tailwind Elements JS -->
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
     
     {% block extra_js %}{% endblock %}
 </body>
