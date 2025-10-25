@@ -1,19 +1,35 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.core.mail import send_mail
 from django.contrib import messages
 from django.conf import settings
-from .models import ContactSubmission
+from .models import ContactSubmission, Profile
 from .forms import ContactForm
 
 
 def home(request):
     """Home page view."""
-    return render(request, 'core/home.html')
+    try:
+        profile = Profile.objects.first()
+    except Profile.DoesNotExist:
+        profile = None
+    
+    context = {
+        'profile': profile,
+    }
+    return render(request, 'core/home.html', context)
 
 
 def about(request):
     """About page view."""
-    return render(request, 'core/about.html')
+    try:
+        profile = Profile.objects.first()
+    except Profile.DoesNotExist:
+        profile = None
+    
+    context = {
+        'profile': profile,
+    }
+    return render(request, 'core/about.html', context)
 
 
 def contact(request):

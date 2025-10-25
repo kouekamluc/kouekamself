@@ -1,8 +1,9 @@
 from django.core.management.base import BaseCommand
 from django.contrib.auth.models import User
+from core.models import Profile
 from blog.models import BlogPost
 from portfolio.models import Project
-from public_profile.models import SpeakingEngagement, PressMention
+from public_profile.models import SpeakingEngagement, PressMention, NewsletterSubscriber
 
 
 class Command(BaseCommand):
@@ -21,6 +22,37 @@ class Command(BaseCommand):
             self.stdout.write(
                 self.style.SUCCESS('Superuser created: admin/admin123')
             )
+        
+        # Create profile
+        profile, created = Profile.objects.get_or_create(
+            name='Alex Johnson',
+            defaults={
+                'title': 'Senior Software Engineer & Public Speaker',
+                'bio': '''I'm a passionate software engineer with over 8 years of experience building scalable web applications and leading technical teams. My journey in technology began with a curiosity about how things work, which led me to pursue computer science and eventually specialize in full-stack development.
+
+Throughout my career, I've had the privilege of working with startups and Fortune 500 companies, always focused on creating solutions that make a real impact. I'm particularly passionate about Python, Django, and modern web technologies, and I love sharing knowledge through speaking engagements and technical writing.
+
+Beyond coding, I'm an active member of the tech community, regularly speaking at conferences and meetups, and contributing to open source projects. I believe in the power of knowledge sharing and mentorship to help others grow in their careers.''',
+                'short_bio': 'Passionate about technology, innovation, and sharing knowledge with the community through speaking engagements and technical writing.',
+                'email': 'alex@example.com',
+                'phone': '+1 (555) 123-4567',
+                'location': 'San Francisco, CA',
+                'github_url': 'https://github.com/alexjohnson',
+                'linkedin_url': 'https://linkedin.com/in/alexjohnson',
+                'twitter_url': 'https://twitter.com/alexjohnson',
+                'youtube_url': 'https://youtube.com/@alexjohnson',
+                'skills': 'Python, Django, React, JavaScript, AWS, Docker, PostgreSQL, Redis, Celery, Git, Linux, Agile, Leadership',
+                'education': '''Master of Science in Computer Science
+University of Technology, 2016-2018
+
+Bachelor of Science in Software Engineering  
+State University, 2012-2016''',
+                'experience_years': 8,
+                'meta_description': 'Senior Software Engineer and Public Speaker specializing in Django, Python, and modern web technologies. Available for speaking engagements and technical consulting.'
+            }
+        )
+        if created:
+            self.stdout.write(self.style.SUCCESS('Created profile: Alex Johnson'))
         
         # Create blog posts
         blog_posts = [
@@ -179,8 +211,8 @@ Key technical achievements:
 - Built comprehensive test suite with 95% code coverage''',
                 'short_description': 'A scalable e-commerce platform built with Django and React, handling thousands of users and millions of transactions.',
                 'technology_stack': 'Django, React, TypeScript, PostgreSQL, Redis, AWS, Docker, Stripe',
-                'github_url': 'https://github.com/yourname/ecommerce-platform',
-                'live_url': 'https://ecommerce-demo.com',
+                'github_url': 'https://github.com/alexjohnson/ecommerce-platform',
+                'live_url': 'https://ecommerce-demo.alexjohnson.com',
                 'featured': True,
                 'order': 1
             },
@@ -208,8 +240,8 @@ Technical implementation:
 The application handles thousands of concurrent connections and delivers messages with sub-second latency.''',
                 'short_description': 'A real-time chat application with WebSocket support, file sharing, and group messaging capabilities.',
                 'technology_stack': 'Django Channels, WebSockets, Redis, Celery, PostgreSQL, Docker',
-                'github_url': 'https://github.com/yourname/chat-app',
-                'live_url': 'https://chat-demo.com',
+                'github_url': 'https://github.com/alexjohnson/chat-app',
+                'live_url': 'https://chat-demo.alexjohnson.com',
                 'featured': True,
                 'order': 2
             },
@@ -237,8 +269,8 @@ Technical stack:
 The dashboard processes millions of data points and provides insights to help businesses make data-driven decisions.''',
                 'short_description': 'A comprehensive data analytics dashboard with interactive visualizations and real-time reporting capabilities.',
                 'technology_stack': 'Django, Vue.js, PostgreSQL, Redis, Celery, Chart.js, Docker',
-                'github_url': 'https://github.com/yourname/analytics-dashboard',
-                'live_url': 'https://analytics-demo.com',
+                'github_url': 'https://github.com/alexjohnson/analytics-dashboard',
+                'live_url': 'https://analytics-demo.alexjohnson.com',
                 'featured': True,
                 'order': 3
             }
@@ -261,8 +293,8 @@ The dashboard processes millions of data points and provides insights to help bu
                 'event_date': '2024-03-15',
                 'location': 'TechConf 2024, San Francisco',
                 'event_type': 'conference',
-                'slides_url': 'https://slides.com/yourname/scalable-web-apps',
-                'video_url': 'https://youtube.com/watch?v=example',
+                'slides_url': 'https://slides.alexjohnson.com/scalable-web-apps',
+                'video_url': 'https://youtube.com/watch?v=scalable-web-apps',
                 'event_url': 'https://techconf2024.com'
             },
             {
@@ -272,7 +304,7 @@ The dashboard processes millions of data points and provides insights to help bu
                 'event_date': '2024-02-20',
                 'location': 'WebDev Meetup, New York',
                 'event_type': 'meetup',
-                'slides_url': 'https://slides.com/yourname/future-web-dev',
+                'slides_url': 'https://slides.alexjohnson.com/future-web-dev',
                 'event_url': 'https://webdevmeetup.com'
             },
             {
@@ -282,7 +314,7 @@ The dashboard processes millions of data points and provides insights to help bu
                 'event_date': '2024-01-10',
                 'location': 'PyCon Workshop, Austin',
                 'event_type': 'workshop',
-                'slides_url': 'https://slides.com/yourname/django-best-practices',
+                'slides_url': 'https://slides.alexjohnson.com/django-best-practices',
                 'video_url': 'https://youtube.com/watch?v=django-workshop',
                 'event_url': 'https://pycon.org'
             }
@@ -301,7 +333,7 @@ The dashboard processes millions of data points and provides insights to help bu
             {
                 'title': 'Tech Leader Discusses Future of Web Development',
                 'publication': 'TechWeekly Magazine',
-                'url': 'https://techweekly.com/interview-yourname',
+                'url': 'https://techweekly.com/interview-alex-johnson',
                 'published_date': '2024-03-01',
                 'description': 'An in-depth interview about emerging trends in web development and the role of AI in software engineering.'
             },
@@ -328,6 +360,21 @@ The dashboard processes millions of data points and provides insights to help bu
             )
             if created:
                 self.stdout.write(f'Created press mention: {mention.title}')
+        
+        # Create sample newsletter subscribers
+        subscribers = [
+            'subscriber1@example.com',
+            'subscriber2@example.com',
+            'subscriber3@example.com'
+        ]
+        
+        for email in subscribers:
+            subscriber, created = NewsletterSubscriber.objects.get_or_create(
+                email=email,
+                defaults={'active': True}
+            )
+            if created:
+                self.stdout.write(f'Created newsletter subscriber: {email}')
         
         self.stdout.write(
             self.style.SUCCESS('Successfully populated database with initial content!')
