@@ -5,64 +5,113 @@
 
 {% block content %}
 <!-- Hero Section -->
-<section class="bg-gradient-to-br from-primary-50 to-white py-20">
+<section class="py-16 bg-gradient-to-br from-primary-50 via-surface-50 to-secondary-50 animate-fade-in">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center">
-            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <div class="flex items-center justify-center mb-6">
+                <span class="material-symbols-outlined text-5xl text-primary-500 mr-3">article</span>
+            </div>
+            <h1 class="display-medium text-surface-900 mb-6">
                 My <span class="gradient-text">Blog</span>
             </h1>
-            <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-                Thoughts on technology, engineering, and the future of software development.
+            <p class="body-large text-surface-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+                Thoughts on technology, engineering, and the future of software development. Dive into technical insights, industry trends, and lessons learned from building scalable applications.
             </p>
+            
+            <!-- Search and Filter -->
+            <div class="max-w-2xl mx-auto">
+                <div class="material-card shadow-material-2 p-4">
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <div class="flex-1 relative">
+                            <input type="text" placeholder="Search articles..." class="w-full pl-12 pr-4 py-3 border border-surface-300 rounded-material text-surface-900 placeholder-surface-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <span class="material-symbols-outlined text-surface-400">search</span>
+                            </div>
+                        </div>
+                        <select class="px-4 py-3 border border-surface-300 rounded-material text-surface-900 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent">
+                            <option>All Categories</option>
+                            <option>Technical</option>
+                            <option>Industry</option>
+                            <option>Tutorials</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
 <!-- Blog Posts Section -->
-<section class="py-20 bg-white">
+<section class="py-24 surface-container">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {% if posts %}
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {% for post in posts %}
-                    <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <article class="material-card shadow-material-2 overflow-hidden hover:shadow-material-4 transition-all duration-300 group animate-slide-up" style="animation-delay: {{ forloop.counter0|floatformat:1 }}s;">
                         {% if post.featured_image %}
-                            <img src="{{ post.featured_image.url }}" alt="{{ post.title }}" class="w-full h-48 object-cover">
+                            <div class="relative h-56 overflow-hidden">
+                                <img src="{{ post.featured_image.url }}" alt="{{ post.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+                            </div>
                         {% else %}
-                            <div class="h-48 bg-gradient-to-br from-primary-400 to-primary-600"></div>
+                            <div class="relative h-56 bg-gradient-to-br from-primary-400 to-primary-600 overflow-hidden">
+                                <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+                                <div class="absolute top-4 right-4">
+                                    <div class="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                                        <span class="material-symbols-outlined text-white">article</span>
+                                    </div>
+                                </div>
+                            </div>
                         {% endif %}
                         
                         <div class="p-6">
-                            <div class="flex items-center text-sm text-gray-500 mb-3">
+                            <div class="flex items-center text-sm text-surface-500 mb-3">
+                                <span class="material-symbols-outlined text-sm mr-1">schedule</span>
                                 <time datetime="{{ post.created_at|date:'Y-m-d' }}">{{ post.created_at|date:"M d, Y" }}</time>
                                 {% if post.tag_list %}
-                                    <span class="mx-2">•</span>
-                                    <span>{{ post.tag_list.0 }}</span>
+                                    <span class="mx-3">•</span>
+                                    <span class="px-2 py-1 bg-primary-100 text-primary-700 rounded-material text-xs font-medium">{{ post.tag_list.0 }}</span>
                                 {% endif %}
+                                <span class="ml-auto flex items-center text-surface-400">
+                                    <span class="material-symbols-outlined text-sm mr-1">visibility</span>
+                                    <span>{{ post.views|default:"0" }}</span>
+                                </span>
                             </div>
                             
-                            <h2 class="text-xl font-semibold text-gray-900 mb-3">
-                                <a href="{% url 'blog:blog_detail' post.slug %}" class="hover:text-primary-600 transition-colors">
+                            <h2 class="headline-medium text-surface-900 mb-3 group-hover:text-primary-600 transition-colors">
+                                <a href="{% url 'blog:blog_detail' post.slug %}" class="block">
                                     {{ post.title }}
                                 </a>
                             </h2>
                             
-                            <p class="text-gray-600 mb-4">
+                            <p class="body-large text-surface-600 mb-6 leading-relaxed">
                                 {{ post.excerpt|default:post.content|truncatewords:20 }}
                             </p>
                             
                             {% if post.tag_list %}
-                                <div class="flex flex-wrap gap-2 mb-4">
+                                <div class="flex flex-wrap gap-2 mb-6">
                                     {% for tag in post.tag_list %}
-                                        <span class="px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full">
+                                        <span class="px-3 py-1 bg-surface-100 text-surface-700 text-sm rounded-material font-medium hover:bg-primary-100 hover:text-primary-700 transition-colors cursor-pointer">
                                             {{ tag }}
                                         </span>
                                     {% endfor %}
                                 </div>
                             {% endif %}
                             
-                            <a href="{% url 'blog:blog_detail' post.slug %}" class="text-primary-600 hover:text-primary-700 font-medium">
-                                Read More →
-                            </a>
+                            <div class="flex items-center justify-between">
+                                <a href="{% url 'blog:blog_detail' post.slug %}" class="text-primary-600 hover:text-primary-700 font-medium flex items-center space-x-1 group/link">
+                                    <span>Read More</span>
+                                    <span class="material-symbols-outlined text-sm group-hover/link:translate-x-1 transition-transform">arrow_forward</span>
+                                </a>
+                                <div class="flex items-center space-x-3 text-surface-400">
+                                    <button class="hover:text-primary-500 transition-colors">
+                                        <span class="material-symbols-outlined text-lg">favorite_border</span>
+                                    </button>
+                                    <button class="hover:text-primary-500 transition-colors">
+                                        <span class="material-symbols-outlined text-lg">share</span>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </article>
                 {% endfor %}
@@ -70,69 +119,115 @@
             
             <!-- Pagination -->
             {% if page_obj.has_other_pages %}
-                <div class="mt-12 flex justify-center">
-                    <nav class="flex items-center space-x-2">
+                <div class="mt-16 flex justify-center">
+                    <nav class="material-card shadow-material-2 p-2 flex items-center space-x-1">
                         {% if page_obj.has_previous %}
-                            <a href="?page={{ page_obj.previous_page_number }}" class="px-3 py-2 bg-gray-100 text-gray-700 rounded-md hover:bg-primary-100 hover:text-primary-700 transition-colors">
-                                Previous
+                            <a href="?page={{ page_obj.previous_page_number }}" class="material-button px-4 py-2 text-surface-700 rounded-material hover:bg-primary-100 hover:text-primary-700 transition-all duration-200 flex items-center space-x-1">
+                                <span class="material-symbols-outlined text-sm">chevron_left</span>
+                                <span>Previous</span>
                             </a>
                         {% endif %}
                         
                         {% for num in page_obj.paginator.page_range %}
                             {% if page_obj.number == num %}
-                                <span class="px-3 py-2 bg-primary-600 text-white rounded-md">{{ num }}</span>
+                                <span class="px-4 py-2 bg-primary-600 text-white rounded-material font-medium">{{ num }}</span>
                             {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-                                <a href="?page={{ num }}" class="px-3 py-2 bg-gray-100 text-gray-700 rounded-md hover:bg-primary-100 hover:text-primary-700 transition-colors">
+                                <a href="?page={{ num }}" class="material-button px-4 py-2 text-surface-700 rounded-material hover:bg-primary-100 hover:text-primary-700 transition-all duration-200">
                                     {{ num }}
                                 </a>
                             {% endif %}
                         {% endfor %}
                         
                         {% if page_obj.has_next %}
-                            <a href="?page={{ page_obj.next_page_number }}" class="px-3 py-2 bg-gray-100 text-gray-700 rounded-md hover:bg-primary-100 hover:text-primary-700 transition-colors">
-                                Next
+                            <a href="?page={{ page_obj.next_page_number }}" class="material-button px-4 py-2 text-surface-700 rounded-material hover:bg-primary-100 hover:text-primary-700 transition-all duration-200 flex items-center space-x-1">
+                                <span>Next</span>
+                                <span class="material-symbols-outlined text-sm">chevron_right</span>
                             </a>
                         {% endif %}
                     </nav>
                 </div>
             {% endif %}
         {% else %}
-            <div class="text-center py-20">
-                <div class="text-gray-400 mb-4">
-                    <svg class="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                    </svg>
+            <div class="text-center py-20 animate-fade-in">
+                <div class="w-24 h-24 bg-surface-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <span class="material-symbols-outlined text-4xl text-surface-400">article</span>
                 </div>
-                <h3 class="text-xl font-semibold text-gray-900 mb-2">No blog posts yet</h3>
-                <p class="text-gray-600">Check back soon for new content!</p>
+                <h3 class="headline-medium text-surface-900 mb-3">No blog posts yet</h3>
+                <p class="body-large text-surface-600 mb-8">Check back soon for new content and insights!</p>
+                <a href="{% url 'core:contact' %}" class="material-button bg-primary-600 text-white px-8 py-3 rounded-material-lg font-semibold hover:bg-primary-700 hover:shadow-material-3 transition-all duration-300 flex items-center justify-center space-x-2 mx-auto w-fit">
+                    <span class="material-symbols-outlined">contact_mail</span>
+                    <span>Suggest a Topic</span>
+                </a>
             </div>
         {% endif %}
     </div>
 </section>
 
 <!-- Newsletter Signup Section -->
-<section class="py-20 bg-primary-600">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Stay Updated</h2>
-        <p class="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
-            Subscribe to my newsletter for the latest insights on technology and engineering.
+<section class="py-24 bg-gradient-to-br from-primary-600 via-primary-700 to-secondary-600 relative overflow-hidden">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-10">
+        <div class="hero-pattern h-full w-full"></div>
+    </div>
+    
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+        <div class="mb-8">
+            <span class="material-symbols-outlined text-6xl text-white mb-4 block">mail</span>
+        </div>
+        <h2 class="display-medium text-white mb-6">Stay Updated</h2>
+        <p class="body-large text-primary-100 mb-12 max-w-3xl mx-auto leading-relaxed">
+            Subscribe to my newsletter for the latest insights on technology, engineering best practices, and industry trends. Join a community of developers and tech enthusiasts.
         </p>
-        <form class="newsletter-form max-w-md mx-auto">
-            <div class="flex">
-                <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-3 bg-white text-gray-900 border-0 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-primary-300">
-                <button type="submit" class="px-6 py-3 bg-primary-800 text-white rounded-r-lg hover:bg-primary-900 transition-colors font-semibold">
-                    Subscribe
-                </button>
+        
+        <div class="material-card shadow-material-4 p-8 max-w-2xl mx-auto">
+            <form class="newsletter-form">
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <div class="flex-1 relative">
+                        <input type="email" placeholder="Enter your email address" class="w-full pl-12 pr-4 py-4 border border-surface-300 rounded-material text-surface-900 placeholder-surface-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <span class="material-symbols-outlined text-surface-400">mail</span>
+                        </div>
+                    </div>
+                    <button type="submit" class="material-button bg-primary-600 text-white px-8 py-4 rounded-material font-semibold hover:bg-primary-700 hover:shadow-material-3 transition-all duration-300 flex items-center justify-center space-x-2 group">
+                        <span class="material-symbols-outlined group-hover:scale-110 transition-transform">send</span>
+                        <span>Subscribe</span>
+                    </button>
+                </div>
+                <p class="text-sm text-surface-500 mt-4 text-left">
+                    <span class="material-symbols-outlined text-sm mr-1">security</span>
+                    No spam, unsubscribe at any time. Your email is safe with us.
+                </p>
+            </form>
+        </div>
+        
+        <!-- Stats -->
+        <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="text-center">
+                <div class="text-3xl font-bold text-white mb-2">2.5k+</div>
+                <div class="text-primary-100">Newsletter Subscribers</div>
             </div>
-        </form>
+            <div class="text-center">
+                <div class="text-3xl font-bold text-white mb-2">50+</div>
+                <div class="text-primary-100">Articles Published</div>
+            </div>
+            <div class="text-center">
+                <div class="text-3xl font-bold text-white mb-2">100k+</div>
+                <div class="text-primary-100">Monthly Readers</div>
+            </div>
+        </div>
     </div>
 </section>
 {% endblock %}
 
-
-
-
-
-
-
-
+{% block extra_css %}
+<style>
+    /* Custom input styling for Material Design */
+    input[type="text"], input[type="email"], select {
+        background: var(--md-sys-color-surface);
+    }
+    
+    input:focus, select:focus {
+        box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.2);
+    }
+</style>
+{% endblock %}

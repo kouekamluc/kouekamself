@@ -5,213 +5,251 @@
 
 {% block content %}
 <!-- Hero Section -->
-<section class="bg-gradient-to-br from-primary-50 to-white py-20">
+<section class="py-16 bg-gradient-to-br from-primary-50 via-surface-50 to-secondary-50 animate-fade-in">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center">
-            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <div class="flex items-center justify-center mb-6">
+                <span class="material-symbols-outlined text-5xl text-primary-500 mr-3">work</span>
+            </div>
+            <h1 class="display-medium text-surface-900 mb-6">
                 My <span class="gradient-text">Portfolio</span>
             </h1>
-            <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-                A collection of projects that showcase my technical skills and passion for building innovative solutions.
+            <p class="body-large text-surface-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+                A showcase of my engineering work, innovative solutions, and technical expertise. Each project represents a unique challenge solved through thoughtful design and robust implementation.
             </p>
-        </div>
-    </div>
-</section>
-
-<!-- Featured Projects Section -->
-{% if featured_projects %}
-<section class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Featured Projects</h2>
-            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-                Highlighted projects that demonstrate my expertise and impact.
-            </p>
-        </div>
-        
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {% for project in featured_projects %}
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                    {% if project.featured_image %}
-                        <img src="{{ project.featured_image.url }}" alt="{{ project.title }}" class="w-full h-64 object-cover">
-                    {% else %}
-                        <div class="h-64 bg-gradient-to-br from-primary-400 to-primary-600"></div>
-                    {% endif %}
-                    
-                    <div class="p-8">
-                        <h3 class="text-2xl font-semibold text-gray-900 mb-3">{{ project.title }}</h3>
-                        <p class="text-gray-600 mb-6">{{ project.description|truncatewords:30 }}</p>
-                        
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            {% for tech in project.tech_list %}
-                                <span class="px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full">
-                                    {{ tech }}
-                                </span>
-                            {% endfor %}
-                        </div>
-                        
-                        <div class="flex space-x-4">
-                            {% if project.live_url %}
-                                <a href="{{ project.live_url }}" target="_blank" class="bg-primary-600 text-white px-6 py-2 rounded-lg hover:bg-primary-700 transition-colors">
-                                    View Live
-                                </a>
-                            {% endif %}
-                            {% if project.github_url %}
-                                <a href="{{ project.github_url }}" target="_blank" class="border-2 border-primary-600 text-primary-600 px-6 py-2 rounded-lg hover:bg-primary-600 hover:text-white transition-colors">
-                                    GitHub
-                                </a>
-                            {% endif %}
-                            <a href="{% url 'portfolio:portfolio_detail' project.slug %}" class="text-primary-600 hover:text-primary-700 font-medium">
-                                Learn More →
-                            </a>
-                        </div>
+            
+            <!-- Filter Tabs -->
+            <div class="max-w-2xl mx-auto">
+                <div class="material-card shadow-material-2 p-2">
+                    <div class="flex flex-wrap justify-center gap-2">
+                        <button class="material-button px-6 py-3 bg-primary-600 text-white rounded-material font-medium transition-all duration-200">
+                            All Projects
+                        </button>
+                        <button class="material-button px-6 py-3 text-surface-700 rounded-material hover:bg-primary-100 hover:text-primary-700 font-medium transition-all duration-200">
+                            Web Applications
+                        </button>
+                        <button class="material-button px-6 py-3 text-surface-700 rounded-material hover:bg-primary-100 hover:text-primary-700 font-medium transition-all duration-200">
+                            Mobile Apps
+                        </button>
+                        <button class="material-button px-6 py-3 text-surface-700 rounded-material hover:bg-primary-100 hover:text-primary-700 font-medium transition-all duration-200">
+                            Open Source
+                        </button>
                     </div>
                 </div>
-            {% endfor %}
+            </div>
         </div>
     </div>
 </section>
-{% endif %}
 
-<!-- All Projects Section -->
-<section class="py-20 bg-gray-50">
+<!-- Portfolio Grid -->
+<section class="py-24 surface-container">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">All Projects</h2>
-            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-                Complete collection of my engineering work and technical projects.
-            </p>
-        </div>
-        
         {% if projects %}
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {% for project in projects %}
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="material-card shadow-material-2 overflow-hidden hover:shadow-material-4 transition-all duration-300 group animate-slide-up" style="animation-delay: {{ forloop.counter0|floatformat:1 }}s;">
                         {% if project.featured_image %}
-                            <img src="{{ project.featured_image.url }}" alt="{{ project.title }}" class="w-full h-48 object-cover">
+                            <div class="relative h-64 overflow-hidden">
+                                <img src="{{ project.featured_image.url }}" alt="{{ project.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                                <div class="absolute top-4 right-4">
+                                    <div class="w-10 h-10 bg-white bg-opacity-90 rounded-full flex items-center justify-center backdrop-blur-sm">
+                                        <span class="material-symbols-outlined text-primary-600">launch</span>
+                                    </div>
+                                </div>
+                            </div>
                         {% else %}
-                            <div class="h-48 bg-gradient-to-br from-primary-400 to-primary-600"></div>
+                            <div class="relative h-64 bg-gradient-to-br from-primary-400 to-primary-600 overflow-hidden">
+                                <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+                                <div class="absolute top-4 right-4">
+                                    <div class="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                                        <span class="material-symbols-outlined text-white">code</span>
+                                    </div>
+                                </div>
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-6xl text-white opacity-30">work</span>
+                                </div>
+                            </div>
                         {% endif %}
                         
                         <div class="p-6">
-                            <h3 class="text-xl font-semibold text-gray-900 mb-2">{{ project.title }}</h3>
-                            <p class="text-gray-600 mb-4">{{ project.short_description }}</p>
-                            
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                {% for tech in project.tech_list %}
-                                    <span class="px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full">
-                                        {{ tech }}
-                                    </span>
-                                {% endfor %}
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="px-3 py-1 bg-primary-100 text-primary-700 rounded-material text-sm font-medium">
+                                    {{ project.category|default:"Web App" }}
+                                </span>
+                                <div class="flex items-center text-surface-400">
+                                    <span class="material-symbols-outlined text-sm mr-1">calendar_today</span>
+                                    <span class="text-sm">{{ project.created_at|date:"Y" }}</span>
+                                </div>
                             </div>
                             
-                            <div class="flex space-x-4">
-                                {% if project.live_url %}
-                                    <a href="{{ project.live_url }}" target="_blank" class="text-primary-600 hover:text-primary-700 font-medium text-sm">
-                                        Live Demo
-                                    </a>
-                                {% endif %}
-                                {% if project.github_url %}
-                                    <a href="{{ project.github_url }}" target="_blank" class="text-gray-600 hover:text-gray-700 font-medium text-sm">
-                                        GitHub
-                                    </a>
-                                {% endif %}
-                                <a href="{% url 'portfolio:portfolio_detail' project.slug %}" class="text-primary-600 hover:text-primary-700 font-medium text-sm">
-                                    Details
+                            <h3 class="headline-medium text-surface-900 mb-3 group-hover:text-primary-600 transition-colors">
+                                <a href="{% url 'portfolio:portfolio_detail' project.slug %}" class="block">
+                                    {{ project.title }}
                                 </a>
+                            </h3>
+                            
+                            <p class="body-large text-surface-600 mb-6 leading-relaxed">
+                                {{ project.description|truncatewords:25 }}
+                            </p>
+                            
+                            <!-- Tech Stack -->
+                            {% if project.technologies %}
+                                <div class="flex flex-wrap gap-2 mb-6">
+                                    {% for tech in project.technologies.all %}
+                                        <span class="px-3 py-1 bg-surface-100 text-surface-700 text-sm rounded-material font-medium">
+                                            {{ tech.name }}
+                                        </span>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                            
+                            <!-- Project Stats -->
+                            <div class="grid grid-cols-3 gap-4 mb-6 p-4 bg-surface-50 rounded-material">
+                                <div class="text-center">
+                                    <div class="text-lg font-bold text-primary-600">{{ project.stars|default:"0" }}</div>
+                                    <div class="text-xs text-surface-500">Stars</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-lg font-bold text-secondary-600">{{ project.forks|default:"0" }}</div>
+                                    <div class="text-xs text-surface-500">Forks</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-lg font-bold text-green-600">{{ project.commits|default:"0" }}</div>
+                                    <div class="text-xs text-surface-500">Commits</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Action Buttons -->
+                            <div class="flex space-x-3">
+                                <a href="{% url 'portfolio:portfolio_detail' project.slug %}" class="flex-1 material-button bg-primary-600 text-white py-2 px-4 rounded-material font-medium hover:bg-primary-700 hover:shadow-material-3 transition-all duration-300 flex items-center justify-center space-x-2 group/btn">
+                                    <span class="material-symbols-outlined text-sm group-hover/btn:scale-110 transition-transform">visibility</span>
+                                    <span>View Details</span>
+                                </a>
+                                {% if project.github_url %}
+                                    <a href="{{ project.github_url }}" target="_blank" class="material-button border border-surface-300 text-surface-700 py-2 px-4 rounded-material font-medium hover:bg-surface-100 hover:shadow-material-2 transition-all duration-300 flex items-center justify-center group/btn">
+                                        <span class="material-symbols-outlined text-sm group-hover/btn:scale-110 transition-transform">code</span>
+                                    </a>
+                                {% endif %}
+                                {% if project.live_url %}
+                                    <a href="{{ project.live_url }}" target="_blank" class="material-button border border-surface-300 text-surface-700 py-2 px-4 rounded-material font-medium hover:bg-surface-100 hover:shadow-material-2 transition-all duration-300 flex items-center justify-center group/btn">
+                                        <span class="material-symbols-outlined text-sm group-hover/btn:scale-110 transition-transform">launch</span>
+                                    </a>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
                 {% endfor %}
             </div>
         {% else %}
-            <div class="text-center py-20">
-                <div class="text-gray-400 mb-4">
-                    <svg class="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-                    </svg>
+            <div class="text-center py-20 animate-fade-in">
+                <div class="w-24 h-24 bg-surface-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <span class="material-symbols-outlined text-4xl text-surface-400">work</span>
                 </div>
-                <h3 class="text-xl font-semibold text-gray-900 mb-2">No projects yet</h3>
-                <p class="text-gray-600">Check back soon for new projects!</p>
+                <h3 class="headline-medium text-surface-900 mb-3">No projects yet</h3>
+                <p class="body-large text-surface-600 mb-8">Check back soon for new projects and case studies!</p>
+                <a href="{% url 'core:contact' %}" class="material-button bg-primary-600 text-white px-8 py-3 rounded-material-lg font-semibold hover:bg-primary-700 hover:shadow-material-3 transition-all duration-300 flex items-center justify-center space-x-2 mx-auto w-fit">
+                    <span class="material-symbols-outlined">contact_mail</span>
+                    <span>Discuss a Project</span>
+                </a>
             </div>
         {% endif %}
     </div>
 </section>
 
-<!-- Skills Section -->
-<section class="py-20 bg-white">
+<!-- Skills & Technologies Section -->
+<section class="py-24 bg-surface-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Technologies I Work With</h2>
-            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-                A comprehensive overview of the technologies and tools I use to build amazing solutions.
+        <div class="text-center mb-20">
+            <div class="flex items-center justify-center mb-6">
+                <span class="material-symbols-outlined text-4xl text-primary-500 mr-3">build</span>
+                <h2 class="headline-large text-surface-900">Technologies I Use</h2>
+            </div>
+            <p class="body-large text-surface-600 max-w-3xl mx-auto">
+                A comprehensive toolkit of modern technologies, frameworks, and tools that power my development process.
             </p>
         </div>
         
-        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
-            <div class="text-center">
-                <div class="bg-gray-100 rounded-lg p-6 mb-4">
-                    <div class="text-3xl font-bold text-primary-600">Python</div>
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+            <!-- Frontend -->
+            <div class="material-card shadow-material-2 p-6 text-center hover:shadow-material-3 transition-all duration-300 group">
+                <div class="w-12 h-12 bg-blue-100 rounded-material flex items-center justify-center mx-auto mb-3 group-hover:bg-blue-200 transition-colors">
+                    <span class="material-symbols-outlined text-blue-600">web</span>
                 </div>
-                <p class="text-sm text-gray-600">Backend Development</p>
+                <h4 class="font-medium text-surface-900 mb-1">React</h4>
+                <p class="text-sm text-surface-500">Frontend</p>
             </div>
             
-            <div class="text-center">
-                <div class="bg-gray-100 rounded-lg p-6 mb-4">
-                    <div class="text-3xl font-bold text-primary-600">Django</div>
+            <div class="material-card shadow-material-2 p-6 text-center hover:shadow-material-3 transition-all duration-300 group">
+                <div class="w-12 h-12 bg-green-100 rounded-material flex items-center justify-center mx-auto mb-3 group-hover:bg-green-200 transition-colors">
+                    <span class="material-symbols-outlined text-green-600">code</span>
                 </div>
-                <p class="text-sm text-gray-600">Web Framework</p>
+                <h4 class="font-medium text-surface-900 mb-1">Python</h4>
+                <p class="text-sm text-surface-500">Backend</p>
             </div>
             
-            <div class="text-center">
-                <div class="bg-gray-100 rounded-lg p-6 mb-4">
-                    <div class="text-3xl font-bold text-primary-600">React</div>
+            <div class="material-card shadow-material-2 p-6 text-center hover:shadow-material-3 transition-all duration-300 group">
+                <div class="w-12 h-12 bg-purple-100 rounded-material flex items-center justify-center mx-auto mb-3 group-hover:bg-purple-200 transition-colors">
+                    <span class="material-symbols-outlined text-purple-600">storage</span>
                 </div>
-                <p class="text-sm text-gray-600">Frontend Library</p>
+                <h4 class="font-medium text-surface-900 mb-1">PostgreSQL</h4>
+                <p class="text-sm text-surface-500">Database</p>
             </div>
             
-            <div class="text-center">
-                <div class="bg-gray-100 rounded-lg p-6 mb-4">
-                    <div class="text-3xl font-bold text-primary-600">AWS</div>
+            <div class="material-card shadow-material-2 p-6 text-center hover:shadow-material-3 transition-all duration-300 group">
+                <div class="w-12 h-12 bg-orange-100 rounded-material flex items-center justify-center mx-auto mb-3 group-hover:bg-orange-200 transition-colors">
+                    <span class="material-symbols-outlined text-orange-600">cloud</span>
                 </div>
-                <p class="text-sm text-gray-600">Cloud Platform</p>
+                <h4 class="font-medium text-surface-900 mb-1">AWS</h4>
+                <p class="text-sm text-surface-500">Cloud</p>
             </div>
             
-            <div class="text-center">
-                <div class="bg-gray-100 rounded-lg p-6 mb-4">
-                    <div class="text-3xl font-bold text-primary-600">Docker</div>
+            <div class="material-card shadow-material-2 p-6 text-center hover:shadow-material-3 transition-all duration-300 group">
+                <div class="w-12 h-12 bg-red-100 rounded-material flex items-center justify-center mx-auto mb-3 group-hover:bg-red-200 transition-colors">
+                    <span class="material-symbols-outlined text-red-600">deployed_code</span>
                 </div>
-                <p class="text-sm text-gray-600">Containerization</p>
+                <h4 class="font-medium text-surface-900 mb-1">Docker</h4>
+                <p class="text-sm text-surface-500">DevOps</p>
             </div>
             
-            <div class="text-center">
-                <div class="bg-gray-100 rounded-lg p-6 mb-4">
-                    <div class="text-3xl font-bold text-primary-600">PostgreSQL</div>
+            <div class="material-card shadow-material-2 p-6 text-center hover:shadow-material-3 transition-all duration-300 group">
+                <div class="w-12 h-12 bg-indigo-100 rounded-material flex items-center justify-center mx-auto mb-3 group-hover:bg-indigo-200 transition-colors">
+                    <span class="material-symbols-outlined text-indigo-600">hub</span>
                 </div>
-                <p class="text-sm text-gray-600">Database</p>
+                <h4 class="font-medium text-surface-900 mb-1">Kubernetes</h4>
+                <p class="text-sm text-surface-500">Orchestration</p>
             </div>
         </div>
     </div>
 </section>
 
 <!-- Call to Action -->
-<section class="py-20 bg-primary-600">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Interested in Working Together?</h2>
-        <p class="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
-            I'm always excited to take on new challenges and collaborate on innovative projects.
+<section class="py-24 bg-gradient-to-br from-primary-600 via-primary-700 to-secondary-600 relative overflow-hidden">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-10">
+        <div class="hero-pattern h-full w-full"></div>
+    </div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+        <div class="mb-8">
+            <span class="material-symbols-outlined text-6xl text-white mb-4 block">rocket_launch</span>
+        </div>
+        <h2 class="display-medium text-white mb-6">Ready to Build Something Amazing?</h2>
+        <p class="body-large text-primary-100 mb-12 max-w-3xl mx-auto leading-relaxed">
+            Whether you have a specific project in mind or need technical consultation, I'm here to help bring your ideas to life with cutting-edge technology and best practices.
         </p>
-        <a href="{% url 'core:contact' %}" class="bg-white text-primary-600 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors">
-            Let's Connect
-        </a>
+        
+        <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <a href="{% url 'core:contact' %}" class="material-button bg-white text-primary-600 px-10 py-4 rounded-material-lg text-lg font-semibold hover:bg-surface-100 hover:shadow-material-4 transition-all duration-300 flex items-center space-x-3 group">
+                <span class="material-symbols-outlined group-hover:scale-110 transition-transform">contact_mail</span>
+                <span>Start a Project</span>
+            </a>
+            
+            <a href="{% url 'blog:blog_list' %}" class="material-button border-2 border-white text-white px-10 py-4 rounded-material-lg text-lg font-semibold hover:bg-white hover:text-primary-600 transition-all duration-300 flex items-center space-x-3 group">
+                <span class="material-symbols-outlined group-hover:scale-110 transition-transform">article</span>
+                <span>Read My Blog</span>
+            </a>
+        </div>
     </div>
 </section>
 {% endblock %}
-
-
-
-
-
-
-
-

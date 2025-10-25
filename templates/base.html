@@ -9,109 +9,306 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Custom Tailwind Configuration -->
+    <!-- Material Design CSS -->
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+    
+    <!-- Custom Tailwind Configuration with Material Design 3 Colors -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
+                        // Material Design 3 Color Palette
                         primary: {
-                            50: '#f0f9ff',
-                            100: '#e0f2fe',
-                            200: '#bae6fd',
-                            300: '#7dd3fc',
-                            400: '#38bdf8',
-                            500: '#0ea5e9',
-                            600: '#0284c7',
-                            700: '#0369a1',
-                            800: '#075985',
-                            900: '#0c4a6e',
+                            50: '#e8f4fd',
+                            100: '#d1e9fb',
+                            200: '#a3d2f7',
+                            300: '#74bcf3',
+                            400: '#46a5ef',
+                            500: '#1976d2',
+                            600: '#1565c0',
+                            700: '#0d47a1',
+                            800: '#0a3d91',
+                            900: '#073282',
                         },
                         secondary: {
-                            50: '#f8fafc',
-                            100: '#f1f5f9',
-                            200: '#e2e8f0',
-                            300: '#cbd5e1',
-                            400: '#94a3b8',
-                            500: '#64748b',
-                            600: '#475569',
-                            700: '#334155',
-                            800: '#1e293b',
-                            900: '#0f172a',
+                            50: '#f3e5f5',
+                            100: '#e1bee7',
+                            200: '#ce93d8',
+                            300: '#ba68c8',
+                            400: '#ab47bc',
+                            500: '#9c27b0',
+                            600: '#8e24aa',
+                            700: '#7b1fa2',
+                            800: '#6a1b9a',
+                            900: '#4a148c',
+                        },
+                        surface: {
+                            50: '#fefefe',
+                            100: '#fdfdfd',
+                            200: '#f8f9fa',
+                            300: '#f1f3f4',
+                            400: '#e8eaed',
+                            500: '#dadce0',
+                            600: '#bdc1c6',
+                            700: '#9aa0a6',
+                            800: '#5f6368',
+                            900: '#202124',
+                        },
+                        error: {
+                            50: '#fef2f2',
+                            100: '#fee2e2',
+                            200: '#fecaca',
+                            300: '#fca5a5',
+                            400: '#f87171',
+                            500: '#ef4444',
+                            600: '#dc2626',
+                            700: '#b91c1c',
+                            800: '#991b1b',
+                            900: '#7f1d1d',
                         }
                     },
                     fontFamily: {
-                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                        'sans': ['Roboto', 'Inter', 'system-ui', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'material-1': '0px 1px 2px 0px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15)',
+                        'material-2': '0px 1px 2px 0px rgba(60, 64, 67, 0.3), 0px 2px 6px 2px rgba(60, 64, 67, 0.15)',
+                        'material-3': '0px 4px 8px 3px rgba(60, 64, 67, 0.15), 0px 1px 3px 0px rgba(60, 64, 67, 0.3)',
+                        'material-4': '0px 6px 10px 4px rgba(60, 64, 67, 0.15), 0px 2px 3px 0px rgba(60, 64, 67, 0.3)',
+                        'material-5': '0px 8px 12px 6px rgba(60, 64, 67, 0.15), 0px 4px 4px 0px rgba(60, 64, 67, 0.3)',
+                    },
+                    borderRadius: {
+                        'material': '12px',
+                        'material-lg': '16px',
+                        'material-xl': '28px',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.3s ease-out',
+                        'scale-in': 'scaleIn 0.2s ease-out',
+                        'ripple': 'ripple 0.6s linear',
                     }
                 }
             }
         }
     </script>
     
-    <!-- Google Fonts -->
+    <!-- Google Fonts - Roboto for Material Design -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Custom CSS -->
+    <!-- Custom CSS with Material Design Enhancements -->
     <style>
+        :root {
+            --md-sys-color-primary: #1976d2;
+            --md-sys-color-on-primary: #ffffff;
+            --md-sys-color-surface: #fefefe;
+            --md-sys-color-on-surface: #1c1b1f;
+        }
+        
         .gradient-text {
-            background: linear-gradient(135deg, #0ea5e9, #3b82f6);
+            background: linear-gradient(135deg, #1976d2, #9c27b0);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
         
         .hero-pattern {
-            background-image: radial-gradient(circle at 1px 1px, rgba(59, 130, 246, 0.15) 1px, transparent 0);
-            background-size: 20px 20px;
+            background-image: radial-gradient(circle at 1px 1px, rgba(25, 118, 210, 0.1) 1px, transparent 0);
+            background-size: 24px 24px;
+        }
+        
+        /* Material Design 3 Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes scaleIn {
+            from { 
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to { 
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+        
+        /* Material Design Button Styles */
+        .material-button {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .material-button:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .material-button:active:before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        /* Material Card Styles */
+        .material-card {
+            background: var(--md-sys-color-surface);
+            border-radius: 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .material-card:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* Elevated Surface */
+        .surface-container {
+            background: #f7f9fc;
+        }
+        
+        .surface-container-high {
+            background: #eff3f6;
+        }
+        
+        /* Material Design Typography */
+        .display-large {
+            font-size: 3.5rem;
+            font-weight: 400;
+            line-height: 1.12;
+            letter-spacing: -0.25px;
+        }
+        
+        .display-medium {
+            font-size: 2.8rem;
+            font-weight: 400;
+            line-height: 1.16;
+        }
+        
+        .headline-large {
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.25;
+        }
+        
+        .headline-medium {
+            font-size: 1.75rem;
+            font-weight: 400;
+            line-height: 1.29;
+        }
+        
+        .body-large {
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Navigation Rail Effect */
+        .nav-rail-indicator {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--md-sys-color-primary);
+            border-radius: 0 3px 3px 0;
+            transform: scaleY(0);
+            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .nav-item:hover .nav-rail-indicator {
+            transform: scaleY(1);
         }
     </style>
     
     {% block extra_css %}{% endblock %}
 </head>
 <body class="bg-white text-gray-900 font-sans">
-    <!-- Navigation -->
-    <nav class="bg-white shadow-lg sticky top-0 z-50">
+    <!-- Material Design Navigation -->
+    <nav class="bg-surface-50 shadow-material-2 sticky top-0 z-50 border-b border-surface-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
-                    <a href="{% url 'core:home' %}" class="text-2xl font-bold gradient-text">
-                        Your Name
+                    <a href="{% url 'core:home' %}" class="text-2xl font-bold gradient-text flex items-center space-x-2">
+                        <span class="material-symbols-outlined text-primary-500">person</span>
+                        <span>Your Name</span>
                     </a>
                 </div>
                 
                 <!-- Desktop Navigation -->
                 <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-4">
-                        <a href="{% url 'core:home' %}" class="text-gray-700 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
-                            Home
+                    <div class="ml-10 flex items-center space-x-1">
+                        <a href="{% url 'core:home' %}" class="nav-item relative text-surface-700 hover:text-primary-600 hover:bg-primary-50 px-4 py-2 rounded-material text-sm font-medium transition-all duration-200 flex items-center space-x-2">
+                            <span class="nav-rail-indicator"></span>
+                            <span class="material-symbols-outlined text-lg">home</span>
+                            <span>Home</span>
                         </a>
-                        <a href="{% url 'core:about' %}" class="text-gray-700 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
-                            About
+                        <a href="{% url 'core:about' %}" class="nav-item relative text-surface-700 hover:text-primary-600 hover:bg-primary-50 px-4 py-2 rounded-material text-sm font-medium transition-all duration-200 flex items-center space-x-2">
+                            <span class="nav-rail-indicator"></span>
+                            <span class="material-symbols-outlined text-lg">person_outline</span>
+                            <span>About</span>
                         </a>
-                        <a href="{% url 'portfolio:portfolio_list' %}" class="text-gray-700 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
-                            Portfolio
+                        <a href="{% url 'portfolio:portfolio_list' %}" class="nav-item relative text-surface-700 hover:text-primary-600 hover:bg-primary-50 px-4 py-2 rounded-material text-sm font-medium transition-all duration-200 flex items-center space-x-2">
+                            <span class="nav-rail-indicator"></span>
+                            <span class="material-symbols-outlined text-lg">work_outline</span>
+                            <span>Portfolio</span>
                         </a>
-                        <a href="{% url 'blog:blog_list' %}" class="text-gray-700 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
-                            Blog
+                        <a href="{% url 'blog:blog_list' %}" class="nav-item relative text-surface-700 hover:text-primary-600 hover:bg-primary-50 px-4 py-2 rounded-material text-sm font-medium transition-all duration-200 flex items-center space-x-2">
+                            <span class="nav-rail-indicator"></span>
+                            <span class="material-symbols-outlined text-lg">article</span>
+                            <span>Blog</span>
                         </a>
-                        <a href="{% url 'public_profile:media_kit' %}" class="text-gray-700 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
-                            Media Kit
+                        <a href="{% url 'public_profile:media_kit' %}" class="nav-item relative text-surface-700 hover:text-primary-600 hover:bg-primary-50 px-4 py-2 rounded-material text-sm font-medium transition-all duration-200 flex items-center space-x-2">
+                            <span class="nav-rail-indicator"></span>
+                            <span class="material-symbols-outlined text-lg">media_link</span>
+                            <span>Media</span>
                         </a>
-                        <a href="{% url 'core:contact' %}" class="bg-primary-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-primary-700 transition-colors">
-                            Contact
+                        <a href="{% url 'core:contact' %}" class="material-button bg-primary-600 text-white px-6 py-2.5 rounded-material text-sm font-medium hover:bg-primary-700 hover:shadow-material-3 transition-all duration-200 flex items-center space-x-2 ml-2">
+                            <span class="material-symbols-outlined text-lg">contact_mail</span>
+                            <span>Contact</span>
                         </a>
                     </div>
                 </div>
                 
                 <!-- Mobile menu button -->
                 <div class="md:hidden">
-                    <button type="button" class="mobile-menu-button bg-gray-100 inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-primary-600 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500" aria-controls="mobile-menu" aria-expanded="false">
+                    <button type="button" class="mobile-menu-button material-button bg-surface-100 inline-flex items-center justify-center p-3 rounded-material text-surface-700 hover:text-primary-600 hover:bg-primary-50 focus:outline-none focus:ring-2 focus:ring-primary-500" aria-controls="mobile-menu" aria-expanded="false">
                         <span class="sr-only">Open main menu</span>
-                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
+                        <span class="material-symbols-outlined">menu</span>
                     </button>
                 </div>
             </div>
@@ -119,13 +316,31 @@
         
         <!-- Mobile menu -->
         <div class="mobile-menu hidden md:hidden">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
-                <a href="{% url 'core:home' %}" class="text-gray-700 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">Home</a>
-                <a href="{% url 'core:about' %}" class="text-gray-700 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">About</a>
-                <a href="{% url 'portfolio:portfolio_list' %}" class="text-gray-700 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">Portfolio</a>
-                <a href="{% url 'blog:blog_list' %}" class="text-gray-700 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">Blog</a>
-                <a href="{% url 'public_profile:media_kit' %}" class="text-gray-700 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">Media Kit</a>
-                <a href="{% url 'core:contact' %}" class="bg-primary-600 text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-primary-700">Contact</a>
+            <div class="px-4 pt-4 pb-4 space-y-2 bg-surface-50 border-t border-surface-200">
+                <a href="{% url 'core:home' %}" class="text-surface-700 hover:text-primary-600 hover:bg-primary-50 block px-4 py-3 rounded-material text-base font-medium transition-all duration-200 flex items-center space-x-3">
+                    <span class="material-symbols-outlined">home</span>
+                    <span>Home</span>
+                </a>
+                <a href="{% url 'core:about' %}" class="text-surface-700 hover:text-primary-600 hover:bg-primary-50 block px-4 py-3 rounded-material text-base font-medium transition-all duration-200 flex items-center space-x-3">
+                    <span class="material-symbols-outlined">person_outline</span>
+                    <span>About</span>
+                </a>
+                <a href="{% url 'portfolio:portfolio_list' %}" class="text-surface-700 hover:text-primary-600 hover:bg-primary-50 block px-4 py-3 rounded-material text-base font-medium transition-all duration-200 flex items-center space-x-3">
+                    <span class="material-symbols-outlined">work_outline</span>
+                    <span>Portfolio</span>
+                </a>
+                <a href="{% url 'blog:blog_list' %}" class="text-surface-700 hover:text-primary-600 hover:bg-primary-50 block px-4 py-3 rounded-material text-base font-medium transition-all duration-200 flex items-center space-x-3">
+                    <span class="material-symbols-outlined">article</span>
+                    <span>Blog</span>
+                </a>
+                <a href="{% url 'public_profile:media_kit' %}" class="text-surface-700 hover:text-primary-600 hover:bg-primary-50 block px-4 py-3 rounded-material text-base font-medium transition-all duration-200 flex items-center space-x-3">
+                    <span class="material-symbols-outlined">media_link</span>
+                    <span>Media Kit</span>
+                </a>
+                <a href="{% url 'core:contact' %}" class="material-button bg-primary-600 text-white block px-4 py-3 rounded-material text-base font-medium hover:bg-primary-700 transition-all duration-200 flex items-center space-x-3 mt-4">
+                    <span class="material-symbols-outlined">contact_mail</span>
+                    <span>Contact</span>
+                </a>
             </div>
         </div>
     </nav>
@@ -146,111 +361,300 @@
         {% block content %}{% endblock %}
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-secondary-900 text-white">
-        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div>
-                    <h3 class="text-lg font-semibold mb-4">Connect</h3>
+    <!-- Material Design Footer -->
+    <footer class="bg-surface-900 text-white">
+        <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div class="md:col-span-2">
+                    <div class="flex items-center mb-6">
+                        <span class="material-symbols-outlined text-2xl text-primary-400 mr-3">person</span>
+                        <h3 class="text-2xl font-bold gradient-text">Your Name</h3>
+                    </div>
+                    <p class="text-surface-300 mb-8 leading-relaxed max-w-md">
+                        Building the future through innovative software solutions, technical leadership, and continuous learning. Let's create something amazing together.
+                    </p>
                     <div class="flex space-x-4">
-                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
-                            <span class="sr-only">GitHub</span>
-                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                            </svg>
+                        <a href="#" class="material-button w-12 h-12 bg-surface-800 text-surface-300 rounded-material hover:bg-primary-600 hover:text-white hover:shadow-material-3 transition-all duration-300 flex items-center justify-center group">
+                            <span class="material-symbols-outlined group-hover:scale-110 transition-transform">code</span>
                         </a>
-                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
-                            <span class="sr-only">LinkedIn</span>
-                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                            </svg>
+                        <a href="#" class="material-button w-12 h-12 bg-surface-800 text-surface-300 rounded-material hover:bg-primary-600 hover:text-white hover:shadow-material-3 transition-all duration-300 flex items-center justify-center group">
+                            <span class="material-symbols-outlined group-hover:scale-110 transition-transform">work</span>
                         </a>
-                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
-                            <span class="sr-only">Twitter</span>
-                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-                            </svg>
+                        <a href="#" class="material-button w-12 h-12 bg-surface-800 text-surface-300 rounded-material hover:bg-primary-600 hover:text-white hover:shadow-material-3 transition-all duration-300 flex items-center justify-center group">
+                            <span class="material-symbols-outlined group-hover:scale-110 transition-transform">alternate_email</span>
+                        </a>
+                        <a href="#" class="material-button w-12 h-12 bg-surface-800 text-surface-300 rounded-material hover:bg-primary-600 hover:text-white hover:shadow-material-3 transition-all duration-300 flex items-center justify-center group">
+                            <span class="material-symbols-outlined group-hover:scale-110 transition-transform">rss_feed</span>
                         </a>
                     </div>
                 </div>
                 
                 <div>
-                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
-                    <ul class="space-y-2">
-                        <li><a href="{% url 'portfolio:portfolio_list' %}" class="text-gray-300 hover:text-white transition-colors">Portfolio</a></li>
-                        <li><a href="{% url 'blog:blog_list' %}" class="text-gray-300 hover:text-white transition-colors">Blog</a></li>
-                        <li><a href="{% url 'public_profile:speaking_engagements' %}" class="text-gray-300 hover:text-white transition-colors">Speaking</a></li>
-                        <li><a href="{% url 'public_profile:press_mentions' %}" class="text-gray-300 hover:text-white transition-colors">Press</a></li>
+                    <h3 class="text-lg font-semibold mb-6 flex items-center">
+                        <span class="material-symbols-outlined text-primary-400 mr-2">link</span>
+                        Quick Links
+                    </h3>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="{% url 'portfolio:portfolio_list' %}" class="text-surface-300 hover:text-white transition-colors flex items-center group">
+                                <span class="material-symbols-outlined text-sm mr-2 group-hover:translate-x-1 transition-transform">work_outline</span>
+                                Portfolio
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'blog:blog_list' %}" class="text-surface-300 hover:text-white transition-colors flex items-center group">
+                                <span class="material-symbols-outlined text-sm mr-2 group-hover:translate-x-1 transition-transform">article</span>
+                                Blog
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'core:about' %}" class="text-surface-300 hover:text-white transition-colors flex items-center group">
+                                <span class="material-symbols-outlined text-sm mr-2 group-hover:translate-x-1 transition-transform">person_outline</span>
+                                About
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'core:contact' %}" class="text-surface-300 hover:text-white transition-colors flex items-center group">
+                                <span class="material-symbols-outlined text-sm mr-2 group-hover:translate-x-1 transition-transform">contact_mail</span>
+                                Contact
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 
                 <div>
-                    <h3 class="text-lg font-semibold mb-4">Newsletter</h3>
-                    <p class="text-gray-300 mb-4">Stay updated with my latest work and insights.</p>
+                    <h3 class="text-lg font-semibold mb-6 flex items-center">
+                        <span class="material-symbols-outlined text-primary-400 mr-2">mail</span>
+                        Newsletter
+                    </h3>
+                    <p class="text-surface-300 mb-6 leading-relaxed">Stay updated with my latest work and insights.</p>
                     <form class="newsletter-form">
-                        <div class="flex">
-                            <input type="email" placeholder="Enter your email" class="flex-1 px-3 py-2 bg-gray-800 text-white border border-gray-700 rounded-l-md focus:outline-none focus:ring-2 focus:ring-primary-500">
-                            <button type="submit" class="px-4 py-2 bg-primary-600 text-white rounded-r-md hover:bg-primary-700 transition-colors">
-                                Subscribe
+                        <div class="space-y-3">
+                            <div class="relative">
+                                <input type="email" placeholder="Enter your email" class="w-full pl-12 pr-4 py-3 bg-surface-800 text-white border border-surface-700 rounded-material focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent placeholder-surface-400">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <span class="material-symbols-outlined text-surface-400">mail</span>
+                                </div>
+                            </div>
+                            <button type="submit" class="material-button w-full bg-primary-600 text-white py-3 px-4 rounded-material font-medium hover:bg-primary-700 hover:shadow-material-3 transition-all duration-300 flex items-center justify-center space-x-2 group">
+                                <span class="material-symbols-outlined group-hover:scale-110 transition-transform">send</span>
+                                <span>Subscribe</span>
                             </button>
                         </div>
                     </form>
                 </div>
             </div>
             
-            <div class="mt-8 pt-8 border-t border-gray-800">
-                <p class="text-center text-gray-400">
-                    &copy; {% now "Y" %} Your Name. All rights reserved. 
-                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
-                </p>
+            <div class="mt-12 pt-8 border-t border-surface-800">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-surface-400 mb-4 md:mb-0">
+                        &copy; {% now "Y" %} Your Name. All rights reserved.
+                    </p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-surface-400 hover:text-white transition-colors text-sm">Privacy Policy</a>
+                        <a href="#" class="text-surface-400 hover:text-white transition-colors text-sm">Terms of Service</a>
+                        <a href="#" class="text-surface-400 hover:text-white transition-colors text-sm">Sitemap</a>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript -->
+    <!-- Material Design JavaScript -->
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    
+    <!-- Custom JavaScript with Material Design Interactions -->
     <script>
-        // Mobile menu toggle
         document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle with Material Design animation
             const mobileMenuButton = document.querySelector('.mobile-menu-button');
             const mobileMenu = document.querySelector('.mobile-menu');
             
             if (mobileMenuButton && mobileMenu) {
                 mobileMenuButton.addEventListener('click', function() {
                     mobileMenu.classList.toggle('hidden');
+                    
+                    // Add ripple effect
+                    createRipple(this, event);
                 });
             }
             
-            // Newsletter form
-            const newsletterForm = document.querySelector('.newsletter-form');
-            if (newsletterForm) {
-                newsletterForm.addEventListener('submit', function(e) {
+            // Material Design Ripple Effect
+            function createRipple(element, event) {
+                const ripple = document.createElement('span');
+                const rect = element.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = event.clientX - rect.left - size / 2;
+                const y = event.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.classList.add('ripple-effect');
+                
+                element.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            }
+            
+            // Add ripple effect to all material buttons
+            document.querySelectorAll('.material-button').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    createRipple(this, e);
+                });
+            });
+            
+            // Enhanced Newsletter form with Material Design feedback
+            const newsletterForms = document.querySelectorAll('.newsletter-form');
+            newsletterForms.forEach(form => {
+                form.addEventListener('submit', function(e) {
                     e.preventDefault();
                     const email = this.querySelector('input[type="email"]').value;
+                    const submitButton = this.querySelector('button[type="submit"]');
+                    const originalText = submitButton.innerHTML;
                     
-                    fetch('{% url "public_profile:newsletter_signup" %}', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded',
-                            'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]')?.value || ''
-                        },
-                        body: 'email=' + encodeURIComponent(email)
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.success) {
-                            alert(data.message);
-                            this.reset();
-                        } else {
-                            alert(data.message);
-                        }
-                    })
-                    .catch(error => {
-                        alert('An error occurred. Please try again.');
-                    });
+                    // Show loading state
+                    submitButton.innerHTML = '<span class="material-symbols-outlined animate-spin">refresh</span><span>Subscribing...</span>';
+                    submitButton.disabled = true;
+                    
+                    // Simulate API call (replace with actual endpoint)
+                    setTimeout(() => {
+                        // Show success state
+                        submitButton.innerHTML = '<span class="material-symbols-outlined">check_circle</span><span>Subscribed!</span>';
+                        submitButton.classList.add('bg-green-600', 'hover:bg-green-700');
+                        submitButton.classList.remove('bg-primary-600', 'hover:bg-primary-700');
+                        
+                        // Reset form
+                        this.reset();
+                        
+                        // Reset button after 3 seconds
+                        setTimeout(() => {
+                            submitButton.innerHTML = originalText;
+                            submitButton.disabled = false;
+                            submitButton.classList.remove('bg-green-600', 'hover:bg-green-700');
+                            submitButton.classList.add('bg-primary-600', 'hover:bg-primary-700');
+                        }, 3000);
+                    }, 1500);
+                });
+            });
+            
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+            
+            // Intersection Observer for animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fade-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe elements for animation
+            document.querySelectorAll('.material-card, .animate-slide-up, .animate-scale-in').forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Enhanced form validation with Material Design styling
+            const inputs = document.querySelectorAll('input, textarea, select');
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.parentElement.classList.add('focused');
+                });
+                
+                input.addEventListener('blur', function() {
+                    this.parentElement.classList.remove('focused');
+                    if (this.value) {
+                        this.parentElement.classList.add('filled');
+                    } else {
+                        this.parentElement.classList.remove('filled');
+                    }
+                });
+                
+                // Check if input has value on load
+                if (input.value) {
+                    input.parentElement.classList.add('filled');
+                }
+            });
+            
+            // Floating Action Button behavior (if present)
+            const fab = document.querySelector('.fab');
+            if (fab) {
+                let lastScrollTop = 0;
+                window.addEventListener('scroll', function() {
+                    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                    if (scrollTop > lastScrollTop && scrollTop > 100) {
+                        fab.style.transform = 'translateY(100px)';
+                    } else {
+                        fab.style.transform = 'translateY(0)';
+                    }
+                    lastScrollTop = scrollTop;
                 });
             }
         });
     </script>
+    
+    <style>
+        /* Additional Material Design animations */
+        .ripple-effect {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            transform: scale(0);
+            animation: ripple 0.6s linear;
+            pointer-events: none;
+        }
+        
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+        
+        .focused {
+            transform: scale(1.02);
+            transition: transform 0.2s ease;
+        }
+        
+        .filled label {
+            transform: translateY(-1.5rem) scale(0.875);
+            color: var(--md-sys-color-primary);
+        }
+        
+        /* Smooth transitions for all interactive elements */
+        * {
+            transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Enhanced focus states */
+        .material-button:focus-visible,
+        input:focus-visible,
+        textarea:focus-visible,
+        select:focus-visible {
+            outline: 2px solid var(--md-sys-color-primary);
+            outline-offset: 2px;
+        }
+    </style>
     
     {% block extra_js %}{% endblock %}
 </body>

@@ -4,161 +4,311 @@
 {% block title %}Home - Your Name{% endblock %}
 
 {% block content %}
-<!-- Hero Section -->
-<section class="hero-pattern bg-gradient-to-br from-primary-50 to-white py-20">
+<!-- Hero Section with Material Design -->
+<section class="hero-pattern bg-gradient-to-br from-primary-50 via-surface-50 to-secondary-50 py-24 animate-fade-in">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center">
-            <div class="mb-8">
-                <img src="{% static 'images/profile-photo.jpg' %}" alt="Your Name" class="w-32 h-32 rounded-full mx-auto shadow-lg object-cover">
+            <div class="mb-12 animate-scale-in">
+                <div class="relative inline-block">
+                    <img src="{% static 'images/profile-photo.jpg' %}" alt="Your Name" class="w-40 h-40 rounded-full mx-auto shadow-material-4 object-cover border-4 border-white">
+                    <div class="absolute -bottom-2 -right-2 w-12 h-12 bg-primary-500 rounded-full flex items-center justify-center shadow-material-3">
+                        <span class="material-symbols-outlined text-white text-lg">verified</span>
+                    </div>
+                </div>
             </div>
-            <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+            <h1 class="display-large md:display-large text-surface-900 mb-8 animate-slide-up">
                 Hi, I'm <span class="gradient-text">Your Name</span>
             </h1>
-            <p class="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
+            <p class="headline-medium text-surface-600 mb-12 max-w-4xl mx-auto body-large animate-slide-up" style="animation-delay: 0.2s;">
                 Engineer, Speaker, and Technology Enthusiast building the future through innovative solutions and thought leadership.
             </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="{% url 'portfolio:portfolio_list' %}" class="bg-primary-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-primary-700 transition-colors">
-                    View My Work
+            <div class="flex flex-col sm:flex-row gap-6 justify-center animate-slide-up" style="animation-delay: 0.4s;">
+                <a href="{% url 'portfolio:portfolio_list' %}" class="material-button bg-primary-600 text-white px-10 py-4 rounded-material-lg text-lg font-semibold hover:bg-primary-700 hover:shadow-material-4 transition-all duration-300 flex items-center justify-center space-x-3 group">
+                    <span class="material-symbols-outlined group-hover:scale-110 transition-transform">work</span>
+                    <span>View My Work</span>
                 </a>
-                <a href="{% url 'core:contact' %}" class="border-2 border-primary-600 text-primary-600 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-primary-600 hover:text-white transition-colors">
-                    Get In Touch
+                <a href="{% url 'core:contact' %}" class="material-button border-2 border-primary-600 text-primary-600 px-10 py-4 rounded-material-lg text-lg font-semibold hover:bg-primary-600 hover:text-white hover:shadow-material-3 transition-all duration-300 flex items-center justify-center space-x-3 group">
+                    <span class="material-symbols-outlined group-hover:scale-110 transition-transform">contact_mail</span>
+                    <span>Get In Touch</span>
                 </a>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Featured Projects Section -->
-<section class="py-20 bg-white">
+<!-- Featured Projects Section with Material Design -->
+<section class="py-24 surface-container">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Featured Projects</h2>
-            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-                A showcase of my latest engineering work and innovative solutions.
+        <div class="text-center mb-20">
+            <div class="flex items-center justify-center mb-6">
+                <span class="material-symbols-outlined text-4xl text-primary-500 mr-3">work</span>
+                <h2 class="headline-large text-surface-900">Featured Projects</h2>
+            </div>
+            <p class="body-large text-surface-600 max-w-3xl mx-auto">
+                A showcase of my latest engineering work and innovative solutions that demonstrate technical excellence and creative problem-solving.
             </p>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Project cards will be populated from the database -->
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                <div class="h-48 bg-gradient-to-br from-primary-400 to-primary-600"></div>
-                <div class="p-6">
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Project Title</h3>
-                    <p class="text-gray-600 mb-4">Brief description of the project and its impact.</p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full">Python</span>
-                        <span class="px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full">Django</span>
-                        <span class="px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full">React</span>
+            <!-- Material Design Project Cards -->
+            <div class="material-card shadow-material-2 overflow-hidden hover:shadow-material-4 group">
+                <div class="relative h-56 bg-gradient-to-br from-primary-400 to-primary-600 overflow-hidden">
+                    <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+                    <div class="absolute top-4 right-4">
+                        <div class="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                            <span class="material-symbols-outlined text-white">code</span>
+                        </div>
                     </div>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-primary-600 hover:text-primary-700 font-medium">View Project</a>
-                        <a href="#" class="text-gray-600 hover:text-gray-700 font-medium">GitHub</a>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-start justify-between mb-3">
+                        <h3 class="headline-medium text-surface-900 group-hover:text-primary-600 transition-colors">E-Commerce Platform</h3>
+                        <span class="material-symbols-outlined text-surface-400 group-hover:text-primary-500 transition-colors">launch</span>
+                    </div>
+                    <p class="body-large text-surface-600 mb-6 leading-relaxed">A full-stack e-commerce solution with advanced features like real-time inventory, payment processing, and analytics dashboard.</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1.5 bg-primary-100 text-primary-700 text-sm rounded-material font-medium">Python</span>
+                        <span class="px-3 py-1.5 bg-primary-100 text-primary-700 text-sm rounded-material font-medium">Django</span>
+                        <span class="px-3 py-1.5 bg-primary-100 text-primary-700 text-sm rounded-material font-medium">React</span>
+                    </div>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-primary-600 hover:text-primary-700 font-medium flex items-center space-x-1 group/link">
+                            <span>View Project</span>
+                            <span class="material-symbols-outlined text-sm group-hover/link:translate-x-1 transition-transform">arrow_forward</span>
+                        </a>
+                        <a href="#" class="text-surface-600 hover:text-surface-700 font-medium flex items-center space-x-1">
+                            <span class="material-symbols-outlined text-sm">code</span>
+                            <span>GitHub</span>
+                        </a>
                     </div>
                 </div>
             </div>
             
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                <div class="h-48 bg-gradient-to-br from-secondary-400 to-secondary-600"></div>
-                <div class="p-6">
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Another Project</h3>
-                    <p class="text-gray-600 mb-4">Another innovative solution that demonstrates technical expertise.</p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="px-3 py-1 bg-secondary-100 text-secondary-800 text-sm rounded-full">JavaScript</span>
-                        <span class="px-3 py-1 bg-secondary-100 text-secondary-800 text-sm rounded-full">Node.js</span>
-                        <span class="px-3 py-1 bg-secondary-100 text-secondary-800 text-sm rounded-full">MongoDB</span>
+            <div class="material-card shadow-material-2 overflow-hidden hover:shadow-material-4 group">
+                <div class="relative h-56 bg-gradient-to-br from-secondary-400 to-secondary-600 overflow-hidden">
+                    <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+                    <div class="absolute top-4 right-4">
+                        <div class="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                            <span class="material-symbols-outlined text-white">analytics</span>
+                        </div>
                     </div>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-primary-600 hover:text-primary-700 font-medium">View Project</a>
-                        <a href="#" class="text-gray-600 hover:text-gray-700 font-medium">GitHub</a>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-start justify-between mb-3">
+                        <h3 class="headline-medium text-surface-900 group-hover:text-primary-600 transition-colors">AI Analytics Dashboard</h3>
+                        <span class="material-symbols-outlined text-surface-400 group-hover:text-primary-500 transition-colors">launch</span>
+                    </div>
+                    <p class="body-large text-surface-600 mb-6 leading-relaxed">Machine learning powered analytics platform with predictive insights, real-time data visualization, and automated reporting.</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1.5 bg-secondary-100 text-secondary-700 text-sm rounded-material font-medium">JavaScript</span>
+                        <span class="px-3 py-1.5 bg-secondary-100 text-secondary-700 text-sm rounded-material font-medium">Node.js</span>
+                        <span class="px-3 py-1.5 bg-secondary-100 text-secondary-700 text-sm rounded-material font-medium">TensorFlow</span>
+                    </div>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-primary-600 hover:text-primary-700 font-medium flex items-center space-x-1 group/link">
+                            <span>View Project</span>
+                            <span class="material-symbols-outlined text-sm group-hover/link:translate-x-1 transition-transform">arrow_forward</span>
+                        </a>
+                        <a href="#" class="text-surface-600 hover:text-surface-700 font-medium flex items-center space-x-1">
+                            <span class="material-symbols-outlined text-sm">code</span>
+                            <span>GitHub</span>
+                        </a>
                     </div>
                 </div>
             </div>
             
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                <div class="h-48 bg-gradient-to-br from-green-400 to-green-600"></div>
-                <div class="p-6">
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Third Project</h3>
-                    <p class="text-gray-600 mb-4">A third project showcasing diverse technical skills.</p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="px-3 py-1 bg-green-100 text-green-800 text-sm rounded-full">Go</span>
-                        <span class="px-3 py-1 bg-green-100 text-green-800 text-sm rounded-full">Docker</span>
-                        <span class="px-3 py-1 bg-green-100 text-green-800 text-sm rounded-full">Kubernetes</span>
+            <div class="material-card shadow-material-2 overflow-hidden hover:shadow-material-4 group">
+                <div class="relative h-56 bg-gradient-to-br from-green-400 to-green-600 overflow-hidden">
+                    <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+                    <div class="absolute top-4 right-4">
+                        <div class="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                            <span class="material-symbols-outlined text-white">cloud</span>
+                        </div>
                     </div>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-primary-600 hover:text-primary-700 font-medium">View Project</a>
-                        <a href="#" class="text-gray-600 hover:text-gray-700 font-medium">GitHub</a>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-start justify-between mb-3">
+                        <h3 class="headline-medium text-surface-900 group-hover:text-primary-600 transition-colors">Cloud Infrastructure</h3>
+                        <span class="material-symbols-outlined text-surface-400 group-hover:text-primary-500 transition-colors">launch</span>
+                    </div>
+                    <p class="body-large text-surface-600 mb-6 leading-relaxed">Scalable microservices architecture deployed on Kubernetes with automated CI/CD pipelines and monitoring systems.</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1.5 bg-green-100 text-green-700 text-sm rounded-material font-medium">Go</span>
+                        <span class="px-3 py-1.5 bg-green-100 text-green-700 text-sm rounded-material font-medium">Docker</span>
+                        <span class="px-3 py-1.5 bg-green-100 text-green-700 text-sm rounded-material font-medium">Kubernetes</span>
+                    </div>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-primary-600 hover:text-primary-700 font-medium flex items-center space-x-1 group/link">
+                            <span>View Project</span>
+                            <span class="material-symbols-outlined text-sm group-hover/link:translate-x-1 transition-transform">arrow_forward</span>
+                        </a>
+                        <a href="#" class="text-surface-600 hover:text-surface-700 font-medium flex items-center space-x-1">
+                            <span class="material-symbols-outlined text-sm">code</span>
+                            <span>GitHub</span>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
         
-        <div class="text-center mt-12">
-            <a href="{% url 'portfolio:portfolio_list' %}" class="bg-primary-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-primary-700 transition-colors">
-                View All Projects
+        <div class="text-center mt-16">
+            <a href="{% url 'portfolio:portfolio_list' %}" class="material-button bg-primary-600 text-white px-10 py-4 rounded-material-lg text-lg font-semibold hover:bg-primary-700 hover:shadow-material-4 transition-all duration-300 flex items-center justify-center space-x-3 mx-auto w-fit group">
+                <span>View All Projects</span>
+                <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
             </a>
         </div>
     </div>
 </section>
 
-<!-- Latest Blog Posts Section -->
-<section class="py-20 bg-gray-50">
+<!-- Latest Blog Posts Section with Material Design -->
+<section class="py-24 bg-surface-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Latest Thoughts</h2>
-            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-                Insights on technology, engineering, and the future of software development.
+        <div class="text-center mb-20">
+            <div class="flex items-center justify-center mb-6">
+                <span class="material-symbols-outlined text-4xl text-primary-500 mr-3">article</span>
+                <h2 class="headline-large text-surface-900">Latest Thoughts</h2>
+            </div>
+            <p class="body-large text-surface-600 max-w-3xl mx-auto">
+                Insights on technology, engineering, and the future of software development from the frontlines of innovation.
             </p>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                <div class="h-48 bg-gradient-to-br from-purple-400 to-purple-600"></div>
-                <div class="p-6">
-                    <div class="flex items-center text-sm text-gray-500 mb-2">
-                        <span>Technical</span>
-                        <span class="mx-2">•</span>
-                        <time>Dec 15, 2024</time>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            <article class="material-card shadow-material-2 overflow-hidden hover:shadow-material-4 group">
+                <div class="relative h-56 bg-gradient-to-br from-purple-400 to-purple-600 overflow-hidden">
+                    <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+                    <div class="absolute top-4 left-4">
+                        <div class="px-3 py-1.5 bg-white bg-opacity-90 rounded-material text-sm font-medium text-purple-700 backdrop-blur-sm">
+                            Technical Deep Dive
+                        </div>
                     </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Building Scalable Web Applications</h3>
-                    <p class="text-gray-600 mb-4">Exploring modern approaches to building web applications that can handle millions of users...</p>
-                    <a href="#" class="text-primary-600 hover:text-primary-700 font-medium">Read More</a>
+                    <div class="absolute bottom-4 right-4">
+                        <div class="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                            <span class="material-symbols-outlined text-white">trending_up</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center text-sm text-surface-500 mb-3">
+                        <span class="material-symbols-outlined text-sm mr-1">schedule</span>
+                        <time>Dec 15, 2024</time>
+                        <span class="mx-3">•</span>
+                        <span class="material-symbols-outlined text-sm mr-1">visibility</span>
+                        <span>2.4k views</span>
+                    </div>
+                    <h3 class="headline-medium text-surface-900 mb-3 group-hover:text-primary-600 transition-colors">Building Scalable Web Applications</h3>
+                    <p class="body-large text-surface-600 mb-6 leading-relaxed">Exploring modern approaches to building web applications that can handle millions of users with advanced caching strategies and microservices architecture...</p>
+                    <div class="flex items-center justify-between">
+                        <a href="#" class="text-primary-600 hover:text-primary-700 font-medium flex items-center space-x-1 group/link">
+                            <span>Read More</span>
+                            <span class="material-symbols-outlined text-sm group-hover/link:translate-x-1 transition-transform">arrow_forward</span>
+                        </a>
+                        <div class="flex items-center space-x-4 text-surface-400">
+                            <button class="hover:text-primary-500 transition-colors">
+                                <span class="material-symbols-outlined">favorite_border</span>
+                            </button>
+                            <button class="hover:text-primary-500 transition-colors">
+                                <span class="material-symbols-outlined">share</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </article>
             
-            <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                <div class="h-48 bg-gradient-to-br from-orange-400 to-orange-600"></div>
-                <div class="p-6">
-                    <div class="flex items-center text-sm text-gray-500 mb-2">
-                        <span>Industry</span>
-                        <span class="mx-2">•</span>
-                        <time>Dec 10, 2024</time>
+            <article class="material-card shadow-material-2 overflow-hidden hover:shadow-material-4 group">
+                <div class="relative h-56 bg-gradient-to-br from-orange-400 to-orange-600 overflow-hidden">
+                    <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+                    <div class="absolute top-4 left-4">
+                        <div class="px-3 py-1.5 bg-white bg-opacity-90 rounded-material text-sm font-medium text-orange-700 backdrop-blur-sm">
+                            Industry Insights
+                        </div>
                     </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">The Future of AI in Software Development</h3>
-                    <p class="text-gray-600 mb-4">How artificial intelligence is transforming the way we write, test, and deploy code...</p>
-                    <a href="#" class="text-primary-600 hover:text-primary-700 font-medium">Read More</a>
+                    <div class="absolute bottom-4 right-4">
+                        <div class="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                            <span class="material-symbols-outlined text-white">psychology</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center text-sm text-surface-500 mb-3">
+                        <span class="material-symbols-outlined text-sm mr-1">schedule</span>
+                        <time>Dec 10, 2024</time>
+                        <span class="mx-3">•</span>
+                        <span class="material-symbols-outlined text-sm mr-1">visibility</span>
+                        <span>3.1k views</span>
+                    </div>
+                    <h3 class="headline-medium text-surface-900 mb-3 group-hover:text-primary-600 transition-colors">The Future of AI in Software Development</h3>
+                    <p class="body-large text-surface-600 mb-6 leading-relaxed">How artificial intelligence is transforming the way we write, test, and deploy code, with practical examples and real-world implementations...</p>
+                    <div class="flex items-center justify-between">
+                        <a href="#" class="text-primary-600 hover:text-primary-700 font-medium flex items-center space-x-1 group/link">
+                            <span>Read More</span>
+                            <span class="material-symbols-outlined text-sm group-hover/link:translate-x-1 transition-transform">arrow_forward</span>
+                        </a>
+                        <div class="flex items-center space-x-4 text-surface-400">
+                            <button class="hover:text-primary-500 transition-colors">
+                                <span class="material-symbols-outlined">favorite_border</span>
+                            </button>
+                            <button class="hover:text-primary-500 transition-colors">
+                                <span class="material-symbols-outlined">share</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </article>
         </div>
         
-        <div class="text-center mt-12">
-            <a href="{% url 'blog:blog_list' %}" class="bg-primary-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-primary-700 transition-colors">
-                Read All Posts
+        <div class="text-center mt-16">
+            <a href="{% url 'blog:blog_list' %}" class="material-button bg-primary-600 text-white px-10 py-4 rounded-material-lg text-lg font-semibold hover:bg-primary-700 hover:shadow-material-4 transition-all duration-300 flex items-center justify-center space-x-3 mx-auto w-fit group">
+                <span>Read All Posts</span>
+                <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
             </a>
         </div>
     </div>
 </section>
 
-<!-- Call to Action Section -->
-<section class="py-20 bg-primary-600">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Let's Work Together</h2>
-        <p class="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
-            I'm always interested in new opportunities and collaborations. Let's discuss how we can create something amazing together.
+<!-- Call to Action Section with Material Design -->
+<section class="py-24 bg-gradient-to-br from-primary-600 via-primary-700 to-secondary-600 relative overflow-hidden">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-10">
+        <div class="hero-pattern h-full w-full"></div>
+    </div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+        <div class="mb-8">
+            <span class="material-symbols-outlined text-6xl text-white mb-4 block">handshake</span>
+        </div>
+        <h2 class="display-medium text-white mb-6">Let's Work Together</h2>
+        <p class="body-large text-primary-100 mb-12 max-w-3xl mx-auto leading-relaxed">
+            I'm always interested in new opportunities and collaborations. Whether you have a project in mind, need technical consultation, or want to discuss innovative solutions, let's create something amazing together.
         </p>
-        <a href="{% url 'core:contact' %}" class="bg-white text-primary-600 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors">
-            Get In Touch
-        </a>
+        
+        <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <a href="{% url 'core:contact' %}" class="material-button bg-white text-primary-600 px-10 py-4 rounded-material-lg text-lg font-semibold hover:bg-surface-100 hover:shadow-material-4 transition-all duration-300 flex items-center space-x-3 group">
+                <span class="material-symbols-outlined group-hover:scale-110 transition-transform">contact_mail</span>
+                <span>Get In Touch</span>
+            </a>
+            
+            <a href="{% url 'portfolio:portfolio_list' %}" class="material-button border-2 border-white text-white px-10 py-4 rounded-material-lg text-lg font-semibold hover:bg-white hover:text-primary-600 transition-all duration-300 flex items-center space-x-3 group">
+                <span class="material-symbols-outlined group-hover:scale-110 transition-transform">work</span>
+                <span>View Portfolio</span>
+            </a>
+        </div>
+        
+        <!-- Stats Section -->
+        <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="text-center">
+                <div class="text-4xl font-bold text-white mb-2">50+</div>
+                <div class="text-primary-100">Projects Completed</div>
+            </div>
+            <div class="text-center">
+                <div class="text-4xl font-bold text-white mb-2">5+</div>
+                <div class="text-primary-100">Years Experience</div>
+            </div>
+            <div class="text-center">
+                <div class="text-4xl font-bold text-white mb-2">100%</div>
+                <div class="text-primary-100">Client Satisfaction</div>
+            </div>
+        </div>
     </div>
 </section>
 {% endblock %}
