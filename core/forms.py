@@ -15,19 +15,19 @@ class ContactForm(forms.ModelForm):
         fields = ['name', 'email', 'subject', 'message']
         widgets = {
             'name': forms.TextInput(attrs={
-                'class': 'form-control',
+                'class': 'block w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-primary-500 focus:ring-primary-500',
                 'placeholder': 'Your Name'
             }),
             'email': forms.EmailInput(attrs={
-                'class': 'form-control',
+                'class': 'block w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-primary-500 focus:ring-primary-500',
                 'placeholder': 'your.email@example.com'
             }),
             'subject': forms.TextInput(attrs={
-                'class': 'form-control',
+                'class': 'block w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-primary-500 focus:ring-primary-500',
                 'placeholder': 'Subject'
             }),
             'message': forms.Textarea(attrs={
-                'class': 'form-control',
+                'class': 'block w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-primary-500 focus:ring-primary-500',
                 'rows': 5,
                 'placeholder': 'Your message...'
             }),
