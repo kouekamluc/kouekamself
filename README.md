@@ -27,7 +27,7 @@ A comprehensive, professional personal website built with Django, featuring a mo
 
 ## 🛠 Technology Stack
 
-- **Backend**: Django 4.2.7 (Latest LTS)
+- **Backend**: Django 4.2 LTS (Long-Term Support)
 - **Frontend**: Django Templates + Tailwind CSS
 - **Database**: SQLite (development) / PostgreSQL (production ready)
 - **Styling**: Tailwind CSS via CDN
@@ -148,6 +148,18 @@ personal-website/
 ### Typography
 - **Font**: Inter (Google Fonts)
 - **Fallback**: System fonts for performance
+
+### Why Tailwind CSS (and no heavy JS framework)
+
+Tailwind CSS integrates cleanly with Django templates and supports a utility-first
+workflow that keeps styling close to markup without imposing component build steps.
+This fits the "SSR-first, no heavy JS framework" constraint by:
+- Eliminating the need for React/Vue tooling and large JS bundles
+- Enabling rapid, consistent design directly in server-rendered templates
+- Preserving excellent Lighthouse scores with minimal CSS shipped via CDN
+
+We rely on vanilla JavaScript for small enhancements (menu toggle, newsletter AJAX),
+keeping interactivity lightweight and localized.
 
 ### Components
 - Responsive navigation with mobile menu

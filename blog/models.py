@@ -1,5 +1,8 @@
 from django.db import models
 from django.utils.text import slugify
+from django.utils.safestring import mark_safe
+import markdown
+import bleach
 
 
 class BlogPost(models.Model):
@@ -33,3 +36,41 @@ class BlogPost(models.Model):
         if self.tags:
             return [tag.strip() for tag in self.tags.split(',')]
         return []
+
+    @property
+    def rendered_content(self):
+        """Return sanitized HTML rendered from Markdown content.
+
+        Uses python-markdown to convert Markdown to HTML and bleach to sanitize
+        the resulting HTML to prevent XSS. The returned value is marked safe
+        because it has been sanitized.
+        """
+        # Convert markdown to HTML
+        html = markdown.markdown(
+            self.content or "",
+            extensions=[
+                "extra",  # tables, fenced_code, etc.
+            ],
+            output_format="html5",
+        )
+
+        # Define sanitization policy
+        allowed_tags = [
+            "p", "pre", "code", "blockquote", "hr",
+            "ul", "ol", "li",
+            "strong", "em", "b", "i", "u", "s",
+            "a", "h1", "h2", "h3", "h4", "h5", "h6",
+        ]
+        allowed_attributes = {
+            "a": ["href", "title", "rel"],
+        }
+        allowed_protocols = ["http", "https", "mailto"]
+
+        cleaned = bleach.clean(
+            html,
+            tags=allowed_tags,
+            attributes=allowed_attributes,
+            protocols=allowed_protocols,
+            strip=True,
+        )
+        return mark_safe(cleaned)
