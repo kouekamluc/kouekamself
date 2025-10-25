@@ -5,42 +5,42 @@
 
 {% block content %}
 <!-- Hero Section -->
-<section class="md-hero-gradient" style="padding: 80px 0;">
-    <div style="max-width: 1200px; margin: 0 auto; padding: 0 16px;">
-        <div style="display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center;">
-            <div class="md-animate-fade-in-up">
-                <h1 class="md-display-large" style="margin-bottom: 24px; color: var(--md-sys-color-on-surface);">
+<section class="bg-gradient-to-br from-primary-50 to-purple-50 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="animate-fade-in-up">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
                     {{ project.title }}
                 </h1>
-                <p class="md-title-large" style="margin-bottom: 32px; color: var(--md-sys-color-on-surface-variant);">
+                <p class="text-xl mb-8 text-gray-600">
                     {{ project.short_description }}
                 </p>
                 
-                <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px;">
+                <div class="flex flex-wrap gap-2 mb-8">
                     {% for tech in project.tech_list %}
-                        <span class="md-chip md-chip-primary">{{ tech }}</span>
+                        <span class="chip chip-primary">{{ tech }}</span>
                     {% endfor %}
                 </div>
                 
-                <div style="display: flex; flex-direction: column; gap: 16px;">
+                <div class="flex flex-col sm:flex-row gap-4">
                     {% if project.live_url %}
-                        <a href="{{ project.live_url }}" target="_blank" class="md-button md-button-filled" style="padding: 12px 32px; font-size: 16px; width: 100%; max-width: 250px;">
+                        <a href="{{ project.live_url }}" target="_blank" class="btn-primary w-full sm:w-auto">
                             View Live Project
                         </a>
                     {% endif %}
                     {% if project.github_url %}
-                        <a href="{{ project.github_url }}" target="_blank" class="md-button md-button-outlined" style="padding: 12px 32px; font-size: 16px; width: 100%; max-width: 250px;">
+                        <a href="{{ project.github_url }}" target="_blank" class="btn-outline w-full sm:w-auto">
                             View Source Code
                         </a>
                     {% endif %}
                 </div>
             </div>
             
-            <div style="text-align: center;" class="md-animate-fade-in-up">
+            <div class="text-center animate-fade-in-up">
                 {% if project.featured_image %}
-                    <img src="{{ project.featured_image.url }}" alt="{{ project.title }}" style="width: 100%; height: 384px; object-fit: cover; border-radius: 12px; box-shadow: 0px 4px 8px 3px rgba(0, 0, 0, 0.15), 0px 1px 3px 0px rgba(0, 0, 0, 0.30);">
+                    <img src="{{ project.featured_image.url }}" alt="{{ project.title }}" class="w-full h-96 object-cover rounded-xl shadow-2xl">
                 {% else %}
-                    <div style="width: 100%; height: 384px; background: linear-gradient(135deg, var(--md-sys-color-primary), var(--md-sys-color-tertiary)); border-radius: 12px; box-shadow: 0px 4px 8px 3px rgba(0, 0, 0, 0.15), 0px 1px 3px 0px rgba(0, 0, 0, 0.30);"></div>
+                    <div class="w-full h-96 bg-gradient-to-br from-primary-500 to-purple-600 rounded-xl shadow-2xl"></div>
                 {% endif %}
             </div>
         </div>
@@ -117,7 +117,7 @@
             <div class="lg:col-span-1">
                 <div class="sticky top-8">
                     <!-- Project Info -->
-                    <div class="bg-gray-50 rounded-lg p-6 mb-8">
+                    <div class="card mb-8">
                         <h3 class="text-lg font-semibold text-gray-900 mb-4">Project Details</h3>
                         <div class="space-y-4">
                             <div>
@@ -129,9 +129,7 @@
                                 <h4 class="font-medium text-gray-900">Technologies</h4>
                                 <div class="flex flex-wrap gap-2 mt-2">
                                     {% for tech in project.tech_list %}
-                                        <span class="px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full">
-                                            {{ tech }}
-                                        </span>
+                                        <span class="chip chip-primary">{{ tech }}</span>
                                     {% endfor %}
                                 </div>
                             </div>
@@ -158,7 +156,7 @@
                     
                     <!-- Related Projects -->
                     {% if related_projects %}
-                        <div class="bg-gray-50 rounded-lg p-6">
+                        <div class="card">
                             <h3 class="text-lg font-semibold text-gray-900 mb-4">Related Projects</h3>
                             <div class="space-y-4">
                                 {% for related_project in related_projects %}
@@ -193,7 +191,7 @@
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
             {% for tech in project.tech_list %}
                 <div class="text-center">
-                    <div class="bg-white rounded-lg p-6 shadow-lg mb-4">
+                    <div class="card mb-4">
                         <div class="text-2xl font-bold text-primary-600">{{ tech }}</div>
                     </div>
                     <p class="text-sm text-gray-600">{{ tech }}</p>
@@ -204,7 +202,7 @@
 </section>
 
 <!-- Call to Action -->
-<section class="py-20 bg-primary-600">
+<section class="py-20 bg-gradient-to-r from-primary-600 to-purple-600">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Like What You See?</h2>
         <p class="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
@@ -221,11 +219,3 @@
     </div>
 </section>
 {% endblock %}
-
-
-
-
-
-
-
-
