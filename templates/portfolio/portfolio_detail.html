@@ -5,42 +5,42 @@
 
 {% block content %}
 <!-- Hero Section -->
-<section class="md-hero-gradient" style="padding: 80px 0;">
-    <div style="max-width: 1200px; margin: 0 auto; padding: 0 16px;">
-        <div style="display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center;">
-            <div class="md-animate-fade-in-up">
-                <h1 class="md-display-large" style="margin-bottom: 24px; color: var(--md-sys-color-on-surface);">
+<section class="py-20 bg-gradient-to-br from-primary-50 to-secondary-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="animate-fade-in-up">
+                <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
                     {{ project.title }}
                 </h1>
-                <p class="md-title-large" style="margin-bottom: 32px; color: var(--md-sys-color-on-surface-variant);">
-                    {{ project.short_description }}
+                <p class="text-xl text-gray-600 mb-8">
+                    {{ project.description }}
                 </p>
                 
-                <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px;">
+                <div class="flex flex-wrap gap-2 mb-8">
                     {% for tech in project.tech_list %}
-                        <span class="md-chip md-chip-primary">{{ tech }}</span>
+                        <span class="px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full">{{ tech }}</span>
                     {% endfor %}
                 </div>
                 
-                <div style="display: flex; flex-direction: column; gap: 16px;">
+                <div class="flex flex-col sm:flex-row gap-4">
                     {% if project.live_url %}
-                        <a href="{{ project.live_url }}" target="_blank" class="md-button md-button-filled" style="padding: 12px 32px; font-size: 16px; width: 100%; max-width: 250px;">
+                        <a href="{{ project.live_url }}" target="_blank" class="bg-primary-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-primary-700 transition-colors text-center">
                             View Live Project
                         </a>
                     {% endif %}
                     {% if project.github_url %}
-                        <a href="{{ project.github_url }}" target="_blank" class="md-button md-button-outlined" style="padding: 12px 32px; font-size: 16px; width: 100%; max-width: 250px;">
+                        <a href="{{ project.github_url }}" target="_blank" class="border-2 border-primary-600 text-primary-600 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-primary-600 hover:text-white transition-colors text-center">
                             View Source Code
                         </a>
                     {% endif %}
                 </div>
             </div>
             
-            <div style="text-align: center;" class="md-animate-fade-in-up">
+            <div class="text-center animate-fade-in-up">
                 {% if project.featured_image %}
-                    <img src="{{ project.featured_image.url }}" alt="{{ project.title }}" style="width: 100%; height: 384px; object-fit: cover; border-radius: 12px; box-shadow: 0px 4px 8px 3px rgba(0, 0, 0, 0.15), 0px 1px 3px 0px rgba(0, 0, 0, 0.30);">
+                    <img src="{{ project.featured_image.url }}" alt="{{ project.title }}" class="w-full h-96 object-cover rounded-lg shadow-xl">
                 {% else %}
-                    <div style="width: 100%; height: 384px; background: linear-gradient(135deg, var(--md-sys-color-primary), var(--md-sys-color-tertiary)); border-radius: 12px; box-shadow: 0px 4px 8px 3px rgba(0, 0, 0, 0.15), 0px 1px 3px 0px rgba(0, 0, 0, 0.30);"></div>
+                    <div class="w-full h-96 bg-gradient-to-br from-primary-500 to-purple-600 rounded-lg shadow-xl"></div>
                 {% endif %}
             </div>
         </div>
@@ -49,183 +49,122 @@
 
 <!-- Project Details Section -->
 <section class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            <!-- Main Content -->
-            <div class="lg:col-span-2">
-                <h2 class="text-3xl font-bold text-gray-900 mb-8">Project Overview</h2>
-                <div class="prose prose-lg max-w-none text-gray-800 leading-relaxed">
-                    {{ project.description|linebreaks }}
-                </div>
-                
-                <!-- Project Features -->
-                <div class="mt-12">
-                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Key Features</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0">
-                                <svg class="w-6 h-6 text-primary-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                </svg>
-                            </div>
-                            <div class="ml-3">
-                                <h4 class="text-lg font-semibold text-gray-900">Responsive Design</h4>
-                                <p class="text-gray-600">Optimized for all devices and screen sizes</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0">
-                                <svg class="w-6 h-6 text-primary-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                </svg>
-                            </div>
-                            <div class="ml-3">
-                                <h4 class="text-lg font-semibold text-gray-900">High Performance</h4>
-                                <p class="text-gray-600">Fast loading times and optimized user experience</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0">
-                                <svg class="w-6 h-6 text-primary-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                </svg>
-                            </div>
-                            <div class="ml-3">
-                                <h4 class="text-lg font-semibold text-gray-900">Scalable Architecture</h4>
-                                <p class="text-gray-600">Built to handle growth and increased traffic</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0">
-                                <svg class="w-6 h-6 text-primary-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                </svg>
-                            </div>
-                            <div class="ml-3">
-                                <h4 class="text-lg font-semibold text-gray-900">Modern Tech Stack</h4>
-                                <p class="text-gray-600">Using the latest technologies and best practices</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="animate-fade-in-up">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8">Project Overview</h2>
+            
+            <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+                {{ project.content|linebreaks }}
             </div>
             
-            <!-- Sidebar -->
-            <div class="lg:col-span-1">
-                <div class="sticky top-8">
-                    <!-- Project Info -->
-                    <div class="bg-gray-50 rounded-lg p-6 mb-8">
-                        <h3 class="text-lg font-semibold text-gray-900 mb-4">Project Details</h3>
-                        <div class="space-y-4">
-                            <div>
-                                <h4 class="font-medium text-gray-900">Created</h4>
-                                <p class="text-gray-600">{{ project.created_at|date:"F Y" }}</p>
-                            </div>
-                            
-                            <div>
-                                <h4 class="font-medium text-gray-900">Technologies</h4>
-                                <div class="flex flex-wrap gap-2 mt-2">
-                                    {% for tech in project.tech_list %}
-                                        <span class="px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full">
-                                            {{ tech }}
-                                        </span>
-                                    {% endfor %}
-                                </div>
-                            </div>
-                            
-                            {% if project.live_url %}
-                                <div>
-                                    <h4 class="font-medium text-gray-900">Live Demo</h4>
-                                    <a href="{{ project.live_url }}" target="_blank" class="text-primary-600 hover:text-primary-700 text-sm">
-                                        {{ project.live_url|truncatechars:30 }}
-                                    </a>
-                                </div>
-                            {% endif %}
-                            
-                            {% if project.github_url %}
-                                <div>
-                                    <h4 class="font-medium text-gray-900">Source Code</h4>
-                                    <a href="{{ project.github_url }}" target="_blank" class="text-primary-600 hover:text-primary-700 text-sm">
-                                        View on GitHub
-                                    </a>
-                                </div>
-                            {% endif %}
-                        </div>
+            {% if project.challenges %}
+                <div class="mt-12">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Challenges & Solutions</h3>
+                    <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+                        {{ project.challenges|linebreaks }}
                     </div>
-                    
-                    <!-- Related Projects -->
-                    {% if related_projects %}
-                        <div class="bg-gray-50 rounded-lg p-6">
-                            <h3 class="text-lg font-semibold text-gray-900 mb-4">Related Projects</h3>
-                            <div class="space-y-4">
-                                {% for related_project in related_projects %}
-                                    <div>
-                                        <h4 class="font-medium text-gray-900 mb-1">
-                                            <a href="{% url 'portfolio:portfolio_detail' related_project.slug %}" class="hover:text-primary-600 transition-colors">
-                                                {{ related_project.title }}
-                                            </a>
-                                        </h4>
-                                        <p class="text-sm text-gray-600">{{ related_project.short_description|truncatewords:10 }}</p>
-                                    </div>
-                                {% endfor %}
-                            </div>
-                        </div>
-                    {% endif %}
                 </div>
-            </div>
+            {% endif %}
+            
+            {% if project.results %}
+                <div class="mt-12">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Results & Impact</h3>
+                    <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+                        {{ project.results|linebreaks }}
+                    </div>
+                </div>
+            {% endif %}
         </div>
     </div>
 </section>
 
-<!-- Technology Stack Section -->
+<!-- Technical Details Section -->
 <section class="py-20 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Technology Stack</h2>
+        <div class="text-center mb-16 animate-fade-in-up">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Technical Implementation</h2>
             <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-                The technologies and tools used to build this project.
+                Technologies, tools, and methodologies used in this project.
             </p>
         </div>
         
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {% for tech in project.tech_list %}
-                <div class="text-center">
-                    <div class="bg-white rounded-lg p-6 shadow-lg mb-4">
-                        <div class="text-2xl font-bold text-primary-600">{{ tech }}</div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-white rounded-lg shadow-lg p-6 animate-fade-in-up">
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">Technologies Used</h3>
+                <div class="flex flex-wrap gap-2">
+                    {% for tech in project.tech_list %}
+                        <span class="px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full">{{ tech }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            {% if project.live_url %}
+                <div class="bg-white rounded-lg shadow-lg p-6 animate-fade-in-up">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Live Demo</h3>
+                    <p class="text-gray-600 mb-4">Experience the project in action</p>
+                    <a href="{{ project.live_url }}" target="_blank" class="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors">
+                        Visit Site
+                    </a>
+                </div>
+            {% endif %}
+            
+            {% if project.github_url %}
+                <div class="bg-white rounded-lg shadow-lg p-6 animate-fade-in-up">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Source Code</h3>
+                    <p class="text-gray-600 mb-4">Explore the implementation details</p>
+                    <a href="{{ project.github_url }}" target="_blank" class="border-2 border-primary-600 text-primary-600 px-4 py-2 rounded-lg hover:bg-primary-600 hover:text-white transition-colors">
+                        View on GitHub
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<!-- Related Projects Section -->
+{% if related_projects %}
+<section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 animate-fade-in-up">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Related Projects</h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                Other projects that might interest you.
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {% for related_project in related_projects %}
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow animate-fade-in-up">
+                    {% if related_project.featured_image %}
+                        <img src="{{ related_project.featured_image.url }}" alt="{{ related_project.title }}" class="w-full h-48 object-cover">
+                    {% else %}
+                        <div class="h-48 bg-gradient-to-br from-primary-500 to-purple-600"></div>
+                    {% endif %}
+                    
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">{{ related_project.title }}</h3>
+                        <p class="text-gray-600 mb-4">{{ related_project.short_description }}</p>
+                        <a href="{% url 'portfolio:portfolio_detail' related_project.slug %}" class="text-primary-600 hover:text-primary-700 font-medium">
+                            Learn More →
+                        </a>
                     </div>
-                    <p class="text-sm text-gray-600">{{ tech }}</p>
                 </div>
             {% endfor %}
         </div>
     </div>
 </section>
+{% endif %}
 
 <!-- Call to Action -->
 <section class="py-20 bg-primary-600">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Like What You See?</h2>
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center animate-fade-in-up">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Interested in Similar Work?</h2>
         <p class="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
-            I'm always interested in new opportunities and collaborations. Let's discuss how we can work together.
+            Let's discuss how I can help bring your project ideas to life.
         </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="{% url 'core:contact' %}" class="bg-white text-primary-600 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors">
-                Get In Touch
-            </a>
-            <a href="{% url 'portfolio:portfolio_list' %}" class="border-2 border-white text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-white hover:text-primary-600 transition-colors">
-                View More Projects
-            </a>
-        </div>
+        <a href="{% url 'core:contact' %}" class="bg-white text-primary-600 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors">
+            Get In Touch
+        </a>
     </div>
 </section>
 {% endblock %}
-
-
-
-
-
-
-
-

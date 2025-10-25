@@ -5,27 +5,27 @@
 
 {% block content %}
 <!-- Hero Section -->
-<section class="md-hero-gradient" style="padding: 80px 0;">
-    <div style="max-width: 1200px; margin: 0 auto; padding: 0 16px;">
-        <div style="display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center;">
-            <div class="md-animate-fade-in-up">
-                <h1 class="md-display-large" style="margin-bottom: 24px; color: var(--md-sys-color-on-surface);">
-                    About <span class="md-gradient-text">Me</span>
+<section class="py-20 bg-gradient-to-br from-primary-50 to-secondary-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="animate-fade-in-up">
+                <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+                    About <span class="gradient-text">Me</span>
                 </h1>
-                <p class="md-title-large" style="margin-bottom: 32px; color: var(--md-sys-color-on-surface-variant);">
+                <p class="text-xl text-gray-600 mb-8">
                     I'm a passionate engineer with over 8 years of experience building scalable web applications and leading technical teams. My journey spans from startups to Fortune 500 companies, always focused on creating solutions that make a real impact.
                 </p>
-                <div style="display: flex; flex-direction: column; gap: 16px;">
-                    <a href="{% url 'core:contact' %}" class="md-button md-button-filled" style="padding: 12px 32px; font-size: 16px; width: 100%; max-width: 200px;">
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="{% url 'core:contact' %}" class="bg-primary-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-primary-700 transition-colors text-center">
                         Let's Connect
                     </a>
-                    <a href="{% url 'portfolio:portfolio_list' %}" class="md-button md-button-outlined" style="padding: 12px 32px; font-size: 16px; width: 100%; max-width: 200px;">
+                    <a href="{% url 'portfolio:portfolio_list' %}" class="border-2 border-primary-600 text-primary-600 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-primary-600 hover:text-white transition-colors text-center">
                         View My Work
                     </a>
                 </div>
             </div>
-            <div style="text-align: center;" class="md-animate-fade-in-up">
-                <img src="{% static 'images/about-photo.jpg' %}" alt="Your Name" style="width: 320px; height: 320px; border-radius: 12px; box-shadow: 0px 4px 8px 3px rgba(0, 0, 0, 0.15), 0px 1px 3px 0px rgba(0, 0, 0, 0.30); object-fit: cover; margin: 0 auto;">
+            <div class="text-center animate-fade-in-up">
+                <img src="{% static 'images/about-photo.jpg' %}" alt="Your Name" class="w-80 h-80 rounded-lg shadow-xl object-cover mx-auto">
             </div>
         </div>
     </div>
