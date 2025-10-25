@@ -1,0 +1,165 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home - Your Name{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-pattern bg-gradient-to-br from-primary-50 to-white py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <div class="mb-8">
+                <img src="{% static 'images/profile-photo.jpg' %}" alt="Your Name" class="w-32 h-32 rounded-full mx-auto shadow-lg object-cover">
+            </div>
+            <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+                Hi, I'm <span class="gradient-text">Your Name</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
+                Engineer, Speaker, and Technology Enthusiast building the future through innovative solutions and thought leadership.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="{% url 'portfolio:portfolio_list' %}" class="bg-primary-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-primary-700 transition-colors">
+                    View My Work
+                </a>
+                <a href="{% url 'core:contact' %}" class="border-2 border-primary-600 text-primary-600 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-primary-600 hover:text-white transition-colors">
+                    Get In Touch
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Projects Section -->
+<section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Featured Projects</h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                A showcase of my latest engineering work and innovative solutions.
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Project cards will be populated from the database -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                <div class="h-48 bg-gradient-to-br from-primary-400 to-primary-600"></div>
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Project Title</h3>
+                    <p class="text-gray-600 mb-4">Brief description of the project and its impact.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full">Python</span>
+                        <span class="px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full">Django</span>
+                        <span class="px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full">React</span>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-primary-600 hover:text-primary-700 font-medium">View Project</a>
+                        <a href="#" class="text-gray-600 hover:text-gray-700 font-medium">GitHub</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                <div class="h-48 bg-gradient-to-br from-secondary-400 to-secondary-600"></div>
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Another Project</h3>
+                    <p class="text-gray-600 mb-4">Another innovative solution that demonstrates technical expertise.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-secondary-100 text-secondary-800 text-sm rounded-full">JavaScript</span>
+                        <span class="px-3 py-1 bg-secondary-100 text-secondary-800 text-sm rounded-full">Node.js</span>
+                        <span class="px-3 py-1 bg-secondary-100 text-secondary-800 text-sm rounded-full">MongoDB</span>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-primary-600 hover:text-primary-700 font-medium">View Project</a>
+                        <a href="#" class="text-gray-600 hover:text-gray-700 font-medium">GitHub</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                <div class="h-48 bg-gradient-to-br from-green-400 to-green-600"></div>
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Third Project</h3>
+                    <p class="text-gray-600 mb-4">A third project showcasing diverse technical skills.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-green-100 text-green-800 text-sm rounded-full">Go</span>
+                        <span class="px-3 py-1 bg-green-100 text-green-800 text-sm rounded-full">Docker</span>
+                        <span class="px-3 py-1 bg-green-100 text-green-800 text-sm rounded-full">Kubernetes</span>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-primary-600 hover:text-primary-700 font-medium">View Project</a>
+                        <a href="#" class="text-gray-600 hover:text-gray-700 font-medium">GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-12">
+            <a href="{% url 'portfolio:portfolio_list' %}" class="bg-primary-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-primary-700 transition-colors">
+                View All Projects
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Latest Blog Posts Section -->
+<section class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Latest Thoughts</h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                Insights on technology, engineering, and the future of software development.
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                <div class="h-48 bg-gradient-to-br from-purple-400 to-purple-600"></div>
+                <div class="p-6">
+                    <div class="flex items-center text-sm text-gray-500 mb-2">
+                        <span>Technical</span>
+                        <span class="mx-2">•</span>
+                        <time>Dec 15, 2024</time>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Building Scalable Web Applications</h3>
+                    <p class="text-gray-600 mb-4">Exploring modern approaches to building web applications that can handle millions of users...</p>
+                    <a href="#" class="text-primary-600 hover:text-primary-700 font-medium">Read More</a>
+                </div>
+            </article>
+            
+            <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                <div class="h-48 bg-gradient-to-br from-orange-400 to-orange-600"></div>
+                <div class="p-6">
+                    <div class="flex items-center text-sm text-gray-500 mb-2">
+                        <span>Industry</span>
+                        <span class="mx-2">•</span>
+                        <time>Dec 10, 2024</time>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">The Future of AI in Software Development</h3>
+                    <p class="text-gray-600 mb-4">How artificial intelligence is transforming the way we write, test, and deploy code...</p>
+                    <a href="#" class="text-primary-600 hover:text-primary-700 font-medium">Read More</a>
+                </div>
+            </article>
+        </div>
+        
+        <div class="text-center mt-12">
+            <a href="{% url 'blog:blog_list' %}" class="bg-primary-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-primary-700 transition-colors">
+                Read All Posts
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action Section -->
+<section class="py-20 bg-primary-600">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Let's Work Together</h2>
+        <p class="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
+            I'm always interested in new opportunities and collaborations. Let's discuss how we can create something amazing together.
+        </p>
+        <a href="{% url 'core:contact' %}" class="bg-white text-primary-600 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors">
+            Get In Touch
+        </a>
+    </div>
+</section>
+{% endblock %}
+

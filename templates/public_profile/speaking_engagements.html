@@ -1,0 +1,276 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Speaking Engagements - Your Name{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="bg-gradient-to-br from-primary-50 to-white py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                Speaking <span class="gradient-text">Engagements</span>
+            </h1>
+            <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+                Sharing knowledge and insights at conferences, meetups, and industry events.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Speaking Engagements List -->
+<section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {% if engagements %}
+            <div class="space-y-8">
+                {% for engagement in engagements %}
+                    <div class="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition-shadow">
+                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                            <div class="lg:col-span-2">
+                                <div class="flex items-center mb-4">
+                                    <span class="px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full mr-4">
+                                        {{ engagement.get_event_type_display }}
+                                    </span>
+                                    <time class="text-gray-500">{{ engagement.event_date|date:"F d, Y" }}</time>
+                                </div>
+                                
+                                <h2 class="text-2xl font-bold text-gray-900 mb-3">{{ engagement.title }}</h2>
+                                
+                                <div class="flex items-center text-gray-600 mb-4">
+                                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    </svg>
+                                    {{ engagement.location }}
+                                </div>
+                                
+                                {% if engagement.description %}
+                                    <p class="text-gray-700 mb-6">{{ engagement.description }}</p>
+                                {% endif %}
+                                
+                                <div class="flex flex-wrap gap-4">
+                                    {% if engagement.slides_url %}
+                                        <a href="{{ engagement.slides_url }}" target="_blank" class="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors">
+                                            View Slides
+                                        </a>
+                                    {% endif %}
+                                    {% if engagement.video_url %}
+                                        <a href="{{ engagement.video_url }}" target="_blank" class="border-2 border-primary-600 text-primary-600 px-4 py-2 rounded-lg hover:bg-primary-600 hover:text-white transition-colors">
+                                            Watch Video
+                                        </a>
+                                    {% endif %}
+                                    {% if engagement.event_url %}
+                                        <a href="{{ engagement.event_url }}" target="_blank" class="text-primary-600 hover:text-primary-700 font-medium">
+                                            Event Details →
+                                        </a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+                            <div class="lg:col-span-1">
+                                <div class="bg-gray-50 rounded-lg p-6">
+                                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Event Details</h3>
+                                    <div class="space-y-3">
+                                        <div>
+                                            <p class="text-sm font-medium text-gray-900">Date</p>
+                                            <p class="text-gray-600">{{ engagement.event_date|date:"F d, Y" }}</p>
+                                        </div>
+                                        
+                                        <div>
+                                            <p class="text-sm font-medium text-gray-900">Location</p>
+                                            <p class="text-gray-600">{{ engagement.location }}</p>
+                                        </div>
+                                        
+                                        <div>
+                                            <p class="text-sm font-medium text-gray-900">Type</p>
+                                            <p class="text-gray-600">{{ engagement.get_event_type_display }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="text-center py-20">
+                <div class="text-gray-400 mb-4">
+                    <svg class="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">No speaking engagements yet</h3>
+                <p class="text-gray-600">Check back soon for upcoming events!</p>
+            </div>
+        {% endif %}
+    </div>
+</section>
+
+<!-- Speaking Topics Section -->
+<section class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Speaking Topics</h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                Topics I can speak about at conferences, meetups, and industry events.
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">Web Development</h3>
+                <ul class="space-y-2 text-gray-600">
+                    <li>• Modern JavaScript frameworks</li>
+                    <li>• Backend architecture patterns</li>
+                    <li>• API design best practices</li>
+                    <li>• Performance optimization</li>
+                    <li>• Testing strategies</li>
+                </ul>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">Cloud & DevOps</h3>
+                <ul class="space-y-2 text-gray-600">
+                    <li>• AWS and cloud architecture</li>
+                    <li>• Containerization strategies</li>
+                    <li>• CI/CD pipeline design</li>
+                    <li>• Infrastructure as Code</li>
+                    <li>• Monitoring and observability</li>
+                </ul>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">Engineering Leadership</h3>
+                <ul class="space-y-2 text-gray-600">
+                    <li>• Building high-performing teams</li>
+                    <li>• Technical decision making</li>
+                    <li>• Code review best practices</li>
+                    <li>• Mentoring developers</li>
+                    <li>• Technical debt management</li>
+                </ul>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">Technology Trends</h3>
+                <ul class="space-y-2 text-gray-600">
+                    <li>• AI in software development</li>
+                    <li>• Future of web technologies</li>
+                    <li>• Open source contributions</li>
+                    <li>• Industry best practices</li>
+                    <li>• Emerging technologies</li>
+                </ul>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">Career Development</h3>
+                <ul class="space-y-2 text-gray-600">
+                    <li>• Transitioning to senior roles</li>
+                    <li>• Building technical expertise</li>
+                    <li>• Networking in tech</li>
+                    <li>• Personal branding</li>
+                    <li>• Continuous learning</li>
+                </ul>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">Startup & Innovation</h3>
+                <ul class="space-y-2 text-gray-600">
+                    <li>• Building MVP products</li>
+                    <li>• Scaling technical teams</li>
+                    <li>• Technology choices for startups</li>
+                    <li>• Innovation in engineering</li>
+                    <li>• Rapid prototyping</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Booking Information Section -->
+<section class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Book a Speaking Engagement</h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                Interested in having me speak at your event? Let's discuss how I can contribute to your conference or meetup.
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-gray-50 rounded-lg p-8">
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">What I Offer</h3>
+                <ul class="space-y-3 text-gray-600">
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-primary-600 mt-1 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Technical talks on web development and cloud architecture
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-primary-600 mt-1 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Panel discussions and Q&A sessions
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-primary-600 mt-1 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Workshop facilitation and hands-on sessions
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-primary-600 mt-1 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Keynote presentations on technology trends
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="bg-gray-50 rounded-lg p-8">
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">Event Requirements</h3>
+                <ul class="space-y-3 text-gray-600">
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-primary-600 mt-1 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Minimum 2 weeks advance notice for preparation
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-primary-600 mt-1 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Technical setup requirements (projector, microphone, etc.)
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-primary-600 mt-1 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Travel arrangements for out-of-town events
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-primary-600 mt-1 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Event details and audience information
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="text-center mt-12">
+            <a href="{% url 'core:contact' %}" class="bg-primary-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-primary-700 transition-colors">
+                Request Speaking Engagement
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+
+
+
+
+
+
+

@@ -1,0 +1,217 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Portfolio - Your Name{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="bg-gradient-to-br from-primary-50 to-white py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                My <span class="gradient-text">Portfolio</span>
+            </h1>
+            <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+                A collection of projects that showcase my technical skills and passion for building innovative solutions.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Projects Section -->
+{% if featured_projects %}
+<section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Featured Projects</h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                Highlighted projects that demonstrate my expertise and impact.
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {% for project in featured_projects %}
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    {% if project.featured_image %}
+                        <img src="{{ project.featured_image.url }}" alt="{{ project.title }}" class="w-full h-64 object-cover">
+                    {% else %}
+                        <div class="h-64 bg-gradient-to-br from-primary-400 to-primary-600"></div>
+                    {% endif %}
+                    
+                    <div class="p-8">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-3">{{ project.title }}</h3>
+                        <p class="text-gray-600 mb-6">{{ project.description|truncatewords:30 }}</p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            {% for tech in project.tech_list %}
+                                <span class="px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full">
+                                    {{ tech }}
+                                </span>
+                            {% endfor %}
+                        </div>
+                        
+                        <div class="flex space-x-4">
+                            {% if project.live_url %}
+                                <a href="{{ project.live_url }}" target="_blank" class="bg-primary-600 text-white px-6 py-2 rounded-lg hover:bg-primary-700 transition-colors">
+                                    View Live
+                                </a>
+                            {% endif %}
+                            {% if project.github_url %}
+                                <a href="{{ project.github_url }}" target="_blank" class="border-2 border-primary-600 text-primary-600 px-6 py-2 rounded-lg hover:bg-primary-600 hover:text-white transition-colors">
+                                    GitHub
+                                </a>
+                            {% endif %}
+                            <a href="{% url 'portfolio:portfolio_detail' project.slug %}" class="text-primary-600 hover:text-primary-700 font-medium">
+                                Learn More →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- All Projects Section -->
+<section class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">All Projects</h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                Complete collection of my engineering work and technical projects.
+            </p>
+        </div>
+        
+        {% if projects %}
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {% for project in projects %}
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                        {% if project.featured_image %}
+                            <img src="{{ project.featured_image.url }}" alt="{{ project.title }}" class="w-full h-48 object-cover">
+                        {% else %}
+                            <div class="h-48 bg-gradient-to-br from-primary-400 to-primary-600"></div>
+                        {% endif %}
+                        
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">{{ project.title }}</h3>
+                            <p class="text-gray-600 mb-4">{{ project.short_description }}</p>
+                            
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                {% for tech in project.tech_list %}
+                                    <span class="px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full">
+                                        {{ tech }}
+                                    </span>
+                                {% endfor %}
+                            </div>
+                            
+                            <div class="flex space-x-4">
+                                {% if project.live_url %}
+                                    <a href="{{ project.live_url }}" target="_blank" class="text-primary-600 hover:text-primary-700 font-medium text-sm">
+                                        Live Demo
+                                    </a>
+                                {% endif %}
+                                {% if project.github_url %}
+                                    <a href="{{ project.github_url }}" target="_blank" class="text-gray-600 hover:text-gray-700 font-medium text-sm">
+                                        GitHub
+                                    </a>
+                                {% endif %}
+                                <a href="{% url 'portfolio:portfolio_detail' project.slug %}" class="text-primary-600 hover:text-primary-700 font-medium text-sm">
+                                    Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="text-center py-20">
+                <div class="text-gray-400 mb-4">
+                    <svg class="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">No projects yet</h3>
+                <p class="text-gray-600">Check back soon for new projects!</p>
+            </div>
+        {% endif %}
+    </div>
+</section>
+
+<!-- Skills Section -->
+<section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Technologies I Work With</h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                A comprehensive overview of the technologies and tools I use to build amazing solutions.
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
+            <div class="text-center">
+                <div class="bg-gray-100 rounded-lg p-6 mb-4">
+                    <div class="text-3xl font-bold text-primary-600">Python</div>
+                </div>
+                <p class="text-sm text-gray-600">Backend Development</p>
+            </div>
+            
+            <div class="text-center">
+                <div class="bg-gray-100 rounded-lg p-6 mb-4">
+                    <div class="text-3xl font-bold text-primary-600">Django</div>
+                </div>
+                <p class="text-sm text-gray-600">Web Framework</p>
+            </div>
+            
+            <div class="text-center">
+                <div class="bg-gray-100 rounded-lg p-6 mb-4">
+                    <div class="text-3xl font-bold text-primary-600">React</div>
+                </div>
+                <p class="text-sm text-gray-600">Frontend Library</p>
+            </div>
+            
+            <div class="text-center">
+                <div class="bg-gray-100 rounded-lg p-6 mb-4">
+                    <div class="text-3xl font-bold text-primary-600">AWS</div>
+                </div>
+                <p class="text-sm text-gray-600">Cloud Platform</p>
+            </div>
+            
+            <div class="text-center">
+                <div class="bg-gray-100 rounded-lg p-6 mb-4">
+                    <div class="text-3xl font-bold text-primary-600">Docker</div>
+                </div>
+                <p class="text-sm text-gray-600">Containerization</p>
+            </div>
+            
+            <div class="text-center">
+                <div class="bg-gray-100 rounded-lg p-6 mb-4">
+                    <div class="text-3xl font-bold text-primary-600">PostgreSQL</div>
+                </div>
+                <p class="text-sm text-gray-600">Database</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-20 bg-primary-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Interested in Working Together?</h2>
+        <p class="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
+            I'm always excited to take on new challenges and collaborate on innovative projects.
+        </p>
+        <a href="{% url 'core:contact' %}" class="bg-white text-primary-600 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors">
+            Let's Connect
+        </a>
+    </div>
+</section>
+{% endblock %}
+
+
+
+
+
+
+
+

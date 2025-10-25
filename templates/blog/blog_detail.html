@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ post.title }} - Your Name{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="bg-gradient-to-br from-primary-50 to-white py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <div class="flex items-center justify-center text-sm text-gray-500 mb-4">
+                <time datetime="{{ post.created_at|date:'Y-m-d' }}">{{ post.created_at|date:"M d, Y" }}</time>
+                {% if post.tag_list %}
+                    <span class="mx-2">•</span>
+                    <span>{{ post.tag_list|join:", " }}</span>
+                {% endif %}
+            </div>
+            
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                {{ post.title }}
+            </h1>
+            
+            {% if post.excerpt %}
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    {{ post.excerpt }}
+                </p>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<!-- Blog Post Content -->
+<section class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-12">
+            <!-- Main Content -->
+            <div class="lg:col-span-3">
+                <article class="prose prose-lg max-w-none">
+                    {% if post.featured_image %}
+                        <img src="{{ post.featured_image.url }}" alt="{{ post.title }}" class="w-full h-64 object-cover rounded-lg mb-8">
+                    {% endif %}
+                    
+                    <div class="text-gray-800 leading-relaxed">
+                        {{ post.content|linebreaks }}
+                    </div>
+                </article>
+                
+                <!-- Tags -->
+                {% if post.tag_list %}
+                    <div class="mt-8 pt-8 border-t border-gray-200">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">Tags</h3>
+                        <div class="flex flex-wrap gap-2">
+                            {% for tag in post.tag_list %}
+                                <span class="px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full">
+                                    {{ tag }}
+                                </span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+                
+                <!-- Social Sharing -->
+                <div class="mt-8 pt-8 border-t border-gray-200">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Share this post</h3>
+                    <div class="flex space-x-4">
+                        <a href="https://twitter.com/intent/tweet?text={{ post.title|urlencode }}&url={{ request.build_absolute_uri }}" target="_blank" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">
+                            Twitter
+                        </a>
+                        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ request.build_absolute_uri }}" target="_blank" class="bg-blue-700 text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition-colors">
+                            LinkedIn
+                        </a>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" target="_blank" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                            Facebook
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sidebar -->
+            <div class="lg:col-span-1">
+                <div class="sticky top-8">
+                    <!-- Author Info -->
+                    <div class="bg-gray-50 rounded-lg p-6 mb-8">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">About the Author</h3>
+                        <div class="flex items-center mb-4">
+                            <img src="{% static 'images/profile-photo.jpg' %}" alt="Your Name" class="w-12 h-12 rounded-full mr-4">
+                            <div>
+                                <h4 class="font-semibold text-gray-900">Your Name</h4>
+                                <p class="text-sm text-gray-600">Software Engineer</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-4">
+                            Passionate about building scalable web applications and sharing knowledge through writing and speaking.
+                        </p>
+                        <a href="{% url 'core:about' %}" class="text-primary-600 hover:text-primary-700 text-sm font-medium">
+                            Learn more →
+                        </a>
+                    </div>
+                    
+                    <!-- Related Posts -->
+                    {% if related_posts %}
+                        <div class="bg-gray-50 rounded-lg p-6">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-4">Related Posts</h3>
+                            <div class="space-y-4">
+                                {% for related_post in related_posts %}
+                                    <div>
+                                        <h4 class="font-medium text-gray-900 mb-1">
+                                            <a href="{% url 'blog:blog_detail' related_post.slug %}" class="hover:text-primary-600 transition-colors">
+                                                {{ related_post.title }}
+                                            </a>
+                                        </h4>
+                                        <p class="text-sm text-gray-600">{{ related_post.created_at|date:"M d, Y" }}</p>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-20 bg-primary-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Enjoyed this post?</h2>
+        <p class="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
+            Subscribe to my newsletter for more insights on technology and engineering.
+        </p>
+        <form class="newsletter-form max-w-md mx-auto">
+            <div class="flex">
+                <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-3 bg-white text-gray-900 border-0 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-primary-300">
+                <button type="submit" class="px-6 py-3 bg-primary-800 text-white rounded-r-lg hover:bg-primary-900 transition-colors font-semibold">
+                    Subscribe
+                </button>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}
+
+
+
+
+
+
+
+
