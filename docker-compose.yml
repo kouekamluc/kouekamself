@@ -3,16 +3,28 @@ version: '3.8'
 services:
   web:
     build: .
-    command: python manage.py runserver 0.0.0.0:8000
+    command: sh -c "python manage.py migrate && python manage.py populate_data && python manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/app
+      - static_volume:/app/staticfiles
+      - media_volume:/app/media
     ports:
       - "8000:8000"
     environment:
       - DEBUG=1
-      - SECRET_KEY=your-secret-key-here
-      - EMAIL_HOST_USER=your-email@example.com
-      - EMAIL_HOST_PASSWORD=your-email-password
+      - SECRET_KEY=django-insecure-dev-key-change-in-production
+      - ALLOWED_HOSTS=localhost,127.0.0.1
+      - EMAIL_HOST=smtp.gmail.com
+      - EMAIL_PORT=587
+      - EMAIL_USE_TLS=1
+      - EMAIL_HOST_USER=${EMAIL_HOST_USER:-your-email@example.com}
+      - EMAIL_HOST_PASSWORD=${EMAIL_HOST_PASSWORD:-your-email-password}
+    stdin_open: true
+    tty: true
+
+volumes:
+  static_volume:
+  media_volume:
 
 
 

@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static markdown_extras %}
 
 {% block title %}{{ post.title }} - Your Name{% endblock %}
 
@@ -40,8 +40,8 @@
                         <img src="{{ post.featured_image.url }}" alt="{{ post.title }}" class="w-full h-64 object-cover rounded-lg mb-8">
                     {% endif %}
                     
-                    <div class="text-gray-800 leading-relaxed">
-                        {{ post.content|linebreaks }}
+                    <div class="markdown-content text-gray-800 leading-relaxed">
+                        {{ post.content|markdown }}
                     </div>
                 </article>
                 
