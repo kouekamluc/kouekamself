@@ -5,42 +5,44 @@
 
 {% block content %}
 <!-- Hero Section -->
-<section class="md-hero-gradient" style="padding: 80px 0;">
-    <div style="max-width: 1200px; margin: 0 auto; padding: 0 16px;">
-        <div style="display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center;">
-            <div class="md-animate-fade-in-up">
-                <h1 class="md-display-large" style="margin-bottom: 24px; color: var(--md-sys-color-on-surface);">
+<section class="bg-gradient-to-br from-primary-50 to-white py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
                     {{ project.title }}
                 </h1>
-                <p class="md-title-large" style="margin-bottom: 32px; color: var(--md-sys-color-on-surface-variant);">
+                <p class="text-xl text-gray-600 mb-8">
                     {{ project.short_description }}
                 </p>
                 
-                <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px;">
+                <div class="flex flex-wrap gap-2 mb-8">
                     {% for tech in project.tech_list %}
-                        <span class="md-chip md-chip-primary">{{ tech }}</span>
+                        <span class="px-4 py-2 bg-primary-100 text-primary-800 text-sm rounded-full font-medium">
+                            {{ tech }}
+                        </span>
                     {% endfor %}
                 </div>
                 
-                <div style="display: flex; flex-direction: column; gap: 16px;">
+                <div class="flex flex-col sm:flex-row gap-4">
                     {% if project.live_url %}
-                        <a href="{{ project.live_url }}" target="_blank" class="md-button md-button-filled" style="padding: 12px 32px; font-size: 16px; width: 100%; max-width: 250px;">
+                        <a href="{{ project.live_url }}" target="_blank" class="bg-primary-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-primary-700 transition-colors">
                             View Live Project
                         </a>
                     {% endif %}
                     {% if project.github_url %}
-                        <a href="{{ project.github_url }}" target="_blank" class="md-button md-button-outlined" style="padding: 12px 32px; font-size: 16px; width: 100%; max-width: 250px;">
+                        <a href="{{ project.github_url }}" target="_blank" class="border-2 border-primary-600 text-primary-600 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-primary-600 hover:text-white transition-colors">
                             View Source Code
                         </a>
                     {% endif %}
                 </div>
             </div>
             
-            <div style="text-align: center;" class="md-animate-fade-in-up">
+            <div class="text-center lg:text-right">
                 {% if project.featured_image %}
-                    <img src="{{ project.featured_image.url }}" alt="{{ project.title }}" style="width: 100%; height: 384px; object-fit: cover; border-radius: 12px; box-shadow: 0px 4px 8px 3px rgba(0, 0, 0, 0.15), 0px 1px 3px 0px rgba(0, 0, 0, 0.30);">
+                    <img src="{{ project.featured_image.url }}" alt="{{ project.title }}" class="w-full h-96 object-cover rounded-lg shadow-2xl">
                 {% else %}
-                    <div style="width: 100%; height: 384px; background: linear-gradient(135deg, var(--md-sys-color-primary), var(--md-sys-color-tertiary)); border-radius: 12px; box-shadow: 0px 4px 8px 3px rgba(0, 0, 0, 0.15), 0px 1px 3px 0px rgba(0, 0, 0, 0.30);"></div>
+                    <div class="w-full h-96 bg-gradient-to-br from-primary-400 to-primary-600 rounded-lg shadow-2xl"></div>
                 {% endif %}
             </div>
         </div>
@@ -221,11 +223,3 @@
     </div>
 </section>
 {% endblock %}
-
-
-
-
-
-
-
-
