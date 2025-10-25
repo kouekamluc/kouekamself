@@ -6,100 +6,467 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Personal Website{% endblock %}</title>
     
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Custom Tailwind Configuration -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: {
-                            50: '#f0f9ff',
-                            100: '#e0f2fe',
-                            200: '#bae6fd',
-                            300: '#7dd3fc',
-                            400: '#38bdf8',
-                            500: '#0ea5e9',
-                            600: '#0284c7',
-                            700: '#0369a1',
-                            800: '#075985',
-                            900: '#0c4a6e',
-                        },
-                        secondary: {
-                            50: '#f8fafc',
-                            100: '#f1f5f9',
-                            200: '#e2e8f0',
-                            300: '#cbd5e1',
-                            400: '#94a3b8',
-                            500: '#64748b',
-                            600: '#475569',
-                            700: '#334155',
-                            800: '#1e293b',
-                            900: '#0f172a',
-                        }
-                    },
-                    fontFamily: {
-                        'sans': ['Inter', 'system-ui', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Material Design 3 (Material You) -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Custom CSS -->
+    <!-- Material Design 3 CSS -->
     <style>
-        .gradient-text {
-            background: linear-gradient(135deg, #0ea5e9, #3b82f6);
+        :root {
+            /* Material Design 3 Color Tokens */
+            --md-sys-color-primary: #6750A4;
+            --md-sys-color-on-primary: #FFFFFF;
+            --md-sys-color-primary-container: #EADDFF;
+            --md-sys-color-on-primary-container: #21005D;
+            
+            --md-sys-color-secondary: #625B71;
+            --md-sys-color-on-secondary: #FFFFFF;
+            --md-sys-color-secondary-container: #E8DEF8;
+            --md-sys-color-on-secondary-container: #1D192B;
+            
+            --md-sys-color-tertiary: #7D5260;
+            --md-sys-color-on-tertiary: #FFFFFF;
+            --md-sys-color-tertiary-container: #FFD8E4;
+            --md-sys-color-on-tertiary-container: #31111D;
+            
+            --md-sys-color-error: #BA1A1A;
+            --md-sys-color-on-error: #FFFFFF;
+            --md-sys-color-error-container: #FFDAD6;
+            --md-sys-color-on-error-container: #410002;
+            
+            --md-sys-color-surface: #FFFBFE;
+            --md-sys-color-on-surface: #1C1B1F;
+            --md-sys-color-surface-variant: #E7E0EC;
+            --md-sys-color-on-surface-variant: #49454F;
+            
+            --md-sys-color-outline: #79747E;
+            --md-sys-color-outline-variant: #CAC4D0;
+            
+            --md-sys-color-shadow: #000000;
+            --md-sys-color-scrim: #000000;
+            
+            /* Surface Tint */
+            --md-sys-color-surface-tint: #6750A4;
+            
+            /* Elevation */
+            --md-sys-elevation-level0: 0px;
+            --md-sys-elevation-level1: 1px;
+            --md-sys-elevation-level2: 3px;
+            --md-sys-elevation-level3: 6px;
+            --md-sys-elevation-level4: 8px;
+            --md-sys-elevation-level5: 12px;
+            
+            /* Typography */
+            --md-sys-typescale-display-large-font: 'Roboto', sans-serif;
+            --md-sys-typescale-display-large-size: 57px;
+            --md-sys-typescale-display-large-line-height: 64px;
+            --md-sys-typescale-display-large-weight: 400;
+            
+            --md-sys-typescale-display-medium-font: 'Roboto', sans-serif;
+            --md-sys-typescale-display-medium-size: 45px;
+            --md-sys-typescale-display-medium-line-height: 52px;
+            --md-sys-typescale-display-medium-weight: 400;
+            
+            --md-sys-typescale-headline-large-font: 'Roboto', sans-serif;
+            --md-sys-typescale-headline-large-size: 32px;
+            --md-sys-typescale-headline-large-line-height: 40px;
+            --md-sys-typescale-headline-large-weight: 400;
+            
+            --md-sys-typescale-headline-medium-font: 'Roboto', sans-serif;
+            --md-sys-typescale-headline-medium-size: 28px;
+            --md-sys-typescale-headline-medium-line-height: 36px;
+            --md-sys-typescale-headline-medium-weight: 400;
+            
+            --md-sys-typescale-title-large-font: 'Roboto', sans-serif;
+            --md-sys-typescale-title-large-size: 22px;
+            --md-sys-typescale-title-large-line-height: 28px;
+            --md-sys-typescale-title-large-weight: 400;
+            
+            --md-sys-typescale-title-medium-font: 'Roboto', sans-serif;
+            --md-sys-typescale-title-medium-size: 16px;
+            --md-sys-typescale-title-medium-line-height: 24px;
+            --md-sys-typescale-title-medium-weight: 500;
+            
+            --md-sys-typescale-body-large-font: 'Roboto', sans-serif;
+            --md-sys-typescale-body-large-size: 16px;
+            --md-sys-typescale-body-large-line-height: 24px;
+            --md-sys-typescale-body-large-weight: 400;
+            
+            --md-sys-typescale-body-medium-font: 'Roboto', sans-serif;
+            --md-sys-typescale-body-medium-size: 14px;
+            --md-sys-typescale-body-medium-line-height: 20px;
+            --md-sys-typescale-body-medium-weight: 400;
+            
+            --md-sys-typescale-label-large-font: 'Roboto', sans-serif;
+            --md-sys-typescale-label-large-size: 14px;
+            --md-sys-typescale-label-large-line-height: 20px;
+            --md-sys-typescale-label-large-weight: 500;
+        }
+        
+        /* Material Design 3 Base Styles */
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--md-sys-typescale-body-large-font);
+            font-size: var(--md-sys-typescale-body-large-size);
+            line-height: var(--md-sys-typescale-body-large-line-height);
+            font-weight: var(--md-sys-typescale-body-large-weight);
+            color: var(--md-sys-color-on-surface);
+            background-color: var(--md-sys-color-surface);
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* Material Design 3 Components */
+        .md-surface {
+            background-color: var(--md-sys-color-surface);
+            color: var(--md-sys-color-on-surface);
+        }
+        
+        .md-surface-variant {
+            background-color: var(--md-sys-color-surface-variant);
+            color: var(--md-sys-color-on-surface-variant);
+        }
+        
+        .md-primary {
+            background-color: var(--md-sys-color-primary);
+            color: var(--md-sys-color-on-primary);
+        }
+        
+        .md-primary-container {
+            background-color: var(--md-sys-color-primary-container);
+            color: var(--md-sys-color-on-primary-container);
+        }
+        
+        .md-secondary {
+            background-color: var(--md-sys-color-secondary);
+            color: var(--md-sys-color-on-secondary);
+        }
+        
+        .md-secondary-container {
+            background-color: var(--md-sys-color-secondary-container);
+            color: var(--md-sys-color-on-secondary-container);
+        }
+        
+        .md-tertiary {
+            background-color: var(--md-sys-color-tertiary);
+            color: var(--md-sys-color-on-tertiary);
+        }
+        
+        .md-tertiary-container {
+            background-color: var(--md-sys-color-tertiary-container);
+            color: var(--md-sys-color-on-tertiary-container);
+        }
+        
+        /* Typography */
+        .md-display-large {
+            font-family: var(--md-sys-typescale-display-large-font);
+            font-size: var(--md-sys-typescale-display-large-size);
+            line-height: var(--md-sys-typescale-display-large-line-height);
+            font-weight: var(--md-sys-typescale-display-large-weight);
+        }
+        
+        .md-display-medium {
+            font-family: var(--md-sys-typescale-display-medium-font);
+            font-size: var(--md-sys-typescale-display-medium-size);
+            line-height: var(--md-sys-typescale-display-medium-line-height);
+            font-weight: var(--md-sys-typescale-display-medium-weight);
+        }
+        
+        .md-headline-large {
+            font-family: var(--md-sys-typescale-headline-large-font);
+            font-size: var(--md-sys-typescale-headline-large-size);
+            line-height: var(--md-sys-typescale-headline-large-line-height);
+            font-weight: var(--md-sys-typescale-headline-large-weight);
+        }
+        
+        .md-headline-medium {
+            font-family: var(--md-sys-typescale-headline-medium-font);
+            font-size: var(--md-sys-typescale-headline-medium-size);
+            line-height: var(--md-sys-typescale-headline-medium-line-height);
+            font-weight: var(--md-sys-typescale-headline-medium-weight);
+        }
+        
+        .md-title-large {
+            font-family: var(--md-sys-typescale-title-large-font);
+            font-size: var(--md-sys-typescale-title-large-size);
+            line-height: var(--md-sys-typescale-title-large-line-height);
+            font-weight: var(--md-sys-typescale-title-large-weight);
+        }
+        
+        .md-title-medium {
+            font-family: var(--md-sys-typescale-title-medium-font);
+            font-size: var(--md-sys-typescale-title-medium-size);
+            line-height: var(--md-sys-typescale-title-medium-line-height);
+            font-weight: var(--md-sys-typescale-title-medium-weight);
+        }
+        
+        .md-body-large {
+            font-family: var(--md-sys-typescale-body-large-font);
+            font-size: var(--md-sys-typescale-body-large-size);
+            line-height: var(--md-sys-typescale-body-large-line-height);
+            font-weight: var(--md-sys-typescale-body-large-weight);
+        }
+        
+        .md-body-medium {
+            font-family: var(--md-sys-typescale-body-medium-font);
+            font-size: var(--md-sys-typescale-body-medium-size);
+            line-height: var(--md-sys-typescale-body-medium-line-height);
+            font-weight: var(--md-sys-typescale-body-medium-weight);
+        }
+        
+        .md-label-large {
+            font-family: var(--md-sys-typescale-label-large-font);
+            font-size: var(--md-sys-typescale-label-large-size);
+            line-height: var(--md-sys-typescale-label-large-line-height);
+            font-weight: var(--md-sys-typescale-label-large-weight);
+        }
+        
+        /* Material Design 3 Cards */
+        .md-card {
+            background-color: var(--md-sys-color-surface);
+            border-radius: 12px;
+            box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.30);
+            padding: 16px;
+            transition: all 0.2s ease-in-out;
+        }
+        
+        .md-card:hover {
+            box-shadow: 0px 2px 6px 2px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.30);
+            transform: translateY(-2px);
+        }
+        
+        .md-card-elevated {
+            box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.30), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        }
+        
+        .md-card-filled {
+            background-color: var(--md-sys-color-surface-variant);
+        }
+        
+        /* Material Design 3 Buttons */
+        .md-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 24px;
+            border-radius: 20px;
+            border: none;
+            font-family: var(--md-sys-typescale-label-large-font);
+            font-size: var(--md-sys-typescale-label-large-size);
+            font-weight: var(--md-sys-typescale-label-large-weight);
+            line-height: var(--md-sys-typescale-label-large-line-height);
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            min-height: 40px;
+        }
+        
+        .md-button-filled {
+            background-color: var(--md-sys-color-primary);
+            color: var(--md-sys-color-on-primary);
+        }
+        
+        .md-button-filled:hover {
+            background-color: var(--md-sys-color-primary);
+            box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.30), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        }
+        
+        .md-button-outlined {
+            background-color: transparent;
+            color: var(--md-sys-color-primary);
+            border: 1px solid var(--md-sys-color-outline);
+        }
+        
+        .md-button-outlined:hover {
+            background-color: var(--md-sys-color-primary-container);
+        }
+        
+        .md-button-text {
+            background-color: transparent;
+            color: var(--md-sys-color-primary);
+        }
+        
+        .md-button-text:hover {
+            background-color: var(--md-sys-color-primary-container);
+        }
+        
+        /* Material Design 3 Navigation */
+        .md-navigation {
+            background-color: var(--md-sys-color-surface);
+            box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.30), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .md-navigation-item {
+            color: var(--md-sys-color-on-surface);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.2s ease-in-out;
+        }
+        
+        .md-navigation-item:hover {
+            background-color: var(--md-sys-color-primary-container);
+            color: var(--md-sys-color-on-primary-container);
+        }
+        
+        /* Material Design 3 Chips */
+        .md-chip {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 16px;
+            border-radius: 8px;
+            background-color: var(--md-sys-color-surface-variant);
+            color: var(--md-sys-color-on-surface-variant);
+            font-family: var(--md-sys-typescale-label-large-font);
+            font-size: var(--md-sys-typescale-label-large-size);
+            font-weight: var(--md-sys-typescale-label-large-weight);
+            line-height: var(--md-sys-typescale-label-large-line-height);
+        }
+        
+        .md-chip-primary {
+            background-color: var(--md-sys-color-primary-container);
+            color: var(--md-sys-color-on-primary-container);
+        }
+        
+        .md-chip-secondary {
+            background-color: var(--md-sys-color-secondary-container);
+            color: var(--md-sys-color-on-secondary-container);
+        }
+        
+        .md-chip-tertiary {
+            background-color: var(--md-sys-color-tertiary-container);
+            color: var(--md-sys-color-on-tertiary-container);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .md-display-large {
+                font-size: 40px;
+                line-height: 48px;
+            }
+            
+            .md-display-medium {
+                font-size: 32px;
+                line-height: 40px;
+            }
+            
+            .md-headline-large {
+                font-size: 28px;
+                line-height: 36px;
+            }
+            
+            .md-headline-medium {
+                font-size: 24px;
+                line-height: 32px;
+            }
+            
+            .hidden.md\\:block {
+                display: none !important;
+            }
+            
+            .md\\:hidden {
+                display: block !important;
+            }
+            
+            .md-button {
+                width: 100%;
+                margin-bottom: 8px;
+            }
+            
+            .md-card {
+                margin-bottom: 16px;
+            }
+        }
+        
+        @media (min-width: 769px) {
+            .hidden.md\\:block {
+                display: block !important;
+            }
+            
+            .md\\:hidden {
+                display: none !important;
+            }
+        }
+        
+        /* Custom animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .md-animate-fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        /* Gradient text effect */
+        .md-gradient-text {
+            background: linear-gradient(135deg, var(--md-sys-color-primary), var(--md-sys-color-tertiary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        
+    </style>
+    
+    <!-- Custom CSS -->
+    <style>
         .hero-pattern {
-            background-image: radial-gradient(circle at 1px 1px, rgba(59, 130, 246, 0.15) 1px, transparent 0);
+            background-image: radial-gradient(circle at 1px 1px, rgba(103, 80, 164, 0.15) 1px, transparent 0);
             background-size: 20px 20px;
+        }
+        
+        .md-hero-gradient {
+            background: linear-gradient(135deg, var(--md-sys-color-primary-container), var(--md-sys-color-tertiary-container));
+        }
+        
+        .md-section-gradient {
+            background: linear-gradient(135deg, var(--md-sys-color-surface), var(--md-sys-color-surface-variant));
         }
     </style>
     
     {% block extra_css %}{% endblock %}
 </head>
-<body class="bg-white text-gray-900 font-sans">
+<body class="md-surface">
     <!-- Navigation -->
-    <nav class="bg-white shadow-lg sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex items-center">
-                    <a href="{% url 'core:home' %}" class="text-2xl font-bold gradient-text">
+    <nav class="md-navigation">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 16px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; height: 64px;">
+                <div style="display: flex; align-items: center;">
+                    <a href="{% url 'core:home' %}" class="md-title-large md-gradient-text" style="text-decoration: none;">
                         Your Name
                     </a>
                 </div>
                 
                 <!-- Desktop Navigation -->
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-4">
-                        <a href="{% url 'core:home' %}" class="text-gray-700 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                <div class="hidden md:block" style="display: none;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <a href="{% url 'core:home' %}" class="md-navigation-item md-label-large">
                             Home
                         </a>
-                        <a href="{% url 'core:about' %}" class="text-gray-700 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                        <a href="{% url 'core:about' %}" class="md-navigation-item md-label-large">
                             About
                         </a>
-                        <a href="{% url 'portfolio:portfolio_list' %}" class="text-gray-700 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                        <a href="{% url 'portfolio:portfolio_list' %}" class="md-navigation-item md-label-large">
                             Portfolio
                         </a>
-                        <a href="{% url 'blog:blog_list' %}" class="text-gray-700 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                        <a href="{% url 'blog:blog_list' %}" class="md-navigation-item md-label-large">
                             Blog
                         </a>
-                        <a href="{% url 'public_profile:media_kit' %}" class="text-gray-700 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                        <a href="{% url 'public_profile:media_kit' %}" class="md-navigation-item md-label-large">
                             Media Kit
                         </a>
-                        <a href="{% url 'core:contact' %}" class="bg-primary-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-primary-700 transition-colors">
+                        <a href="{% url 'core:contact' %}" class="md-button md-button-filled">
                             Contact
                         </a>
                     </div>
@@ -107,34 +474,32 @@
                 
                 <!-- Mobile menu button -->
                 <div class="md:hidden">
-                    <button type="button" class="mobile-menu-button bg-gray-100 inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-primary-600 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500" aria-controls="mobile-menu" aria-expanded="false">
+                    <button type="button" class="mobile-menu-button" style="background: var(--md-sys-color-surface-variant); border: none; border-radius: 20px; padding: 8px; color: var(--md-sys-color-on-surface-variant); cursor: pointer;" aria-controls="mobile-menu" aria-expanded="false">
                         <span class="sr-only">Open main menu</span>
-                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
+                        <span class="material-symbols-outlined">menu</span>
                     </button>
                 </div>
             </div>
         </div>
         
         <!-- Mobile menu -->
-        <div class="mobile-menu hidden md:hidden">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
-                <a href="{% url 'core:home' %}" class="text-gray-700 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">Home</a>
-                <a href="{% url 'core:about' %}" class="text-gray-700 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">About</a>
-                <a href="{% url 'portfolio:portfolio_list' %}" class="text-gray-700 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">Portfolio</a>
-                <a href="{% url 'blog:blog_list' %}" class="text-gray-700 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">Blog</a>
-                <a href="{% url 'public_profile:media_kit' %}" class="text-gray-700 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">Media Kit</a>
-                <a href="{% url 'core:contact' %}" class="bg-primary-600 text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-primary-700">Contact</a>
+        <div class="mobile-menu hidden md:hidden" style="display: none;">
+            <div style="padding: 8px 16px; background: var(--md-sys-color-surface); border-top: 1px solid var(--md-sys-color-outline-variant);">
+                <a href="{% url 'core:home' %}" class="md-navigation-item md-label-large" style="display: block; margin-bottom: 8px;">Home</a>
+                <a href="{% url 'core:about' %}" class="md-navigation-item md-label-large" style="display: block; margin-bottom: 8px;">About</a>
+                <a href="{% url 'portfolio:portfolio_list' %}" class="md-navigation-item md-label-large" style="display: block; margin-bottom: 8px;">Portfolio</a>
+                <a href="{% url 'blog:blog_list' %}" class="md-navigation-item md-label-large" style="display: block; margin-bottom: 8px;">Blog</a>
+                <a href="{% url 'public_profile:media_kit' %}" class="md-navigation-item md-label-large" style="display: block; margin-bottom: 8px;">Media Kit</a>
+                <a href="{% url 'core:contact' %}" class="md-button md-button-filled" style="display: inline-block; margin-top: 8px;">Contact</a>
             </div>
         </div>
     </nav>
 
     <!-- Messages -->
     {% if messages %}
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 16px;">
             {% for message in messages %}
-                <div class="alert alert-{{ message.tags }} bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
+                <div class="md-card" style="background-color: var(--md-sys-color-primary-container); color: var(--md-sys-color-on-primary-container); margin-bottom: 16px;">
                     {{ message }}
                 </div>
             {% endfor %}
@@ -147,61 +512,53 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-secondary-900 text-white">
-        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <footer style="background-color: var(--md-sys-color-surface-variant); color: var(--md-sys-color-on-surface-variant); padding: 48px 0;">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 16px;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 32px;">
                 <div>
-                    <h3 class="text-lg font-semibold mb-4">Connect</h3>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                    <h3 class="md-title-large" style="margin-bottom: 16px;">Connect</h3>
+                    <div style="display: flex; gap: 16px;">
+                        <a href="#" style="color: var(--md-sys-color-on-surface-variant); text-decoration: none; transition: color 0.2s ease;">
                             <span class="sr-only">GitHub</span>
-                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                            </svg>
+                            <span class="material-symbols-outlined">code</span>
                         </a>
-                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                        <a href="#" style="color: var(--md-sys-color-on-surface-variant); text-decoration: none; transition: color 0.2s ease;">
                             <span class="sr-only">LinkedIn</span>
-                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                            </svg>
+                            <span class="material-symbols-outlined">work</span>
                         </a>
-                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                        <a href="#" style="color: var(--md-sys-color-on-surface-variant); text-decoration: none; transition: color 0.2s ease;">
                             <span class="sr-only">Twitter</span>
-                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-                            </svg>
+                            <span class="material-symbols-outlined">chat</span>
                         </a>
                     </div>
                 </div>
                 
                 <div>
-                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
-                    <ul class="space-y-2">
-                        <li><a href="{% url 'portfolio:portfolio_list' %}" class="text-gray-300 hover:text-white transition-colors">Portfolio</a></li>
-                        <li><a href="{% url 'blog:blog_list' %}" class="text-gray-300 hover:text-white transition-colors">Blog</a></li>
-                        <li><a href="{% url 'public_profile:speaking_engagements' %}" class="text-gray-300 hover:text-white transition-colors">Speaking</a></li>
-                        <li><a href="{% url 'public_profile:press_mentions' %}" class="text-gray-300 hover:text-white transition-colors">Press</a></li>
+                    <h3 class="md-title-large" style="margin-bottom: 16px;">Quick Links</h3>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 8px;"><a href="{% url 'portfolio:portfolio_list' %}" style="color: var(--md-sys-color-on-surface-variant); text-decoration: none; transition: color 0.2s ease;">Portfolio</a></li>
+                        <li style="margin-bottom: 8px;"><a href="{% url 'blog:blog_list' %}" style="color: var(--md-sys-color-on-surface-variant); text-decoration: none; transition: color 0.2s ease;">Blog</a></li>
+                        <li style="margin-bottom: 8px;"><a href="{% url 'public_profile:speaking_engagements' %}" style="color: var(--md-sys-color-on-surface-variant); text-decoration: none; transition: color 0.2s ease;">Speaking</a></li>
+                        <li style="margin-bottom: 8px;"><a href="{% url 'public_profile:press_mentions' %}" style="color: var(--md-sys-color-on-surface-variant); text-decoration: none; transition: color 0.2s ease;">Press</a></li>
                     </ul>
                 </div>
                 
                 <div>
-                    <h3 class="text-lg font-semibold mb-4">Newsletter</h3>
-                    <p class="text-gray-300 mb-4">Stay updated with my latest work and insights.</p>
-                    <form class="newsletter-form">
-                        <div class="flex">
-                            <input type="email" placeholder="Enter your email" class="flex-1 px-3 py-2 bg-gray-800 text-white border border-gray-700 rounded-l-md focus:outline-none focus:ring-2 focus:ring-primary-500">
-                            <button type="submit" class="px-4 py-2 bg-primary-600 text-white rounded-r-md hover:bg-primary-700 transition-colors">
-                                Subscribe
-                            </button>
-                        </div>
+                    <h3 class="md-title-large" style="margin-bottom: 16px;">Newsletter</h3>
+                    <p class="md-body-medium" style="margin-bottom: 16px;">Stay updated with my latest work and insights.</p>
+                    <form class="newsletter-form" style="display: flex;">
+                        <input type="email" placeholder="Enter your email" style="flex: 1; padding: 8px 16px; background: var(--md-sys-color-surface); color: var(--md-sys-color-on-surface); border: 1px solid var(--md-sys-color-outline); border-radius: 20px 0 0 20px; border-right: none; outline: none;">
+                        <button type="submit" class="md-button md-button-filled" style="border-radius: 0 20px 20px 0; border-left: none;">
+                            Subscribe
+                        </button>
                     </form>
                 </div>
             </div>
             
-            <div class="mt-8 pt-8 border-t border-gray-800">
-                <p class="text-center text-gray-400">
+            <div style="margin-top: 32px; padding-top: 32px; border-top: 1px solid var(--md-sys-color-outline-variant);">
+                <p style="text-align: center; color: var(--md-sys-color-on-surface-variant); margin: 0;">
                     &copy; {% now "Y" %} Your Name. All rights reserved. 
-                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" style="color: var(--md-sys-color-on-surface-variant); text-decoration: none; transition: color 0.2s ease;">Privacy Policy</a>
                 </p>
             </div>
         </div>
@@ -216,7 +573,8 @@
             
             if (mobileMenuButton && mobileMenu) {
                 mobileMenuButton.addEventListener('click', function() {
-                    mobileMenu.classList.toggle('hidden');
+                    const isHidden = mobileMenu.style.display === 'none';
+                    mobileMenu.style.display = isHidden ? 'block' : 'none';
                 });
             }
             
@@ -249,6 +607,12 @@
                     });
                 });
             }
+            
+            // Add fade-in animation to elements
+            const animatedElements = document.querySelectorAll('.md-animate-fade-in-up');
+            animatedElements.forEach((element, index) => {
+                element.style.animationDelay = `${index * 0.1}s`;
+            });
         });
     </script>
     

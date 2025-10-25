@@ -5,23 +5,23 @@
 
 {% block content %}
 <!-- Hero Section -->
-<section class="bg-gradient-to-br from-primary-50 to-white py-20">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center">
-            <div class="flex items-center justify-center text-sm text-gray-500 mb-4">
-                <time datetime="{{ post.created_at|date:'Y-m-d' }}">{{ post.created_at|date:"M d, Y" }}</time>
+<section class="md-hero-gradient" style="padding: 80px 0;">
+    <div style="max-width: 800px; margin: 0 auto; padding: 0 16px;">
+        <div style="text-align: center;" class="md-animate-fade-in-up">
+            <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 16px;">
+                <time datetime="{{ post.created_at|date:'Y-m-d' }}" class="md-body-medium" style="color: var(--md-sys-color-on-surface-variant);">{{ post.created_at|date:"M d, Y" }}</time>
                 {% if post.tag_list %}
-                    <span class="mx-2">•</span>
-                    <span>{{ post.tag_list|join:", " }}</span>
+                    <span style="color: var(--md-sys-color-on-surface-variant); margin: 0 8px;">•</span>
+                    <span class="md-chip md-chip-primary">{{ post.tag_list|join:", " }}</span>
                 {% endif %}
             </div>
             
-            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <h1 class="md-display-large" style="margin-bottom: 24px; color: var(--md-sys-color-on-surface);">
                 {{ post.title }}
             </h1>
             
             {% if post.excerpt %}
-                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                <p class="md-title-large" style="max-width: 512px; margin: 0 auto; color: var(--md-sys-color-on-surface-variant);">
                     {{ post.excerpt }}
                 </p>
             {% endif %}
@@ -30,46 +30,44 @@
 </section>
 
 <!-- Blog Post Content -->
-<section class="py-20 bg-white">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-4 gap-12">
+<section class="md-section-gradient" style="padding: 80px 0;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 16px;">
+        <div style="display: grid; grid-template-columns: 1fr; gap: 48px;">
             <!-- Main Content -->
-            <div class="lg:col-span-3">
-                <article class="prose prose-lg max-w-none">
+            <div style="max-width: 800px; margin: 0 auto;">
+                <article class="md-animate-fade-in-up">
                     {% if post.featured_image %}
-                        <img src="{{ post.featured_image.url }}" alt="{{ post.title }}" class="w-full h-64 object-cover rounded-lg mb-8">
+                        <img src="{{ post.featured_image.url }}" alt="{{ post.title }}" style="width: 100%; height: 256px; object-fit: cover; border-radius: 12px; margin-bottom: 32px;">
                     {% endif %}
                     
-                    <div class="text-gray-800 leading-relaxed">
+                    <div class="md-body-large" style="color: var(--md-sys-color-on-surface); line-height: 1.6;">
                         {{ post.content|linebreaks }}
                     </div>
                 </article>
                 
                 <!-- Tags -->
                 {% if post.tag_list %}
-                    <div class="mt-8 pt-8 border-t border-gray-200">
-                        <h3 class="text-lg font-semibold text-gray-900 mb-4">Tags</h3>
-                        <div class="flex flex-wrap gap-2">
+                    <div style="margin-top: 32px; padding-top: 32px; border-top: 1px solid var(--md-sys-color-outline-variant);" class="md-animate-fade-in-up">
+                        <h3 class="md-title-large" style="margin-bottom: 16px; color: var(--md-sys-color-on-surface);">Tags</h3>
+                        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
                             {% for tag in post.tag_list %}
-                                <span class="px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full">
-                                    {{ tag }}
-                                </span>
+                                <span class="md-chip md-chip-primary">{{ tag }}</span>
                             {% endfor %}
                         </div>
                     </div>
                 {% endif %}
                 
                 <!-- Social Sharing -->
-                <div class="mt-8 pt-8 border-t border-gray-200">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Share this post</h3>
-                    <div class="flex space-x-4">
-                        <a href="https://twitter.com/intent/tweet?text={{ post.title|urlencode }}&url={{ request.build_absolute_uri }}" target="_blank" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">
+                <div style="margin-top: 32px; padding-top: 32px; border-top: 1px solid var(--md-sys-color-outline-variant);" class="md-animate-fade-in-up">
+                    <h3 class="md-title-large" style="margin-bottom: 16px; color: var(--md-sys-color-on-surface);">Share this post</h3>
+                    <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                        <a href="https://twitter.com/intent/tweet?text={{ post.title|urlencode }}&url={{ request.build_absolute_uri }}" target="_blank" class="md-button md-button-filled" style="background-color: #1DA1F2; color: white;">
                             Twitter
                         </a>
-                        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ request.build_absolute_uri }}" target="_blank" class="bg-blue-700 text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition-colors">
+                        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ request.build_absolute_uri }}" target="_blank" class="md-button md-button-filled" style="background-color: #0077B5; color: white;">
                             LinkedIn
                         </a>
-                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" target="_blank" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" target="_blank" class="md-button md-button-filled" style="background-color: #4267B2; color: white;">
                             Facebook
                         </a>
                     </div>
@@ -77,39 +75,39 @@
             </div>
             
             <!-- Sidebar -->
-            <div class="lg:col-span-1">
-                <div class="sticky top-8">
+            <div style="max-width: 400px; margin: 0 auto;">
+                <div style="position: sticky; top: 80px;">
                     <!-- Author Info -->
-                    <div class="bg-gray-50 rounded-lg p-6 mb-8">
-                        <h3 class="text-lg font-semibold text-gray-900 mb-4">About the Author</h3>
-                        <div class="flex items-center mb-4">
-                            <img src="{% static 'images/profile-photo.jpg' %}" alt="Your Name" class="w-12 h-12 rounded-full mr-4">
+                    <div class="md-card md-card-filled" style="margin-bottom: 32px;" class="md-animate-fade-in-up">
+                        <h3 class="md-title-large" style="margin-bottom: 16px; color: var(--md-sys-color-on-surface);">About the Author</h3>
+                        <div style="display: flex; align-items: center; margin-bottom: 16px;">
+                            <img src="{% static 'images/profile-photo.jpg' %}" alt="Your Name" style="width: 48px; height: 48px; border-radius: 50%; margin-right: 16px;">
                             <div>
-                                <h4 class="font-semibold text-gray-900">Your Name</h4>
-                                <p class="text-sm text-gray-600">Software Engineer</p>
+                                <h4 class="md-title-medium" style="color: var(--md-sys-color-on-surface);">Your Name</h4>
+                                <p class="md-body-medium" style="color: var(--md-sys-color-on-surface-variant);">Software Engineer</p>
                             </div>
                         </div>
-                        <p class="text-sm text-gray-600 mb-4">
+                        <p class="md-body-medium" style="margin-bottom: 16px; color: var(--md-sys-color-on-surface-variant);">
                             Passionate about building scalable web applications and sharing knowledge through writing and speaking.
                         </p>
-                        <a href="{% url 'core:about' %}" class="text-primary-600 hover:text-primary-700 text-sm font-medium">
+                        <a href="{% url 'core:about' %}" style="color: var(--md-sys-color-primary); text-decoration: none; font-weight: 500;">
                             Learn more →
                         </a>
                     </div>
                     
                     <!-- Related Posts -->
                     {% if related_posts %}
-                        <div class="bg-gray-50 rounded-lg p-6">
-                            <h3 class="text-lg font-semibold text-gray-900 mb-4">Related Posts</h3>
-                            <div class="space-y-4">
+                        <div class="md-card md-card-filled" class="md-animate-fade-in-up">
+                            <h3 class="md-title-large" style="margin-bottom: 16px; color: var(--md-sys-color-on-surface);">Related Posts</h3>
+                            <div style="display: flex; flex-direction: column; gap: 16px;">
                                 {% for related_post in related_posts %}
                                     <div>
-                                        <h4 class="font-medium text-gray-900 mb-1">
-                                            <a href="{% url 'blog:blog_detail' related_post.slug %}" class="hover:text-primary-600 transition-colors">
+                                        <h4 class="md-title-medium" style="margin-bottom: 4px; color: var(--md-sys-color-on-surface);">
+                                            <a href="{% url 'blog:blog_detail' related_post.slug %}" style="color: inherit; text-decoration: none;">
                                                 {{ related_post.title }}
                                             </a>
                                         </h4>
-                                        <p class="text-sm text-gray-600">{{ related_post.created_at|date:"M d, Y" }}</p>
+                                        <p class="md-body-medium" style="color: var(--md-sys-color-on-surface-variant);">{{ related_post.created_at|date:"M d, Y" }}</p>
                                     </div>
                                 {% endfor %}
                             </div>
@@ -122,19 +120,17 @@
 </section>
 
 <!-- Call to Action -->
-<section class="py-20 bg-primary-600">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Enjoyed this post?</h2>
-        <p class="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
+<section class="md-primary" style="padding: 80px 0;">
+    <div style="max-width: 800px; margin: 0 auto; padding: 0 16px; text-align: center;" class="md-animate-fade-in-up">
+        <h2 class="md-headline-large" style="margin-bottom: 16px; color: var(--md-sys-color-on-primary);">Enjoyed this post?</h2>
+        <p class="md-title-large" style="margin-bottom: 32px; max-width: 512px; margin-left: auto; margin-right: auto; color: var(--md-sys-color-on-primary);">
             Subscribe to my newsletter for more insights on technology and engineering.
         </p>
-        <form class="newsletter-form max-w-md mx-auto">
-            <div class="flex">
-                <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-3 bg-white text-gray-900 border-0 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-primary-300">
-                <button type="submit" class="px-6 py-3 bg-primary-800 text-white rounded-r-lg hover:bg-primary-900 transition-colors font-semibold">
-                    Subscribe
-                </button>
-            </div>
+        <form class="newsletter-form" style="max-width: 400px; margin: 0 auto; display: flex;">
+            <input type="email" placeholder="Enter your email" style="flex: 1; padding: 12px 16px; background: var(--md-sys-color-on-primary); color: var(--md-sys-color-primary); border: none; border-radius: 20px 0 0 20px; outline: none;">
+            <button type="submit" class="md-button" style="background-color: var(--md-sys-color-primary-container); color: var(--md-sys-color-on-primary-container); border-radius: 0 20px 20px 0; border-left: none; padding: 12px 24px;">
+                Subscribe
+            </button>
         </form>
     </div>
 </section>
