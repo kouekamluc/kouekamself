@@ -40,57 +40,34 @@
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Project cards will be populated from the database -->
+            {% for project in featured_projects %}
             <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                <div class="h-48 bg-gradient-to-br from-primary-400 to-primary-600"></div>
+                {% if project.featured_image %}
+                    <img src="{{ project.featured_image.url }}" alt="{{ project.title }}" class="h-48 w-full object-cover">
+                {% else %}
+                    <div class="h-48 bg-gradient-to-br from-primary-400 to-primary-600"></div>
+                {% endif %}
                 <div class="p-6">
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Project Title</h3>
-                    <p class="text-gray-600 mb-4">Brief description of the project and its impact.</p>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">{{ project.title }}</h3>
+                    <p class="text-gray-600 mb-4">{{ project.short_description }}</p>
                     <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full">Python</span>
-                        <span class="px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full">Django</span>
-                        <span class="px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full">React</span>
+                        {% for tech in project.tech_list %}
+                            <span class="px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full">{{ tech }}</span>
+                        {% endfor %}
                     </div>
                     <div class="flex space-x-4">
-                        <a href="#" class="text-primary-600 hover:text-primary-700 font-medium">View Project</a>
-                        <a href="#" class="text-gray-600 hover:text-gray-700 font-medium">GitHub</a>
+                        <a href="{% url 'portfolio:portfolio_detail' project.slug %}" class="text-primary-600 hover:text-primary-700 font-medium">View Project</a>
+                        {% if project.github_url %}
+                            <a href="{{ project.github_url }}" target="_blank" class="text-gray-600 hover:text-gray-700 font-medium">GitHub</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
-            
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                <div class="h-48 bg-gradient-to-br from-secondary-400 to-secondary-600"></div>
-                <div class="p-6">
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Another Project</h3>
-                    <p class="text-gray-600 mb-4">Another innovative solution that demonstrates technical expertise.</p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="px-3 py-1 bg-secondary-100 text-secondary-800 text-sm rounded-full">JavaScript</span>
-                        <span class="px-3 py-1 bg-secondary-100 text-secondary-800 text-sm rounded-full">Node.js</span>
-                        <span class="px-3 py-1 bg-secondary-100 text-secondary-800 text-sm rounded-full">MongoDB</span>
-                    </div>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-primary-600 hover:text-primary-700 font-medium">View Project</a>
-                        <a href="#" class="text-gray-600 hover:text-gray-700 font-medium">GitHub</a>
-                    </div>
-                </div>
+            {% empty %}
+            <div class="col-span-full text-center py-12">
+                <p class="text-gray-600">No featured projects available yet.</p>
             </div>
-            
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                <div class="h-48 bg-gradient-to-br from-green-400 to-green-600"></div>
-                <div class="p-6">
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Third Project</h3>
-                    <p class="text-gray-600 mb-4">A third project showcasing diverse technical skills.</p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="px-3 py-1 bg-green-100 text-green-800 text-sm rounded-full">Go</span>
-                        <span class="px-3 py-1 bg-green-100 text-green-800 text-sm rounded-full">Docker</span>
-                        <span class="px-3 py-1 bg-green-100 text-green-800 text-sm rounded-full">Kubernetes</span>
-                    </div>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-primary-600 hover:text-primary-700 font-medium">View Project</a>
-                        <a href="#" class="text-gray-600 hover:text-gray-700 font-medium">GitHub</a>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
         
         <div class="text-center mt-12">
@@ -112,33 +89,31 @@
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {% for post in latest_posts %}
             <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                <div class="h-48 bg-gradient-to-br from-purple-400 to-purple-600"></div>
+                {% if post.featured_image %}
+                    <img src="{{ post.featured_image.url }}" alt="{{ post.title }}" class="h-48 w-full object-cover">
+                {% else %}
+                    <div class="h-48 bg-gradient-to-br from-purple-400 to-purple-600"></div>
+                {% endif %}
                 <div class="p-6">
                     <div class="flex items-center text-sm text-gray-500 mb-2">
-                        <span>Technical</span>
-                        <span class="mx-2">•</span>
-                        <time>Dec 15, 2024</time>
+                        {% if post.tag_list %}
+                            <span>{{ post.tag_list.0 }}</span>
+                            <span class="mx-2">•</span>
+                        {% endif %}
+                        <time>{{ post.created_at|date:"M d, Y" }}</time>
                     </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Building Scalable Web Applications</h3>
-                    <p class="text-gray-600 mb-4">Exploring modern approaches to building web applications that can handle millions of users...</p>
-                    <a href="#" class="text-primary-600 hover:text-primary-700 font-medium">Read More</a>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">{{ post.title }}</h3>
+                    <p class="text-gray-600 mb-4">{{ post.excerpt|truncatewords:20 }}</p>
+                    <a href="{% url 'blog:blog_detail' post.slug %}" class="text-primary-600 hover:text-primary-700 font-medium">Read More</a>
                 </div>
             </article>
-            
-            <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                <div class="h-48 bg-gradient-to-br from-orange-400 to-orange-600"></div>
-                <div class="p-6">
-                    <div class="flex items-center text-sm text-gray-500 mb-2">
-                        <span>Industry</span>
-                        <span class="mx-2">•</span>
-                        <time>Dec 10, 2024</time>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">The Future of AI in Software Development</h3>
-                    <p class="text-gray-600 mb-4">How artificial intelligence is transforming the way we write, test, and deploy code...</p>
-                    <a href="#" class="text-primary-600 hover:text-primary-700 font-medium">Read More</a>
-                </div>
-            </article>
+            {% empty %}
+            <div class="col-span-full text-center py-12">
+                <p class="text-gray-600">No blog posts available yet.</p>
+            </div>
+            {% endfor %}
         </div>
         
         <div class="text-center mt-12">
