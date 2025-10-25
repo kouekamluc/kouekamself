@@ -5,13 +5,13 @@
 
 {% block content %}
 <!-- Hero Section -->
-<section class="md-hero-gradient" style="padding: 80px 0;">
-    <div style="max-width: 1200px; margin: 0 auto; padding: 0 16px;">
-        <div style="text-align: center;" class="md-animate-fade-in-up">
-            <h1 class="md-display-large" style="margin-bottom: 24px; color: var(--md-sys-color-on-surface);">
-                Get In <span class="md-gradient-text">Touch</span>
+<section class="bg-gradient-to-br from-primary-50 to-purple-50 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center animate-fade-in-up">
+            <h1 class="text-5xl md:text-6xl font-bold mb-6 text-gray-900">
+                Get In <span class="gradient-text">Touch</span>
             </h1>
-            <p class="md-title-large" style="max-width: 512px; margin: 0 auto; color: var(--md-sys-color-on-surface-variant);">
+            <p class="text-xl max-w-2xl mx-auto text-gray-600">
                 I'm always interested in new opportunities, collaborations, and meaningful conversations. Let's connect!
             </p>
         </div>
@@ -77,7 +77,7 @@
                         {% endif %}
                     </div>
                     
-                    <button type="submit" class="w-full bg-primary-600 text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-primary-700 transition-colors">
+                    <button type="submit" class="btn-primary w-full">
                         Send Message
                     </button>
                 </form>
@@ -163,22 +163,22 @@
         </div>
         
         <div class="space-y-8">
-            <div class="bg-white rounded-lg shadow-lg p-6">
+            <div class="card">
                 <h3 class="text-xl font-semibold text-gray-900 mb-3">What types of projects do you work on?</h3>
                 <p class="text-gray-600">I specialize in web application development, API design, cloud architecture, and technical consulting. I work with startups, mid-size companies, and enterprise clients.</p>
             </div>
             
-            <div class="bg-white rounded-lg shadow-lg p-6">
+            <div class="card">
                 <h3 class="text-xl font-semibold text-gray-900 mb-3">Do you offer consulting services?</h3>
                 <p class="text-gray-600">Yes, I provide technical consulting for architecture decisions, code reviews, team mentoring, and technology strategy. I'm available for both short-term and long-term engagements.</p>
             </div>
             
-            <div class="bg-white rounded-lg shadow-lg p-6">
+            <div class="card">
                 <h3 class="text-xl font-semibold text-gray-900 mb-3">Are you available for speaking engagements?</h3>
                 <p class="text-gray-600">Absolutely! I regularly speak at conferences, meetups, and corporate events. I cover topics including web development, engineering leadership, and technology trends.</p>
             </div>
             
-            <div class="bg-white rounded-lg shadow-lg p-6">
+            <div class="card">
                 <h3 class="text-xl font-semibold text-gray-900 mb-3">What's your typical response time?</h3>
                 <p class="text-gray-600">I typically respond to emails within 24 hours. For urgent matters, please mention it in your subject line and I'll prioritize your message.</p>
             </div>
@@ -186,11 +186,3 @@
     </div>
 </section>
 {% endblock %}
-
-
-
-
-
-
-
-
