@@ -41,7 +41,7 @@
                         }
                     },
                     fontFamily: {
-                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                        'sans': ['Roboto', 'Inter', 'system-ui', 'sans-serif'],
                     }
                 }
             }
@@ -52,6 +52,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    
+    <!-- TW Elements (Material-tailwind) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
+    
+    <!-- Site CSS overrides -->
+    <link rel="stylesheet" href="{% static 'css/site.css' %}">
     
     <!-- Custom CSS -->
     <style>
@@ -207,6 +215,9 @@
         </div>
     </footer>
 
+    <!-- TW Elements JS (for ripple, inputs, etc.) -->
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
+
     <!-- JavaScript -->
     <script>
         // Mobile menu toggle
@@ -248,6 +259,22 @@
                         alert('An error occurred. Please try again.');
                     });
                 });
+            }
+            
+            // Enable Material-style ripple on primary CTAs
+            const rippleTargets = document.querySelectorAll(
+                'a.bg-primary-600, button.bg-primary-600, ' +
+                'a.bg-white.text-primary-600, button.bg-white.text-primary-600, ' +
+                'a.border-2.border-primary-600, button.border-2.border-primary-600'
+            );
+            rippleTargets.forEach((el) => {
+                el.setAttribute('data-te-ripple-init', '');
+                el.setAttribute('data-te-ripple-color', 'light');
+            });
+            
+            if (window.te && typeof window.te.initTE === 'function') {
+                const { Ripple } = window.te;
+                window.te.initTE({ Ripple });
             }
         });
     </script>
