@@ -9,97 +9,394 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Custom Tailwind Configuration -->
+    <!-- Material Design Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!-- Custom Tailwind Configuration with Material Design 3 -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
+                        // Material Design 3 Color System
                         primary: {
-                            50: '#f0f9ff',
-                            100: '#e0f2fe',
-                            200: '#bae6fd',
-                            300: '#7dd3fc',
-                            400: '#38bdf8',
-                            500: '#0ea5e9',
-                            600: '#0284c7',
-                            700: '#0369a1',
-                            800: '#075985',
-                            900: '#0c4a6e',
+                            0: '#000000',
+                            10: '#001D32',
+                            20: '#003258',
+                            30: '#004A7F',
+                            40: '#0063A8',
+                            50: '#007DD2',
+                            60: '#1A97E8',
+                            70: '#4BB2F0',
+                            80: '#7BCDF8',
+                            90: '#B8E6FF',
+                            95: '#DDF2FF',
+                            99: '#F7FBFF',
+                            100: '#FFFFFF',
                         },
                         secondary: {
-                            50: '#f8fafc',
-                            100: '#f1f5f9',
-                            200: '#e2e8f0',
-                            300: '#cbd5e1',
-                            400: '#94a3b8',
-                            500: '#64748b',
-                            600: '#475569',
-                            700: '#334155',
-                            800: '#1e293b',
-                            900: '#0f172a',
+                            0: '#000000',
+                            10: '#1A1C1E',
+                            20: '#2F3033',
+                            30: '#45474A',
+                            40: '#5D5F62',
+                            50: '#76787B',
+                            60: '#909295',
+                            70: '#ABADB0',
+                            80: '#C6C8CB',
+                            90: '#E2E4E7',
+                            95: '#F1F2F5',
+                            99: '#FCFCFF',
+                            100: '#FFFFFF',
+                        },
+                        tertiary: {
+                            0: '#000000',
+                            10: '#2B1700',
+                            20: '#422A00',
+                            30: '#5A3E00',
+                            40: '#735300',
+                            50: '#8D6900',
+                            60: '#A88000',
+                            70: '#C39800',
+                            80: '#DFB200',
+                            90: '#FCCE00',
+                            95: '#FFE066',
+                            99: '#FFF8E1',
+                            100: '#FFFFFF',
+                        },
+                        error: {
+                            0: '#000000',
+                            10: '#410002',
+                            20: '#690005',
+                            30: '#93000A',
+                            40: '#BA1A1A',
+                            50: '#DE3730',
+                            60: '#FF5449',
+                            70: '#FF897D',
+                            80: '#FFB4AB',
+                            90: '#FFDAD6',
+                            95: '#FFEDEA',
+                            99: '#FFFBF9',
+                            100: '#FFFFFF',
+                        },
+                        neutral: {
+                            0: '#000000',
+                            4: '#0F0F11',
+                            6: '#1A1A1C',
+                            10: '#1E1E20',
+                            12: '#232326',
+                            17: '#2E2E30',
+                            20: '#39393C',
+                            22: '#3E3E41',
+                            24: '#444447',
+                            25: '#464649',
+                            30: '#4F4F52',
+                            35: '#5A5A5D',
+                            40: '#656568',
+                            50: '#7F7F82',
+                            60: '#99999C',
+                            70: '#B3B3B6',
+                            80: '#CECED1',
+                            87: '#DEDDE0',
+                            90: '#E6E5E8',
+                            92: '#ECEBEE',
+                            94: '#F2F1F4',
+                            95: '#F5F4F7',
+                            96: '#F7F6F9',
+                            98: '#FCFBFF',
+                            99: '#FFFBFF',
+                            100: '#FFFFFF',
                         }
                     },
                     fontFamily: {
-                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                        'sans': ['Roboto', 'system-ui', 'sans-serif'],
+                        'display': ['Roboto', 'system-ui', 'sans-serif'],
+                        'body': ['Roboto', 'system-ui', 'sans-serif'],
+                    },
+                    fontSize: {
+                        'display-large': ['3.5rem', { lineHeight: '4rem', letterSpacing: '-0.025em' }],
+                        'display-medium': ['2.8125rem', { lineHeight: '3.5rem', letterSpacing: '0em' }],
+                        'display-small': ['2.25rem', { lineHeight: '2.75rem', letterSpacing: '0em' }],
+                        'headline-large': ['2rem', { lineHeight: '2.5rem', letterSpacing: '0em' }],
+                        'headline-medium': ['1.75rem', { lineHeight: '2.25rem', letterSpacing: '0em' }],
+                        'headline-small': ['1.5rem', { lineHeight: '2rem', letterSpacing: '0em' }],
+                        'title-large': ['1.375rem', { lineHeight: '1.75rem', letterSpacing: '0em' }],
+                        'title-medium': ['1rem', { lineHeight: '1.5rem', letterSpacing: '0.009375em' }],
+                        'title-small': ['0.875rem', { lineHeight: '1.25rem', letterSpacing: '0.00625em' }],
+                        'body-large': ['1rem', { lineHeight: '1.5rem', letterSpacing: '0.009375em' }],
+                        'body-medium': ['0.875rem', { lineHeight: '1.25rem', letterSpacing: '0.015625em' }],
+                        'body-small': ['0.75rem', { lineHeight: '1rem', letterSpacing: '0.025em' }],
+                        'label-large': ['0.875rem', { lineHeight: '1.25rem', letterSpacing: '0.00625em' }],
+                        'label-medium': ['0.75rem', { lineHeight: '1rem', letterSpacing: '0.03125em' }],
+                        'label-small': ['0.6875rem', { lineHeight: '1rem', letterSpacing: '0.03125em' }],
+                    },
+                    boxShadow: {
+                        'elevation-1': '0px 1px 2px 0px rgba(0, 0, 0, 0.30), 0px 1px 3px 1px rgba(0, 0, 0, 0.15)',
+                        'elevation-2': '0px 1px 2px 0px rgba(0, 0, 0, 0.30), 0px 2px 6px 2px rgba(0, 0, 0, 0.15)',
+                        'elevation-3': '0px 1px 3px 0px rgba(0, 0, 0, 0.30), 0px 4px 8px 3px rgba(0, 0, 0, 0.15)',
+                        'elevation-4': '0px 2px 3px 0px rgba(0, 0, 0, 0.30), 0px 6px 10px 4px rgba(0, 0, 0, 0.15)',
+                        'elevation-5': '0px 4px 4px 0px rgba(0, 0, 0, 0.30), 0px 8px 12px 6px rgba(0, 0, 0, 0.15)',
+                    },
+                    borderRadius: {
+                        'extra-small': '0.25rem',
+                        'small': '0.5rem',
+                        'medium': '0.75rem',
+                        'large': '1rem',
+                        'extra-large': '1.75rem',
+                        'full': '9999px',
                     }
                 }
             }
         }
     </script>
     
-    <!-- Google Fonts -->
+    <!-- Google Fonts - Material Design Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
     
-    <!-- Custom CSS -->
+    <!-- Material Design 3 Custom CSS -->
     <style>
+        :root {
+            --md-sys-color-primary: #0063A8;
+            --md-sys-color-on-primary: #FFFFFF;
+            --md-sys-color-primary-container: #B8E6FF;
+            --md-sys-color-on-primary-container: #001D32;
+            --md-sys-color-secondary: #5D5F62;
+            --md-sys-color-on-secondary: #FFFFFF;
+            --md-sys-color-secondary-container: #E2E4E7;
+            --md-sys-color-on-secondary-container: #1A1C1E;
+            --md-sys-color-tertiary: #735300;
+            --md-sys-color-on-tertiary: #FFFFFF;
+            --md-sys-color-tertiary-container: #FCCE00;
+            --md-sys-color-on-tertiary-container: #2B1700;
+            --md-sys-color-error: #BA1A1A;
+            --md-sys-color-on-error: #FFFFFF;
+            --md-sys-color-error-container: #FFDAD6;
+            --md-sys-color-on-error-container: #410002;
+            --md-sys-color-surface: #FCFBFF;
+            --md-sys-color-on-surface: #1E1E20;
+            --md-sys-color-surface-variant: #E6E5E8;
+            --md-sys-color-on-surface-variant: #4F4F52;
+            --md-sys-color-outline: #7F7F82;
+            --md-sys-color-outline-variant: #CECED1;
+            --md-sys-color-shadow: #000000;
+            --md-sys-color-scrim: #000000;
+            --md-sys-color-inverse-surface: #39393C;
+            --md-sys-color-inverse-on-surface: #F2F1F4;
+            --md-sys-color-inverse-primary: #7BCDF8;
+        }
+
         .gradient-text {
-            background: linear-gradient(135deg, #0ea5e9, #3b82f6);
+            background: linear-gradient(135deg, var(--md-sys-color-primary), var(--md-sys-color-tertiary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
         
         .hero-pattern {
-            background-image: radial-gradient(circle at 1px 1px, rgba(59, 130, 246, 0.15) 1px, transparent 0);
-            background-size: 20px 20px;
+            background-image: radial-gradient(circle at 1px 1px, rgba(0, 99, 168, 0.08) 1px, transparent 0);
+            background-size: 24px 24px;
+        }
+
+        .material-card {
+            background: var(--md-sys-color-surface);
+            border-radius: 1rem;
+            box-shadow: var(--md-elevation-1);
+            transition: all 0.2s ease-in-out;
+        }
+
+        .material-card:hover {
+            box-shadow: var(--md-elevation-3);
+            transform: translateY(-2px);
+        }
+
+        .material-button {
+            background: var(--md-sys-color-primary);
+            color: var(--md-sys-color-on-primary);
+            border-radius: 1.25rem;
+            padding: 0.75rem 1.5rem;
+            font-weight: 500;
+            transition: all 0.2s ease-in-out;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .material-button:hover {
+            background: var(--md-sys-color-primary);
+            box-shadow: var(--md-elevation-2);
+            transform: translateY(-1px);
+        }
+
+        .material-button-outlined {
+            background: transparent;
+            color: var(--md-sys-color-primary);
+            border: 1px solid var(--md-sys-color-outline);
+            border-radius: 1.25rem;
+            padding: 0.75rem 1.5rem;
+            font-weight: 500;
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .material-button-outlined:hover {
+            background: var(--md-sys-color-primary-container);
+            border-color: var(--md-sys-color-primary);
+        }
+
+        .material-navbar {
+            background: var(--md-sys-color-surface);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--md-sys-color-outline-variant);
+        }
+
+        .material-chip {
+            background: var(--md-sys-color-secondary-container);
+            color: var(--md-sys-color-on-secondary-container);
+            border-radius: 0.5rem;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .material-input {
+            background: var(--md-sys-color-surface);
+            border: 1px solid var(--md-sys-color-outline);
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            color: var(--md-sys-color-on-surface);
+            transition: all 0.2s ease-in-out;
+        }
+
+        .material-input:focus {
+            outline: none;
+            border-color: var(--md-sys-color-primary);
+            box-shadow: 0 0 0 2px rgba(0, 99, 168, 0.2);
+        }
+
+        .material-fab {
+            background: var(--md-sys-color-primary);
+            color: var(--md-sys-color-on-primary);
+            border: none;
+            border-radius: 1rem;
+            width: 3.5rem;
+            height: 3.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--md-elevation-3);
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+        }
+
+        .material-fab:hover {
+            box-shadow: var(--md-elevation-4);
+            transform: translateY(-2px);
+        }
+
+        .ripple {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ripple::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .ripple:active::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --md-sys-color-primary: #7BCDF8;
+                --md-sys-color-on-primary: #003258;
+                --md-sys-color-primary-container: #004A7F;
+                --md-sys-color-on-primary-container: #B8E6FF;
+                --md-sys-color-secondary: #C6C8CB;
+                --md-sys-color-on-secondary: #2F3033;
+                --md-sys-color-secondary-container: #45474A;
+                --md-sys-color-on-secondary-container: #E2E4E7;
+                --md-sys-color-tertiary: #DFB200;
+                --md-sys-color-on-tertiary: #422A00;
+                --md-sys-color-tertiary-container: #5A3E00;
+                --md-sys-color-on-tertiary-container: #FCCE00;
+                --md-sys-color-error: #FFB4AB;
+                --md-sys-color-on-error: #690005;
+                --md-sys-color-error-container: #93000A;
+                --md-sys-color-on-error-container: #FFDAD6;
+                --md-sys-color-surface: #1E1E20;
+                --md-sys-color-on-surface: #E6E5E8;
+                --md-sys-color-surface-variant: #45474A;
+                --md-sys-color-on-surface-variant: #C6C8CB;
+                --md-sys-color-outline: #99999C;
+                --md-sys-color-outline-variant: #45474A;
+                --md-sys-color-shadow: #000000;
+                --md-sys-color-scrim: #000000;
+                --md-sys-color-inverse-surface: #E6E5E8;
+                --md-sys-color-inverse-on-surface: #39393C;
+                --md-sys-color-inverse-primary: #0063A8;
+            }
         }
     </style>
     
     {% block extra_css %}{% endblock %}
 </head>
-<body class="bg-white text-gray-900 font-sans">
-    <!-- Navigation -->
-    <nav class="bg-white shadow-lg sticky top-0 z-50">
+<body class="bg-neutral-99 text-neutral-10 font-body" style="background-color: var(--md-sys-color-surface); color: var(--md-sys-color-on-surface);">
+    <!-- Material Design Navigation -->
+    <nav class="material-navbar sticky top-0 z-50" style="background-color: var(--md-sys-color-surface); backdrop-filter: blur(20px);">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
-                    <a href="{% url 'core:home' %}" class="text-2xl font-bold gradient-text">
+                    <a href="{% url 'core:home' %}" class="text-2xl font-bold gradient-text font-display">
                         Your Name
                     </a>
                 </div>
                 
                 <!-- Desktop Navigation -->
                 <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-4">
-                        <a href="{% url 'core:home' %}" class="text-gray-700 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                    <div class="ml-10 flex items-baseline space-x-2">
+                        <a href="{% url 'core:home' %}" class="text-neutral-70 hover:text-primary-60 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 hover:bg-primary-10">
+                            <span class="material-icons text-base mr-1">home</span>
                             Home
                         </a>
-                        <a href="{% url 'core:about' %}" class="text-gray-700 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                        <a href="{% url 'core:about' %}" class="text-neutral-70 hover:text-primary-60 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 hover:bg-primary-10">
+                            <span class="material-icons text-base mr-1">person</span>
                             About
                         </a>
-                        <a href="{% url 'portfolio:portfolio_list' %}" class="text-gray-700 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                        <a href="{% url 'portfolio:portfolio_list' %}" class="text-neutral-70 hover:text-primary-60 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 hover:bg-primary-10">
+                            <span class="material-icons text-base mr-1">work</span>
                             Portfolio
                         </a>
-                        <a href="{% url 'blog:blog_list' %}" class="text-gray-700 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                        <a href="{% url 'blog:blog_list' %}" class="text-neutral-70 hover:text-primary-60 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 hover:bg-primary-10">
+                            <span class="material-icons text-base mr-1">article</span>
                             Blog
                         </a>
-                        <a href="{% url 'public_profile:media_kit' %}" class="text-gray-700 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                        <a href="{% url 'public_profile:media_kit' %}" class="text-neutral-70 hover:text-primary-60 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 hover:bg-primary-10">
+                            <span class="material-icons text-base mr-1">media_kit</span>
                             Media Kit
                         </a>
-                        <a href="{% url 'core:contact' %}" class="bg-primary-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-primary-700 transition-colors">
+                        <a href="{% url 'core:contact' %}" class="material-button ripple">
+                            <span class="material-icons text-base">mail</span>
                             Contact
                         </a>
                     </div>
@@ -107,35 +404,54 @@
                 
                 <!-- Mobile menu button -->
                 <div class="md:hidden">
-                    <button type="button" class="mobile-menu-button bg-gray-100 inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-primary-600 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500" aria-controls="mobile-menu" aria-expanded="false">
+                    <button type="button" class="mobile-menu-button material-fab ripple" aria-controls="mobile-menu" aria-expanded="false">
                         <span class="sr-only">Open main menu</span>
-                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
+                        <span class="material-icons">menu</span>
                     </button>
                 </div>
             </div>
         </div>
         
         <!-- Mobile menu -->
-        <div class="mobile-menu hidden md:hidden">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
-                <a href="{% url 'core:home' %}" class="text-gray-700 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">Home</a>
-                <a href="{% url 'core:about' %}" class="text-gray-700 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">About</a>
-                <a href="{% url 'portfolio:portfolio_list' %}" class="text-gray-700 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">Portfolio</a>
-                <a href="{% url 'blog:blog_list' %}" class="text-gray-700 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">Blog</a>
-                <a href="{% url 'public_profile:media_kit' %}" class="text-gray-700 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">Media Kit</a>
-                <a href="{% url 'core:contact' %}" class="bg-primary-600 text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-primary-700">Contact</a>
+        <div class="mobile-menu hidden md:hidden" style="background-color: var(--md-sys-color-surface); border-top: 1px solid var(--md-sys-color-outline-variant);">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="{% url 'core:home' %}" class="text-neutral-70 hover:text-primary-60 block px-4 py-3 rounded-full text-base font-medium transition-all duration-200 hover:bg-primary-10">
+                    <span class="material-icons text-lg mr-3">home</span>
+                    Home
+                </a>
+                <a href="{% url 'core:about' %}" class="text-neutral-70 hover:text-primary-60 block px-4 py-3 rounded-full text-base font-medium transition-all duration-200 hover:bg-primary-10">
+                    <span class="material-icons text-lg mr-3">person</span>
+                    About
+                </a>
+                <a href="{% url 'portfolio:portfolio_list' %}" class="text-neutral-70 hover:text-primary-60 block px-4 py-3 rounded-full text-base font-medium transition-all duration-200 hover:bg-primary-10">
+                    <span class="material-icons text-lg mr-3">work</span>
+                    Portfolio
+                </a>
+                <a href="{% url 'blog:blog_list' %}" class="text-neutral-70 hover:text-primary-60 block px-4 py-3 rounded-full text-base font-medium transition-all duration-200 hover:bg-primary-10">
+                    <span class="material-icons text-lg mr-3">article</span>
+                    Blog
+                </a>
+                <a href="{% url 'public_profile:media_kit' %}" class="text-neutral-70 hover:text-primary-60 block px-4 py-3 rounded-full text-base font-medium transition-all duration-200 hover:bg-primary-10">
+                    <span class="material-icons text-lg mr-3">media_kit</span>
+                    Media Kit
+                </a>
+                <a href="{% url 'core:contact' %}" class="material-button ripple block w-full text-center">
+                    <span class="material-icons text-base mr-2">mail</span>
+                    Contact
+                </a>
             </div>
         </div>
     </nav>
 
-    <!-- Messages -->
+    <!-- Material Design Messages -->
     {% if messages %}
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             {% for message in messages %}
-                <div class="alert alert-{{ message.tags }} bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
-                    {{ message }}
+                <div class="material-card p-4 mb-4 flex items-center gap-3" style="background-color: var(--md-sys-color-primary-container); color: var(--md-sys-color-on-primary-container);">
+                    <span class="material-icons text-lg">
+                        {% if message.tags == 'error' %}error{% elif message.tags == 'warning' %}warning{% elif message.tags == 'success' %}check_circle{% else %}info{% endif %}
+                    </span>
+                    <span class="font-medium">{{ message }}</span>
                 </div>
             {% endfor %}
         </div>
@@ -146,62 +462,65 @@
         {% block content %}{% endblock %}
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-secondary-900 text-white">
-        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+    <!-- Material Design Footer -->
+    <footer class="py-12" style="background-color: var(--md-sys-color-surface-variant); color: var(--md-sys-color-on-surface-variant);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
-                    <h3 class="text-lg font-semibold mb-4">Connect</h3>
+                    <h3 class="text-lg font-semibold mb-4 font-title-medium">Connect</h3>
                     <div class="flex space-x-4">
-                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
-                            <span class="sr-only">GitHub</span>
-                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                            </svg>
+                        <a href="#" class="material-fab ripple w-12 h-12" style="background-color: var(--md-sys-color-primary); color: var(--md-sys-color-on-primary);">
+                            <span class="material-icons">code</span>
                         </a>
-                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
-                            <span class="sr-only">LinkedIn</span>
-                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                            </svg>
+                        <a href="#" class="material-fab ripple w-12 h-12" style="background-color: var(--md-sys-color-primary); color: var(--md-sys-color-on-primary);">
+                            <span class="material-icons">work</span>
                         </a>
-                        <a href="#" class="text-gray-300 hover:text-white transition-colors">
-                            <span class="sr-only">Twitter</span>
-                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-                            </svg>
+                        <a href="#" class="material-fab ripple w-12 h-12" style="background-color: var(--md-sys-color-primary); color: var(--md-sys-color-on-primary);">
+                            <span class="material-icons">chat</span>
                         </a>
                     </div>
                 </div>
                 
                 <div>
-                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
-                    <ul class="space-y-2">
-                        <li><a href="{% url 'portfolio:portfolio_list' %}" class="text-gray-300 hover:text-white transition-colors">Portfolio</a></li>
-                        <li><a href="{% url 'blog:blog_list' %}" class="text-gray-300 hover:text-white transition-colors">Blog</a></li>
-                        <li><a href="{% url 'public_profile:speaking_engagements' %}" class="text-gray-300 hover:text-white transition-colors">Speaking</a></li>
-                        <li><a href="{% url 'public_profile:press_mentions' %}" class="text-gray-300 hover:text-white transition-colors">Press</a></li>
+                    <h3 class="text-lg font-semibold mb-4 font-title-medium">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="{% url 'portfolio:portfolio_list' %}" class="flex items-center gap-2 hover:text-primary-60 transition-colors">
+                            <span class="material-icons text-sm">work</span>
+                            Portfolio
+                        </a></li>
+                        <li><a href="{% url 'blog:blog_list' %}" class="flex items-center gap-2 hover:text-primary-60 transition-colors">
+                            <span class="material-icons text-sm">article</span>
+                            Blog
+                        </a></li>
+                        <li><a href="{% url 'public_profile:speaking_engagements' %}" class="flex items-center gap-2 hover:text-primary-60 transition-colors">
+                            <span class="material-icons text-sm">mic</span>
+                            Speaking
+                        </a></li>
+                        <li><a href="{% url 'public_profile:press_mentions' %}" class="flex items-center gap-2 hover:text-primary-60 transition-colors">
+                            <span class="material-icons text-sm">newspaper</span>
+                            Press
+                        </a></li>
                     </ul>
                 </div>
                 
                 <div>
-                    <h3 class="text-lg font-semibold mb-4">Newsletter</h3>
-                    <p class="text-gray-300 mb-4">Stay updated with my latest work and insights.</p>
+                    <h3 class="text-lg font-semibold mb-4 font-title-medium">Newsletter</h3>
+                    <p class="mb-4 font-body-medium">Stay updated with my latest work and insights.</p>
                     <form class="newsletter-form">
-                        <div class="flex">
-                            <input type="email" placeholder="Enter your email" class="flex-1 px-3 py-2 bg-gray-800 text-white border border-gray-700 rounded-l-md focus:outline-none focus:ring-2 focus:ring-primary-500">
-                            <button type="submit" class="px-4 py-2 bg-primary-600 text-white rounded-r-md hover:bg-primary-700 transition-colors">
-                                Subscribe
+                        <div class="flex gap-2">
+                            <input type="email" placeholder="Enter your email" class="material-input flex-1" style="background-color: var(--md-sys-color-surface); color: var(--md-sys-color-on-surface);">
+                            <button type="submit" class="material-button ripple">
+                                <span class="material-icons text-sm">send</span>
                             </button>
                         </div>
                     </form>
                 </div>
             </div>
             
-            <div class="mt-8 pt-8 border-t border-gray-800">
-                <p class="text-center text-gray-400">
+            <div class="mt-8 pt-8" style="border-top: 1px solid var(--md-sys-color-outline-variant);">
+                <p class="text-center font-body-small">
                     &copy; {% now "Y" %} Your Name. All rights reserved. 
-                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-primary-60 transition-colors ml-2">Privacy Policy</a>
                 </p>
             </div>
         </div>
