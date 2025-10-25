@@ -4,11 +4,23 @@ from django.contrib import messages
 from django.conf import settings
 from .models import ContactSubmission
 from .forms import ContactForm
+from blog.models import BlogPost
+from portfolio.models import Project
 
 
 def home(request):
-    """Home page view."""
-    return render(request, 'core/home.html')
+    """Home page view with featured content."""
+    # Get featured projects
+    featured_projects = Project.objects.filter(featured=True)[:3]
+    
+    # Get latest blog posts
+    latest_posts = BlogPost.objects.filter(published=True)[:2]
+    
+    context = {
+        'featured_projects': featured_projects,
+        'latest_posts': latest_posts,
+    }
+    return render(request, 'core/home.html', context)
 
 
 def about(request):
