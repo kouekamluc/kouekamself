@@ -4,47 +4,47 @@
 {% block title %}Media Kit - Your Name{% endblock %}
 
 {% block content %}
-<!-- Hero Section -->
-<section class="bg-gradient-to-br from-primary-50 to-white py-20">
+<!-- Material Design Hero Section -->
+<section class="py-20" style="background: linear-gradient(135deg, var(--md-sys-color-primary-container), var(--md-sys-color-surface));">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center">
-            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <h1 class="text-display-small font-display font-bold mb-6" style="color: var(--md-sys-color-on-surface);">
                 Media <span class="gradient-text">Kit</span>
             </h1>
-            <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+            <p class="text-title-large font-body mb-8 max-w-2xl mx-auto" style="color: var(--md-sys-color-on-surface-variant);">
                 Professional assets and information for media, conferences, and speaking engagements.
             </p>
         </div>
     </div>
 </section>
 
-<!-- Bio Section -->
-<section class="py-20 bg-white">
+<!-- Material Design Bio Section -->
+<section class="py-20" style="background-color: var(--md-sys-color-surface);">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Professional Bio</h2>
+            <h2 class="text-headline-large font-display font-bold mb-4" style="color: var(--md-sys-color-on-surface);">Professional Bio</h2>
         </div>
         
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-                <img src="{% static 'images/profile-photo.jpg' %}" alt="Your Name" class="w-full h-96 object-cover rounded-lg shadow-2xl">
+                <img src="{% static 'images/profile-photo.jpg' %}" alt="Your Name" class="w-full h-96 object-cover rounded-extra-large" style="box-shadow: var(--md-elevation-4);">
             </div>
             
             <div>
-                <h3 class="text-2xl font-bold text-gray-900 mb-6">Short Bio (50 words)</h3>
-                <p class="text-gray-700 mb-8 leading-relaxed">
+                <h3 class="text-headline-small font-title-medium mb-6" style="color: var(--md-sys-color-on-surface);">Short Bio (50 words)</h3>
+                <p class="text-body-large font-body mb-8 leading-relaxed" style="color: var(--md-sys-color-on-surface-variant);">
                     Your Name is a Senior Software Engineer with 8+ years of experience building scalable web applications. 
                     He specializes in Python, Django, and cloud architecture, and is passionate about sharing knowledge 
                     through speaking engagements and technical writing.
                 </p>
                 
-                <h3 class="text-2xl font-bold text-gray-900 mb-6">Long Bio (150 words)</h3>
-                <p class="text-gray-700 mb-8 leading-relaxed">
+                <h3 class="text-headline-small font-title-medium mb-6" style="color: var(--md-sys-color-on-surface);">Long Bio (150 words)</h3>
+                <p class="text-body-large font-body mb-8 leading-relaxed" style="color: var(--md-sys-color-on-surface-variant);">
                     Your Name is a Senior Software Engineer with over 8 years of experience in full-stack web development. 
                     He has worked with startups and Fortune 500 companies, leading teams and building applications that serve 
                     millions of users. His expertise spans Python, Django, React, AWS, and modern DevOps practices.
                 </p>
-                <p class="text-gray-700 mb-8 leading-relaxed">
+                <p class="text-body-large font-body mb-8 leading-relaxed" style="color: var(--md-sys-color-on-surface-variant);">
                     Beyond coding, Your Name is an active speaker at technology conferences and a regular contributor to 
                     open-source projects. He holds a Master's degree in Computer Science and is passionate about mentoring 
                     junior developers and sharing knowledge through technical writing and speaking engagements.

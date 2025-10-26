@@ -4,24 +4,25 @@
 {% block title %}{{ post.title }} - Your Name{% endblock %}
 
 {% block content %}
-<!-- Hero Section -->
-<section class="bg-gradient-to-br from-primary-50 to-white py-20">
+<!-- Material Design Hero Section -->
+<section class="py-20" style="background: linear-gradient(135deg, var(--md-sys-color-primary-container), var(--md-sys-color-surface));">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center">
-            <div class="flex items-center justify-center text-sm text-gray-500 mb-4">
+            <div class="flex items-center justify-center text-sm mb-4" style="color: var(--md-sys-color-on-surface-variant);">
+                <span class="material-icons text-sm mr-1">schedule</span>
                 <time datetime="{{ post.created_at|date:'Y-m-d' }}">{{ post.created_at|date:"M d, Y" }}</time>
                 {% if post.tag_list %}
                     <span class="mx-2">•</span>
-                    <span>{{ post.tag_list|join:", " }}</span>
+                    <span class="material-chip">{{ post.tag_list|join:", " }}</span>
                 {% endif %}
             </div>
             
-            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <h1 class="text-display-small font-display font-bold mb-6" style="color: var(--md-sys-color-on-surface);">
                 {{ post.title }}
             </h1>
             
             {% if post.excerpt %}
-                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                <p class="text-title-large font-body max-w-2xl mx-auto" style="color: var(--md-sys-color-on-surface-variant);">
                     {{ post.excerpt }}
                 </p>
             {% endif %}
@@ -29,87 +30,89 @@
     </div>
 </section>
 
-<!-- Blog Post Content -->
-<section class="py-20 bg-white">
+<!-- Material Design Blog Post Content -->
+<section class="py-20" style="background-color: var(--md-sys-color-surface);">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-4 gap-12">
             <!-- Main Content -->
             <div class="lg:col-span-3">
                 <article class="prose prose-lg max-w-none">
                     {% if post.featured_image %}
-                        <img src="{{ post.featured_image.url }}" alt="{{ post.title }}" class="w-full h-64 object-cover rounded-lg mb-8">
+                        <img src="{{ post.featured_image.url }}" alt="{{ post.title }}" class="w-full h-64 object-cover rounded-large mb-8" style="box-shadow: var(--md-elevation-2);">
                     {% endif %}
                     
-                    <div class="text-gray-800 leading-relaxed">
+                    <div class="text-body-large font-body leading-relaxed" style="color: var(--md-sys-color-on-surface);">
                         {{ post.content|linebreaks }}
                     </div>
                 </article>
                 
                 <!-- Tags -->
                 {% if post.tag_list %}
-                    <div class="mt-8 pt-8 border-t border-gray-200">
-                        <h3 class="text-lg font-semibold text-gray-900 mb-4">Tags</h3>
+                    <div class="mt-8 pt-8" style="border-top: 1px solid var(--md-sys-color-outline-variant);">
+                        <h3 class="text-title-medium font-title-medium mb-4" style="color: var(--md-sys-color-on-surface);">Tags</h3>
                         <div class="flex flex-wrap gap-2">
                             {% for tag in post.tag_list %}
-                                <span class="px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full">
-                                    {{ tag }}
-                                </span>
+                                <span class="material-chip">{{ tag }}</span>
                             {% endfor %}
                         </div>
                     </div>
                 {% endif %}
                 
                 <!-- Social Sharing -->
-                <div class="mt-8 pt-8 border-t border-gray-200">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Share this post</h3>
+                <div class="mt-8 pt-8" style="border-top: 1px solid var(--md-sys-color-outline-variant);">
+                    <h3 class="text-title-medium font-title-medium mb-4" style="color: var(--md-sys-color-on-surface);">Share this post</h3>
                     <div class="flex space-x-4">
-                        <a href="https://twitter.com/intent/tweet?text={{ post.title|urlencode }}&url={{ request.build_absolute_uri }}" target="_blank" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">
+                        <a href="https://twitter.com/intent/tweet?text={{ post.title|urlencode }}&url={{ request.build_absolute_uri }}" target="_blank" class="material-button ripple">
+                            <span class="material-icons text-sm">share</span>
                             Twitter
                         </a>
-                        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ request.build_absolute_uri }}" target="_blank" class="bg-blue-700 text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition-colors">
+                        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ request.build_absolute_uri }}" target="_blank" class="material-button ripple">
+                            <span class="material-icons text-sm">share</span>
                             LinkedIn
                         </a>
-                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" target="_blank" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" target="_blank" class="material-button ripple">
+                            <span class="material-icons text-sm">share</span>
                             Facebook
                         </a>
                     </div>
                 </div>
             </div>
             
-            <!-- Sidebar -->
+            <!-- Material Design Sidebar -->
             <div class="lg:col-span-1">
                 <div class="sticky top-8">
                     <!-- Author Info -->
-                    <div class="bg-gray-50 rounded-lg p-6 mb-8">
-                        <h3 class="text-lg font-semibold text-gray-900 mb-4">About the Author</h3>
+                    <div class="material-card p-6 mb-8">
+                        <h3 class="text-title-medium font-title-medium mb-4" style="color: var(--md-sys-color-on-surface);">About the Author</h3>
                         <div class="flex items-center mb-4">
-                            <img src="{% static 'images/profile-photo.jpg' %}" alt="Your Name" class="w-12 h-12 rounded-full mr-4">
+                            <img src="{% static 'images/profile-photo.jpg' %}" alt="Your Name" class="w-12 h-12 rounded-full mr-4" style="box-shadow: var(--md-elevation-1);">
                             <div>
-                                <h4 class="font-semibold text-gray-900">Your Name</h4>
-                                <p class="text-sm text-gray-600">Software Engineer</p>
+                                <h4 class="font-title-medium" style="color: var(--md-sys-color-on-surface);">Your Name</h4>
+                                <p class="text-body-small font-body" style="color: var(--md-sys-color-on-surface-variant);">Software Engineer</p>
                             </div>
                         </div>
-                        <p class="text-sm text-gray-600 mb-4">
+                        <p class="text-body-small font-body mb-4" style="color: var(--md-sys-color-on-surface-variant);">
                             Passionate about building scalable web applications and sharing knowledge through writing and speaking.
                         </p>
-                        <a href="{% url 'core:about' %}" class="text-primary-600 hover:text-primary-700 text-sm font-medium">
-                            Learn more →
+                        <a href="{% url 'core:about' %}" class="flex items-center gap-1 font-medium" style="color: var(--md-sys-color-primary);">
+                            <span class="material-icons text-sm">arrow_forward</span>
+                            Learn more
                         </a>
                     </div>
                     
                     <!-- Related Posts -->
                     {% if related_posts %}
-                        <div class="bg-gray-50 rounded-lg p-6">
-                            <h3 class="text-lg font-semibold text-gray-900 mb-4">Related Posts</h3>
+                        <div class="material-card p-6">
+                            <h3 class="text-title-medium font-title-medium mb-4" style="color: var(--md-sys-color-on-surface);">Related Posts</h3>
                             <div class="space-y-4">
                                 {% for related_post in related_posts %}
-                                    <div>
-                                        <h4 class="font-medium text-gray-900 mb-1">
-                                            <a href="{% url 'blog:blog_detail' related_post.slug %}" class="hover:text-primary-600 transition-colors">
+                                    <div class="p-3 rounded-medium hover:bg-primary-10 transition-colors">
+                                        <h4 class="font-title-small mb-1" style="color: var(--md-sys-color-on-surface);">
+                                            <a href="{% url 'blog:blog_detail' related_post.slug %}" class="hover:text-primary-60 transition-colors">
                                                 {{ related_post.title }}
                                             </a>
                                         </h4>
-                                        <p class="text-sm text-gray-600">{{ related_post.created_at|date:"M d, Y" }}</p>
+                                        <p class="text-body-small font-body" style="color: var(--md-sys-color-on-surface-variant);">{{ related_post.created_at|date:"M d, Y" }}</p>
                                     </div>
                                 {% endfor %}
                             </div>
@@ -121,17 +124,18 @@
     </div>
 </section>
 
-<!-- Call to Action -->
-<section class="py-20 bg-primary-600">
+<!-- Material Design Call to Action -->
+<section class="py-20" style="background: linear-gradient(135deg, var(--md-sys-color-primary), var(--md-sys-color-tertiary));">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Enjoyed this post?</h2>
-        <p class="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
+        <h2 class="text-headline-large font-display font-bold mb-4" style="color: var(--md-sys-color-on-primary);">Enjoyed this post?</h2>
+        <p class="text-title-large font-body mb-8 max-w-2xl mx-auto" style="color: var(--md-sys-color-on-primary); opacity: 0.8;">
             Subscribe to my newsletter for more insights on technology and engineering.
         </p>
         <form class="newsletter-form max-w-md mx-auto">
-            <div class="flex">
-                <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-3 bg-white text-gray-900 border-0 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-primary-300">
-                <button type="submit" class="px-6 py-3 bg-primary-800 text-white rounded-r-lg hover:bg-primary-900 transition-colors font-semibold">
+            <div class="flex gap-2">
+                <input type="email" placeholder="Enter your email" class="material-input flex-1" style="background-color: var(--md-sys-color-on-primary); color: var(--md-sys-color-primary);">
+                <button type="submit" class="material-button ripple" style="background-color: var(--md-sys-color-on-primary); color: var(--md-sys-color-primary);">
+                    <span class="material-icons">send</span>
                     Subscribe
                 </button>
             </div>

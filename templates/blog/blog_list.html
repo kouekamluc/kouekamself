@@ -4,93 +4,99 @@
 {% block title %}Blog - Your Name{% endblock %}
 
 {% block content %}
-<!-- Hero Section -->
-<section class="bg-gradient-to-br from-primary-50 to-white py-20">
+<!-- Material Design Hero Section -->
+<section class="py-20" style="background: linear-gradient(135deg, var(--md-sys-color-primary-container), var(--md-sys-color-surface));">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center">
-            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <h1 class="text-display-small font-display font-bold mb-6" style="color: var(--md-sys-color-on-surface);">
                 My <span class="gradient-text">Blog</span>
             </h1>
-            <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+            <p class="text-title-large font-body mb-8 max-w-2xl mx-auto" style="color: var(--md-sys-color-on-surface-variant);">
                 Thoughts on technology, engineering, and the future of software development.
             </p>
         </div>
     </div>
 </section>
 
-<!-- Blog Posts Section -->
-<section class="py-20 bg-white">
+<!-- Material Design Blog Posts Section -->
+<section class="py-20" style="background-color: var(--md-sys-color-surface);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {% if posts %}
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {% for post in posts %}
-                    <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <article class="material-card overflow-hidden">
                         {% if post.featured_image %}
                             <img src="{{ post.featured_image.url }}" alt="{{ post.title }}" class="w-full h-48 object-cover">
                         {% else %}
-                            <div class="h-48 bg-gradient-to-br from-primary-400 to-primary-600"></div>
+                            <div class="h-48 relative" style="background: linear-gradient(135deg, var(--md-sys-color-primary), var(--md-sys-color-tertiary));">
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <span class="material-icons text-6xl text-white opacity-20">article</span>
+                                </div>
+                            </div>
                         {% endif %}
                         
                         <div class="p-6">
-                            <div class="flex items-center text-sm text-gray-500 mb-3">
+                            <div class="flex items-center text-sm mb-3" style="color: var(--md-sys-color-on-surface-variant);">
+                                <span class="material-icons text-sm mr-1">schedule</span>
                                 <time datetime="{{ post.created_at|date:'Y-m-d' }}">{{ post.created_at|date:"M d, Y" }}</time>
                                 {% if post.tag_list %}
                                     <span class="mx-2">•</span>
-                                    <span>{{ post.tag_list.0 }}</span>
+                                    <span class="material-chip">{{ post.tag_list.0 }}</span>
                                 {% endif %}
                             </div>
                             
-                            <h2 class="text-xl font-semibold text-gray-900 mb-3">
-                                <a href="{% url 'blog:blog_detail' post.slug %}" class="hover:text-primary-600 transition-colors">
+                            <h2 class="text-title-large font-title-medium mb-3" style="color: var(--md-sys-color-on-surface);">
+                                <a href="{% url 'blog:blog_detail' post.slug %}" class="hover:text-primary-60 transition-colors">
                                     {{ post.title }}
                                 </a>
                             </h2>
                             
-                            <p class="text-gray-600 mb-4">
+                            <p class="text-body-large font-body mb-4" style="color: var(--md-sys-color-on-surface-variant);">
                                 {{ post.excerpt|default:post.content|truncatewords:20 }}
                             </p>
                             
                             {% if post.tag_list %}
                                 <div class="flex flex-wrap gap-2 mb-4">
                                     {% for tag in post.tag_list %}
-                                        <span class="px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full">
-                                            {{ tag }}
-                                        </span>
+                                        <span class="material-chip">{{ tag }}</span>
                                     {% endfor %}
                                 </div>
                             {% endif %}
                             
-                            <a href="{% url 'blog:blog_detail' post.slug %}" class="text-primary-600 hover:text-primary-700 font-medium">
-                                Read More →
+                            <a href="{% url 'blog:blog_detail' post.slug %}" class="flex items-center gap-1 font-medium" style="color: var(--md-sys-color-primary);">
+                                <span class="material-icons text-sm">arrow_forward</span>
+                                Read More
                             </a>
                         </div>
                     </article>
                 {% endfor %}
             </div>
             
-            <!-- Pagination -->
+            <!-- Material Design Pagination -->
             {% if page_obj.has_other_pages %}
                 <div class="mt-12 flex justify-center">
                     <nav class="flex items-center space-x-2">
                         {% if page_obj.has_previous %}
-                            <a href="?page={{ page_obj.previous_page_number }}" class="px-3 py-2 bg-gray-100 text-gray-700 rounded-md hover:bg-primary-100 hover:text-primary-700 transition-colors">
+                            <a href="?page={{ page_obj.previous_page_number }}" class="material-button-outlined ripple">
+                                <span class="material-icons text-sm">chevron_left</span>
                                 Previous
                             </a>
                         {% endif %}
                         
                         {% for num in page_obj.paginator.page_range %}
                             {% if page_obj.number == num %}
-                                <span class="px-3 py-2 bg-primary-600 text-white rounded-md">{{ num }}</span>
+                                <span class="material-button">{{ num }}</span>
                             {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-                                <a href="?page={{ num }}" class="px-3 py-2 bg-gray-100 text-gray-700 rounded-md hover:bg-primary-100 hover:text-primary-700 transition-colors">
+                                <a href="?page={{ num }}" class="material-button-outlined ripple">
                                     {{ num }}
                                 </a>
                             {% endif %}
                         {% endfor %}
                         
                         {% if page_obj.has_next %}
-                            <a href="?page={{ page_obj.next_page_number }}" class="px-3 py-2 bg-gray-100 text-gray-700 rounded-md hover:bg-primary-100 hover:text-primary-700 transition-colors">
+                            <a href="?page={{ page_obj.next_page_number }}" class="material-button-outlined ripple">
                                 Next
+                                <span class="material-icons text-sm">chevron_right</span>
                             </a>
                         {% endif %}
                     </nav>
@@ -98,29 +104,28 @@
             {% endif %}
         {% else %}
             <div class="text-center py-20">
-                <div class="text-gray-400 mb-4">
-                    <svg class="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                    </svg>
+                <div class="mb-4" style="color: var(--md-sys-color-on-surface-variant);">
+                    <span class="material-icons text-6xl">article</span>
                 </div>
-                <h3 class="text-xl font-semibold text-gray-900 mb-2">No blog posts yet</h3>
-                <p class="text-gray-600">Check back soon for new content!</p>
+                <h3 class="text-title-large font-title-medium mb-2" style="color: var(--md-sys-color-on-surface);">No blog posts yet</h3>
+                <p class="text-body-large font-body" style="color: var(--md-sys-color-on-surface-variant);">Check back soon for new content!</p>
             </div>
         {% endif %}
     </div>
 </section>
 
-<!-- Newsletter Signup Section -->
-<section class="py-20 bg-primary-600">
+<!-- Material Design Newsletter Signup Section -->
+<section class="py-20" style="background: linear-gradient(135deg, var(--md-sys-color-primary), var(--md-sys-color-tertiary));">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Stay Updated</h2>
-        <p class="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
+        <h2 class="text-headline-large font-display font-bold mb-4" style="color: var(--md-sys-color-on-primary);">Stay Updated</h2>
+        <p class="text-title-large font-body mb-8 max-w-2xl mx-auto" style="color: var(--md-sys-color-on-primary); opacity: 0.8;">
             Subscribe to my newsletter for the latest insights on technology and engineering.
         </p>
         <form class="newsletter-form max-w-md mx-auto">
-            <div class="flex">
-                <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-3 bg-white text-gray-900 border-0 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-primary-300">
-                <button type="submit" class="px-6 py-3 bg-primary-800 text-white rounded-r-lg hover:bg-primary-900 transition-colors font-semibold">
+            <div class="flex gap-2">
+                <input type="email" placeholder="Enter your email" class="material-input flex-1" style="background-color: var(--md-sys-color-on-primary); color: var(--md-sys-color-primary);">
+                <button type="submit" class="material-button ripple" style="background-color: var(--md-sys-color-on-primary); color: var(--md-sys-color-primary);">
+                    <span class="material-icons">send</span>
                     Subscribe
                 </button>
             </div>

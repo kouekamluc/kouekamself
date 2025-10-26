@@ -4,34 +4,34 @@
 {% block title %}{{ project.title }} - Your Name{% endblock %}
 
 {% block content %}
-<!-- Hero Section -->
-<section class="bg-gradient-to-br from-primary-50 to-white py-20">
+<!-- Material Design Hero Section -->
+<section class="py-20" style="background: linear-gradient(135deg, var(--md-sys-color-primary-container), var(--md-sys-color-surface));">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                <h1 class="text-display-small font-display font-bold mb-6" style="color: var(--md-sys-color-on-surface);">
                     {{ project.title }}
                 </h1>
-                <p class="text-xl text-gray-600 mb-8">
+                <p class="text-title-large font-body mb-8" style="color: var(--md-sys-color-on-surface-variant);">
                     {{ project.short_description }}
                 </p>
                 
                 <div class="flex flex-wrap gap-2 mb-8">
                     {% for tech in project.tech_list %}
-                        <span class="px-4 py-2 bg-primary-100 text-primary-800 text-sm rounded-full font-medium">
-                            {{ tech }}
-                        </span>
+                        <span class="material-chip">{{ tech }}</span>
                     {% endfor %}
                 </div>
                 
                 <div class="flex flex-col sm:flex-row gap-4">
                     {% if project.live_url %}
-                        <a href="{{ project.live_url }}" target="_blank" class="bg-primary-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-primary-700 transition-colors">
+                        <a href="{{ project.live_url }}" target="_blank" class="material-button ripple">
+                            <span class="material-icons">visibility</span>
                             View Live Project
                         </a>
                     {% endif %}
                     {% if project.github_url %}
-                        <a href="{{ project.github_url }}" target="_blank" class="border-2 border-primary-600 text-primary-600 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-primary-600 hover:text-white transition-colors">
+                        <a href="{{ project.github_url }}" target="_blank" class="material-button-outlined ripple">
+                            <span class="material-icons">code</span>
                             View Source Code
                         </a>
                     {% endif %}
@@ -40,9 +40,13 @@
             
             <div class="text-center lg:text-right">
                 {% if project.featured_image %}
-                    <img src="{{ project.featured_image.url }}" alt="{{ project.title }}" class="w-full h-96 object-cover rounded-lg shadow-2xl">
+                    <img src="{{ project.featured_image.url }}" alt="{{ project.title }}" class="w-full h-96 object-cover rounded-extra-large" style="box-shadow: var(--md-elevation-4);">
                 {% else %}
-                    <div class="w-full h-96 bg-gradient-to-br from-primary-400 to-primary-600 rounded-lg shadow-2xl"></div>
+                    <div class="w-full h-96 rounded-extra-large relative" style="background: linear-gradient(135deg, var(--md-sys-color-primary), var(--md-sys-color-tertiary)); box-shadow: var(--md-elevation-4);">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <span class="material-icons text-8xl text-white opacity-20">work</span>
+                        </div>
+                    </div>
                 {% endif %}
             </div>
         </div>
