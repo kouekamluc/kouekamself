@@ -4,6 +4,8 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from django.utils.decorators import method_decorator
 from django.views import View
+from django.core.validators import validate_email
+from django.core.exceptions import ValidationError
 from .models import SpeakingEngagement, PressMention, NewsletterSubscriber
 
 
@@ -37,12 +39,14 @@ class NewsletterSignupView(View):
     """Newsletter signup view."""
     
     def post(self, request):
-        email = request.POST.get('email')
+        email = (request.POST.get('email') or "").strip()
         
         if not email:
             return JsonResponse({'success': False, 'message': 'Email is required'})
         
         try:
+            # Validate email format
+            validate_email(email)
             subscriber, created = NewsletterSubscriber.objects.get_or_create(
                 email=email,
                 defaults={'active': True}
@@ -58,6 +62,11 @@ class NewsletterSignupView(View):
                     'success': False, 
                     'message': 'Email already subscribed'
                 })
+        except ValidationError:
+            return JsonResponse({
+                'success': False,
+                'message': 'Please enter a valid email address.'
+            })
         except Exception as e:
             return JsonResponse({
                 'success': False, 
