@@ -16,16 +16,18 @@
                     I'm a passionate engineer with over 8 years of experience building scalable web applications and leading technical teams. My journey spans from startups to Fortune 500 companies, always focused on creating solutions that make a real impact.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="{% url 'core:contact' %}" class="bg-primary-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-primary-700 transition-colors">
+                    <a href="{% url 'core:contact' %}" class="inline-flex items-center justify-center bg-primary-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-primary-700 smooth-transition ripple elevation-2 elevation-hover">
+                        <span class="material-icons mr-2">connect_without_contact</span>
                         Let's Connect
                     </a>
-                    <a href="{% url 'portfolio:portfolio_list' %}" class="border-2 border-primary-600 text-primary-600 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-primary-600 hover:text-white transition-colors">
+                    <a href="{% url 'portfolio:portfolio_list' %}" class="inline-flex items-center justify-center border-2 border-primary-600 text-primary-600 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-primary-600 hover:text-white smooth-transition ripple elevation-1">
+                        <span class="material-icons mr-2">work</span>
                         View My Work
                     </a>
                 </div>
             </div>
             <div class="text-center lg:text-right">
-                <img src="{% static 'images/about-photo.jpg' %}" alt="Your Name" class="w-80 h-80 rounded-lg shadow-2xl mx-auto lg:ml-auto object-cover">
+                <img src="{% static 'images/about-photo.jpg' %}" alt="Your Name" class="w-80 h-80 rounded-2xl elevation-4 mx-auto lg:ml-auto object-cover smooth-transition hover:scale-105 hover:rotate-2">
             </div>
         </div>
     </div>
@@ -42,67 +44,76 @@
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="bg-gray-50 rounded-lg p-6">
-                <h3 class="text-xl font-semibold text-gray-900 mb-4">Backend Development</h3>
+            <div class="material-card p-6 elevation-2 elevation-hover">
+                <div class="flex items-center mb-4">
+                    <span class="material-icons text-primary-600 text-3xl mr-3">storage</span>
+                    <h3 class="text-xl font-semibold text-gray-900">Backend Development</h3>
+                </div>
                 <div class="space-y-3">
-                    <div class="flex items-center">
-                        <div class="w-3 h-3 bg-primary-500 rounded-full mr-3"></div>
+                    <div class="flex items-center smooth-transition hover:translate-x-2">
+                        <span class="material-icons text-primary-500 text-sm mr-3">check_circle</span>
                         <span class="text-gray-700">Python & Django</span>
                     </div>
-                    <div class="flex items-center">
-                        <div class="w-3 h-3 bg-primary-500 rounded-full mr-3"></div>
+                    <div class="flex items-center smooth-transition hover:translate-x-2">
+                        <span class="material-icons text-primary-500 text-sm mr-3">check_circle</span>
                         <span class="text-gray-700">Node.js & Express</span>
                     </div>
-                    <div class="flex items-center">
-                        <div class="w-3 h-3 bg-primary-500 rounded-full mr-3"></div>
+                    <div class="flex items-center smooth-transition hover:translate-x-2">
+                        <span class="material-icons text-primary-500 text-sm mr-3">check_circle</span>
                         <span class="text-gray-700">Go & Gin</span>
                     </div>
-                    <div class="flex items-center">
-                        <div class="w-3 h-3 bg-primary-500 rounded-full mr-3"></div>
+                    <div class="flex items-center smooth-transition hover:translate-x-2">
+                        <span class="material-icons text-primary-500 text-sm mr-3">check_circle</span>
                         <span class="text-gray-700">PostgreSQL & MongoDB</span>
                     </div>
                 </div>
             </div>
             
-            <div class="bg-gray-50 rounded-lg p-6">
-                <h3 class="text-xl font-semibold text-gray-900 mb-4">Frontend Development</h3>
+            <div class="material-card p-6 elevation-2 elevation-hover">
+                <div class="flex items-center mb-4">
+                    <span class="material-icons text-primary-600 text-3xl mr-3">web</span>
+                    <h3 class="text-xl font-semibold text-gray-900">Frontend Development</h3>
+                </div>
                 <div class="space-y-3">
-                    <div class="flex items-center">
-                        <div class="w-3 h-3 bg-primary-500 rounded-full mr-3"></div>
+                    <div class="flex items-center smooth-transition hover:translate-x-2">
+                        <span class="material-icons text-primary-500 text-sm mr-3">check_circle</span>
                         <span class="text-gray-700">React & Next.js</span>
                     </div>
-                    <div class="flex items-center">
-                        <div class="w-3 h-3 bg-primary-500 rounded-full mr-3"></div>
+                    <div class="flex items-center smooth-transition hover:translate-x-2">
+                        <span class="material-icons text-primary-500 text-sm mr-3">check_circle</span>
                         <span class="text-gray-700">Vue.js & Nuxt</span>
                     </div>
-                    <div class="flex items-center">
-                        <div class="w-3 h-3 bg-primary-500 rounded-full mr-3"></div>
+                    <div class="flex items-center smooth-transition hover:translate-x-2">
+                        <span class="material-icons text-primary-500 text-sm mr-3">check_circle</span>
                         <span class="text-gray-700">TypeScript</span>
                     </div>
-                    <div class="flex items-center">
-                        <div class="w-3 h-3 bg-primary-500 rounded-full mr-3"></div>
+                    <div class="flex items-center smooth-transition hover:translate-x-2">
+                        <span class="material-icons text-primary-500 text-sm mr-3">check_circle</span>
                         <span class="text-gray-700">Tailwind CSS</span>
                     </div>
                 </div>
             </div>
             
-            <div class="bg-gray-50 rounded-lg p-6">
-                <h3 class="text-xl font-semibold text-gray-900 mb-4">DevOps & Cloud</h3>
+            <div class="material-card p-6 elevation-2 elevation-hover">
+                <div class="flex items-center mb-4">
+                    <span class="material-icons text-primary-600 text-3xl mr-3">cloud</span>
+                    <h3 class="text-xl font-semibold text-gray-900">DevOps & Cloud</h3>
+                </div>
                 <div class="space-y-3">
-                    <div class="flex items-center">
-                        <div class="w-3 h-3 bg-primary-500 rounded-full mr-3"></div>
+                    <div class="flex items-center smooth-transition hover:translate-x-2">
+                        <span class="material-icons text-primary-500 text-sm mr-3">check_circle</span>
                         <span class="text-gray-700">AWS & Azure</span>
                     </div>
-                    <div class="flex items-center">
-                        <div class="w-3 h-3 bg-primary-500 rounded-full mr-3"></div>
+                    <div class="flex items-center smooth-transition hover:translate-x-2">
+                        <span class="material-icons text-primary-500 text-sm mr-3">check_circle</span>
                         <span class="text-gray-700">Docker & Kubernetes</span>
                     </div>
-                    <div class="flex items-center">
-                        <div class="w-3 h-3 bg-primary-500 rounded-full mr-3"></div>
+                    <div class="flex items-center smooth-transition hover:translate-x-2">
+                        <span class="material-icons text-primary-500 text-sm mr-3">check_circle</span>
                         <span class="text-gray-700">CI/CD Pipelines</span>
                     </div>
-                    <div class="flex items-center">
-                        <div class="w-3 h-3 bg-primary-500 rounded-full mr-3"></div>
+                    <div class="flex items-center smooth-transition hover:translate-x-2">
+                        <span class="material-icons text-primary-500 text-sm mr-3">check_circle</span>
                         <span class="text-gray-700">Terraform</span>
                     </div>
                 </div>
@@ -229,42 +240,46 @@
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <h3 class="text-xl font-semibold text-gray-900 mb-2">TechConf 2024</h3>
+            <div class="material-card p-6 elevation-2 elevation-hover">
+                <div class="flex items-center mb-3">
+                    <span class="material-icons text-primary-600 mr-2">event</span>
+                    <h3 class="text-xl font-semibold text-gray-900">TechConf 2024</h3>
+                </div>
                 <p class="text-gray-600 mb-4">"Building Scalable Web Applications"</p>
                 <div class="flex items-center text-sm text-gray-500">
-                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
-                    </svg>
+                    <span class="material-icons text-sm mr-2">location_on</span>
                     San Francisco, CA
                 </div>
             </div>
             
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <h3 class="text-xl font-semibold text-gray-900 mb-2">DevPodcast</h3>
+            <div class="material-card p-6 elevation-2 elevation-hover">
+                <div class="flex items-center mb-3">
+                    <span class="material-icons text-primary-600 mr-2">podcast</span>
+                    <h3 class="text-xl font-semibold text-gray-900">DevPodcast</h3>
+                </div>
                 <p class="text-gray-600 mb-4">"The Future of Web Development"</p>
                 <div class="flex items-center text-sm text-gray-500">
-                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"></path>
-                    </svg>
+                    <span class="material-icons text-sm mr-2">mic</span>
                     Podcast Episode
                 </div>
             </div>
             
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <h3 class="text-xl font-semibold text-gray-900 mb-2">TechWeekly</h3>
+            <div class="material-card p-6 elevation-2 elevation-hover">
+                <div class="flex items-center mb-3">
+                    <span class="material-icons text-primary-600 mr-2">article</span>
+                    <h3 class="text-xl font-semibold text-gray-900">TechWeekly</h3>
+                </div>
                 <p class="text-gray-600 mb-4">"Engineering Leadership Insights"</p>
                 <div class="flex items-center text-sm text-gray-500">
-                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"></path>
-                    </svg>
+                    <span class="material-icons text-sm mr-2">description</span>
                     Magazine Article
                 </div>
             </div>
         </div>
         
         <div class="text-center mt-12">
-            <a href="{% url 'public_profile:speaking_engagements' %}" class="bg-primary-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-primary-700 transition-colors">
+            <a href="{% url 'public_profile:speaking_engagements' %}" class="inline-flex items-center bg-primary-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-primary-700 smooth-transition ripple elevation-2 elevation-hover">
+                <span class="material-icons mr-2">campaign</span>
                 View All Speaking Engagements
             </a>
         </div>

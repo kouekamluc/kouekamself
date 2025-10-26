@@ -31,7 +31,7 @@
         
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {% for project in featured_projects %}
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                <div class="material-card overflow-hidden elevation-2 elevation-hover">
                     {% if project.featured_image %}
                         <img src="{{ project.featured_image.url }}" alt="{{ project.title }}" class="w-full h-64 object-cover">
                     {% else %}
@@ -52,17 +52,20 @@
                         
                         <div class="flex space-x-4">
                             {% if project.live_url %}
-                                <a href="{{ project.live_url }}" target="_blank" class="bg-primary-600 text-white px-6 py-2 rounded-lg hover:bg-primary-700 transition-colors">
+                                <a href="{{ project.live_url }}" target="_blank" class="inline-flex items-center bg-primary-600 text-white px-6 py-2 rounded-lg hover:bg-primary-700 smooth-transition ripple elevation-1">
+                                    <span class="material-icons text-sm mr-1">visibility</span>
                                     View Live
                                 </a>
                             {% endif %}
                             {% if project.github_url %}
-                                <a href="{{ project.github_url }}" target="_blank" class="border-2 border-primary-600 text-primary-600 px-6 py-2 rounded-lg hover:bg-primary-600 hover:text-white transition-colors">
+                                <a href="{{ project.github_url }}" target="_blank" class="inline-flex items-center border-2 border-primary-600 text-primary-600 px-6 py-2 rounded-lg hover:bg-primary-600 hover:text-white smooth-transition ripple">
+                                    <span class="material-icons text-sm mr-1">code</span>
                                     GitHub
                                 </a>
                             {% endif %}
-                            <a href="{% url 'portfolio:portfolio_detail' project.slug %}" class="text-primary-600 hover:text-primary-700 font-medium">
-                                Learn More →
+                            <a href="{% url 'portfolio:portfolio_detail' project.slug %}" class="text-primary-600 hover:text-primary-700 font-medium smooth-transition inline-flex items-center">
+                                Learn More
+                                <span class="material-icons text-sm ml-1">arrow_forward</span>
                             </a>
                         </div>
                     </div>
@@ -86,7 +89,7 @@
         {% if projects %}
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {% for project in projects %}
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="material-card overflow-hidden elevation-2 elevation-hover">
                         {% if project.featured_image %}
                             <img src="{{ project.featured_image.url }}" alt="{{ project.title }}" class="w-full h-48 object-cover">
                         {% else %}
@@ -125,15 +128,13 @@
                 {% endfor %}
             </div>
         {% else %}
-            <div class="text-center py-20">
-                <div class="text-gray-400 mb-4">
-                    <svg class="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-                    </svg>
+                <div class="text-center py-20">
+                    <div class="text-gray-400 mb-4">
+                        <span class="material-icons" style="font-size: 64px;">work</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">No projects yet</h3>
+                    <p class="text-gray-600">Check back soon for new projects!</p>
                 </div>
-                <h3 class="text-xl font-semibold text-gray-900 mb-2">No projects yet</h3>
-                <p class="text-gray-600">Check back soon for new projects!</p>
-            </div>
         {% endif %}
     </div>
 </section>
@@ -150,43 +151,49 @@
         
         <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
             <div class="text-center">
-                <div class="bg-gray-100 rounded-lg p-6 mb-4">
-                    <div class="text-3xl font-bold text-primary-600">Python</div>
+                <div class="material-card p-6 mb-4 elevation-1 elevation-hover smooth-transition">
+                    <span class="material-icons text-primary-600 text-4xl mb-2">code</span>
+                    <div class="text-xl font-bold text-primary-600">Python</div>
                 </div>
                 <p class="text-sm text-gray-600">Backend Development</p>
             </div>
             
             <div class="text-center">
-                <div class="bg-gray-100 rounded-lg p-6 mb-4">
-                    <div class="text-3xl font-bold text-primary-600">Django</div>
+                <div class="material-card p-6 mb-4 elevation-1 elevation-hover smooth-transition">
+                    <span class="material-icons text-primary-600 text-4xl mb-2">web</span>
+                    <div class="text-xl font-bold text-primary-600">Django</div>
                 </div>
                 <p class="text-sm text-gray-600">Web Framework</p>
             </div>
             
             <div class="text-center">
-                <div class="bg-gray-100 rounded-lg p-6 mb-4">
-                    <div class="text-3xl font-bold text-primary-600">React</div>
+                <div class="material-card p-6 mb-4 elevation-1 elevation-hover smooth-transition">
+                    <span class="material-icons text-primary-600 text-4xl mb-2">layers</span>
+                    <div class="text-xl font-bold text-primary-600">React</div>
                 </div>
                 <p class="text-sm text-gray-600">Frontend Library</p>
             </div>
             
             <div class="text-center">
-                <div class="bg-gray-100 rounded-lg p-6 mb-4">
-                    <div class="text-3xl font-bold text-primary-600">AWS</div>
+                <div class="material-card p-6 mb-4 elevation-1 elevation-hover smooth-transition">
+                    <span class="material-icons text-primary-600 text-4xl mb-2">cloud</span>
+                    <div class="text-xl font-bold text-primary-600">AWS</div>
                 </div>
                 <p class="text-sm text-gray-600">Cloud Platform</p>
             </div>
             
             <div class="text-center">
-                <div class="bg-gray-100 rounded-lg p-6 mb-4">
-                    <div class="text-3xl font-bold text-primary-600">Docker</div>
+                <div class="material-card p-6 mb-4 elevation-1 elevation-hover smooth-transition">
+                    <span class="material-icons text-primary-600 text-4xl mb-2">developer_board</span>
+                    <div class="text-xl font-bold text-primary-600">Docker</div>
                 </div>
                 <p class="text-sm text-gray-600">Containerization</p>
             </div>
             
             <div class="text-center">
-                <div class="bg-gray-100 rounded-lg p-6 mb-4">
-                    <div class="text-3xl font-bold text-primary-600">PostgreSQL</div>
+                <div class="material-card p-6 mb-4 elevation-1 elevation-hover smooth-transition">
+                    <span class="material-icons text-primary-600 text-4xl mb-2">storage</span>
+                    <div class="text-xl font-bold text-primary-600">PostgreSQL</div>
                 </div>
                 <p class="text-sm text-gray-600">Database</p>
             </div>
@@ -201,7 +208,8 @@
         <p class="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
             I'm always excited to take on new challenges and collaborate on innovative projects.
         </p>
-        <a href="{% url 'core:contact' %}" class="bg-white text-primary-600 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors">
+        <a href="{% url 'core:contact' %}" class="inline-flex items-center bg-white text-primary-600 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-100 smooth-transition ripple elevation-3 elevation-hover">
+            <span class="material-icons mr-2">handshake</span>
             Let's Connect
         </a>
     </div>
