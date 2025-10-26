@@ -13,6 +13,9 @@ services:
       - SECRET_KEY=your-secret-key-here
       - EMAIL_HOST_USER=your-email@example.com
       - EMAIL_HOST_PASSWORD=your-email-password
+    # For dev, avoid collectstatic on every rebuild by mounting static dir if desired
+    # Uncomment the following to also mount staticfiles dir
+    # - ./staticfiles:/app/staticfiles
 
 
 

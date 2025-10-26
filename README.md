@@ -27,7 +27,7 @@ A comprehensive, professional personal website built with Django, featuring a mo
 
 ## 🛠 Technology Stack
 
-- **Backend**: Django 4.2.7 (Latest LTS)
+- **Backend**: Django 4.2.x (Latest LTS)
 - **Frontend**: Django Templates + Tailwind CSS
 - **Database**: SQLite (development) / PostgreSQL (production ready)
 - **Styling**: Tailwind CSS via CDN
@@ -137,6 +137,10 @@ personal-website/
 ├── docker-compose.yml       # Docker Compose setup
 └── README.md               # This file
 ```
+
+## 🎨 Tailwind CSS Justification
+
+Tailwind CSS is chosen for its excellent integration with Django templates and SSR-first approach. It avoids the need for a separate frontend build system, keeps bundle sizes minimal (especially when using CDN or pre-built CSS), and enables rapid iteration directly in templates. Tailwind's utility classes help achieve a polished, professional aesthetic without a heavy JavaScript framework, aligning with the "no heavy JS" constraint.
 
 ## 🎨 Design System
 

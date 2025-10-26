@@ -73,10 +73,10 @@
                     <p class="text-gray-600 mb-4">High-resolution photo suitable for conferences and media</p>
                     <div class="space-y-2 mb-4">
                         <div class="text-sm text-gray-500">• 3000x3000 pixels</div>
-                        <div class="text-sm text-gray-500">• PNG format</div>
+                        <div class="text-sm text-gray-500">• JPG format</div>
                         <div class="text-sm text-gray-500">• Professional attire</div>
                     </div>
-                    <a href="#" class="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors">
+                    <a href="{% static 'images/profile-photo.jpg' %}" download class="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors">
                         Download
                     </a>
                 </div>
@@ -93,7 +93,7 @@
                         <div class="text-sm text-gray-500">• JPG format</div>
                         <div class="text-sm text-gray-500">• Conference setting</div>
                     </div>
-                    <a href="#" class="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors">
+                    <a href="{% static 'images/about-photo.jpg' %}" download class="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors">
                         Download
                     </a>
                 </div>
@@ -110,8 +110,8 @@
                         <div class="text-sm text-gray-500">• Multiple sizes</div>
                         <div class="text-sm text-gray-500">• Brand colors</div>
                     </div>
-                    <a href="#" class="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors">
-                        Download
+                    <a href="{% url 'public_profile:media_kit' %}" class="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors">
+                        Request Logo Kit
                     </a>
                 </div>
             </div>

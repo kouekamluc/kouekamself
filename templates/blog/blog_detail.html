@@ -41,7 +41,7 @@
                     {% endif %}
                     
                     <div class="text-gray-800 leading-relaxed">
-                        {{ post.content|linebreaks }}
+                        {{ rendered_content|safe }}
                     </div>
                 </article>
                 
